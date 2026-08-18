@@ -22,8 +22,8 @@ CONFIG = {
         'tasnimnews.com': 4, 'farsnews.ir': 4, 'irna.ir': 4,
     },
     'FILES': {
-        'NEWS': 'data/news.json',
-        'MARKET': 'data/market.json',
+        'NEWS': '../data/news.json',
+        'MARKET': '../data/market.json',
     },
     'TELEGRAM': {
         'BOT_TOKEN': os.environ.get('TG_BOT_TOKEN'),
