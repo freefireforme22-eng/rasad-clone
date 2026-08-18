@@ -1,5 +1,37 @@
 [
   {
+    "id": "838cd98721",
+    "title_en": "AI Regulation News | Global Rules & Policy Updates 2026",
+    "title_fa": "",
+    "summary": [],
+    "impact": "",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.0,
+    "source": "nadcab.com",
+    "url": "https://www.nadcab.com/blog/ai-regulation-news",
+    "clean_url": "https://www.nadcab.com/blog/ai-regulation-news",
+    "image": "",
+    "timestamp": 1787096701.0389764,
+    "ai_category": "general"
+  },
+  {
+    "id": "05dfd639c8",
+    "title_en": "AI News Today — Latest Artificial Intelligence News & Updates",
+    "title_fa": "",
+    "summary": [],
+    "impact": "",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.0,
+    "source": "thedailyprompt.ai",
+    "url": "https://thedailyprompt.ai/ai-news",
+    "clean_url": "https://thedailyprompt.ai/ai-news",
+    "image": "",
+    "timestamp": 1787096694.484695,
+    "ai_category": "general"
+  },
+  {
     "id": "2bd2447b28",
     "title_en": "Large language model - Wikipedia",
     "title_fa": "",
