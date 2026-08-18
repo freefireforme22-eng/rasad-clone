@@ -1,4 +1,3 @@
-requirements.txt
 cloudscraper
 beautifulsoup4
 lxml
