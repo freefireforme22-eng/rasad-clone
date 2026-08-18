@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رصد نیوز | مرکز فرماندهی و پایش هوشمند اخبار</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@33.003/misc/Farsi-Digits/Vazirmatn-FD-font-face.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Vazirmatn FD"', 'sans-serif'],
+                        brand: ['"Roboto Condensed"', '"Vazirmatn FD"', 'sans-serif'],
+                        mono: ['"Vazirmatn FD"', 'monospace'],
+                    },
+                    colors: {
+                        rasad: {
+                            navy: '#003366', darknavy: '#001a35', red: '#C20017',
+                            brightred: '#E5001C', graybg: '#F4F5F7', border: '#E2E8F0',
+                            text: '#111827', subtext: '#4B5563',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #F4F5F7; color: #111827; font-family: "Vazirmatn FD", sans-serif; }
+        .rasad-card { background: #fff; border: 1px solid #E2E8F0; transition: all 0.25s; }
+        .rasad-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); transform: translateY(-2px); }
+        .rasad-kicker { color: #C20017; font-weight: 900; font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; }
+        html.dark body { background-color: #0b0f19 !important; color: #f3f4f6 !important; }
+        html.dark .rasad-card { background-color: #111827 !important; border-color: #1f293d !important; }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Header with Market Data & Clocks -->
+    <header class="bg-white border-b border-rasad-border sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-radar text-rasad-red text-2xl"></i>
+                    <h1 class="font-brand font-black text-xl text-rasad-navy">رصد نیوز</h1>
+                    <span class="text-xs text-rasad-subtext hidden sm:inline">مرکز فرماندهی و پایش هوشمند اخبار</span>
+                </div>
+                <div class="flex flex-wrap items-center gap-4 text-sm" id="market-clocks">
+                    <div class="flex items-center gap-2 bg-rasad-graybg px-3 py-1.5 rounded">
+                        <i class="fas fa-dollar-sign text-rasad-red"></i>
+                        <span id="price-usd">--,--- تومان</span>
+                    </div>
+                    <div class="flex items-center gap-2 bg-rasad-graybg px-3 py-1.5 rounded">
+                        <i class="fas fa-oil-can text-amber-600"></i>
+                        <span id="price-oil">--.-- $</span>
+                    </div>
+                    <div class="flex items-center gap-2 bg-rasad-graybg px-3 py-1.5 rounded">
+                        <i class="fas fa-bitcoin text-orange-500"></i>
+                        <span id="price-btc">--.-- K</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-rasad-subtext">
+                        <i class="fas fa-clock"></i>
+                        <span id="clock-teh">--:--</span> تهران
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-6">
+        <!-- Category Filter -->
+        <div class="flex flex-wrap gap-2 mb-6" id="category-filters">
+            <button onclick="filterFeed('all', this)" class="chip-active px-4 py-2 rounded-full text-sm font-medium border transition-colors"
+                style="background:#003366;color:#fff;border-color:#003366">همه</button>
+            <button onclick="filterFeed('تشدید', this)" class="px-4 py-2 rounded-full text-sm font-medium border transition-colors bg-red-50 text-rasad-red border-red-200 hover:bg-red-100">
+                <i class="fas fa-bolt ml-1"></i> تشدید
+            </button>
+            <button onclick="filterFeed('نظامی', this)" class="px-4 py-2 rounded-full text-sm font-medium border transition-colors bg-red-50 text-rasad-red border-red-200 hover:bg-red-100">
+                <i class="fas fa-crosshairs ml-1"></i> نظامی
+            </button>
+            <button onclick="filterFeed('اقتصادی', this)" class="px-4 py-2 rounded-full text-sm font-medium border transition-colors bg-green-50 text-green-700 border-green-200 hover:bg-green-100">
+                <i class="fas fa-chart-line ml-1"></i> اقتصادی
+            </button>
+            <button onclick="filterFeed('دیپلماسی', this)" class="px-4 py-2 rounded-full text-sm font-medium border transition-colors bg-sky-50 text-sky-700 border-sky-200 hover:bg-sky-100">
+                <i class="fas fa-globe-americas ml-1"></i> دیپلماسی
+            </button>
+            <button onclick="filterFeed('هسته‌ای', this)" class="px-4 py-2 rounded-full text-sm font-medium border transition-colors bg-amber-50 text-amber-700 border-amber-200 hover:bg-amber-100">
+                <i class="fas fa-radiation ml-1"></i> هسته‌ای
+            </button>
+        </div>
+
+        <!-- Special Report Banner -->
+        <div id="special-report" class="hidden mb-6 rasad-card p-5 border-r-4 border-rasad-red bg-red-50">
+            <div class="flex items-start gap-4">
+                <div class="flex-shrink-0 w-12 h-12 bg-rasad-red/10 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-file-alt text-rasad-red text-xl"></i>
+                </div>
+                <div class="flex-1">
+                    <span class="rasad-kicker mb-1 block" id="special-tag">گزارش ویژه</span>
+                    <h2 class="font-brand font-black text-lg text-rasad-navy mb-2" id="special-headline"></h2>
+                    <p class="text-sm text-rasad-subtext mb-3" id="special-lead"></p>
+                    <button onclick="openSpecialReport()" class="text-sm font-medium text-rasad-red hover:underline">بیشتر بخوان <i class="fas fa-arrow-left ml-1"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- News Feed -->
+        <div class="space-y-4" id="news-feed">
+            <!-- News cards injected here -->
+        </div>
+
+        <!-- Load More -->
+        <div class="text-center mt-8">
+            <button onclick="loadMore()" id="load-more-btn" class="px-6 py-3 bg-rasad-navy text-white rounded-lg font-medium hover:bg-rasad-darknavy transition-colors">
+                بارگذاری بیشتر <i class="fas fa-chevron-down ml-2"></i>
+            </button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-rasad-border mt-12 py-6">
+        <div class="max-w-7xl mx-auto px-4 text-center text-sm text-rasad-subtext">
+            <p>رصد نیوز | آخرین آپدیت: <span id="footer-time">--:--</span></p>
+            <p class="mt-1">داده‌ها از <a href="https://github.com/itsyebekhe/rasadai" target="_blank" class="text-rasad-red hover:underline">GitHub</a> | ساخته شده با ❤️ برای ایران</p>
+        </div>
+    </footer>
+
+    <!-- Special Report Modal -->
+    <div id="special-modal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white dark:bg-gray-900 rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-rasad-border flex justify-between items-start">
+                <div>
+                    <span class="rasad-kicker" id="modal-tag"></span>
+                    <h2 class="font-brand font-black text-xl text-rasad-navy mt-1" id="modal-headline"></h2>
+                </div>
+                <button onclick="closeSpecialReport()" class="text-rasad-subtext hover:text-rasad-red"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            <div class="p-6" id="modal-content"></div>
+        </div>
+    </div>
+
+    <script>
+        // ─── STATE ───
+        let allNews = [];
+        let displayedCount = 0;
+        const PAGE_SIZE = 10;
+        let currentFilter = 'all';
+
+        // ─── INIT ───
+        document.addEventListener('DOMContentLoaded', async () => {
+            await Promise.all([loadMarket(), loadNews(), loadSpecialReport()]);
+            startClocks();
+            setInterval(startClocks, 1000);
+            setInterval(loadMarket, 5 * 60 * 1000); // Every 5 min
+        });
+
+        // ─── CLOCKS ───
+        function startClocks() {
+            const now = new Date();
+            const fmt = (tz) => new Intl.DateTimeFormat('fa-IR', { timeZone: tz, hour: '2-digit', minute: '2-digit', hour12: false }).format(now);
+            document.getElementById('clock-teh').textContent = fmt('Asia/Tehran');
+            document.getElementById('footer-time').textContent = now.toLocaleString('fa-IR', { timeZone: 'Asia/Tehran' });
+        }
+
+        // ─── MARKET ───
+        async function loadMarket() {
+            try {
+                const res = await fetch('https://raw.githubusercontent.com/freefireforme22-eng/rasad-clone/main/data/market.json?' + Date.now());
+                const data = await res.json();
+                document.getElementById('price-usd').textContent = (data.usd || '--,---') + ' تومان';
+                document.getElementById('price-oil').textContent = (data.oil || '--.--') + ' $';
+                document.getElementById('price-btc').textContent = '--.-- K'; // Placeholder
+            } catch (e) { console.error('Market load failed:', e); }
+        }
+
+        // ─── NEWS ───
+        async function loadNews() {
+            try {
+                const res = await fetch('https://raw.githubusercontent.com/freefireforme22-eng/rasad-clone/main/data/news.json?' + Date.now());
+                allNews = await res.json();
+                displayedCount = 0;
+                renderNews();
+            } catch (e) { console.error('News load failed:', e); }
+        }
+
+        function filterFeed(tag, btn) {
+            currentFilter = tag;
+            document.querySelectorAll('#category-filters button').forEach(b => {
+                b.classList.remove('chip-active');
+                b.style.background = ''; b.style.color = ''; b.style.borderColor = '';
+            });
+            btn.classList.add('chip-active');
+            displayedCount = 0;
+            renderNews();
+        }
+
+        function renderNews() {
+            const container = document.getElementById('news-feed');
+            if (displayedCount === 0) container.innerHTML = '';
+
+            const filtered = currentFilter === 'all' ? allNews : allNews.filter(n => n.tag?.toLowerCase().includes(currentFilter.toLowerCase()));
+            const page = filtered.slice(displayedCount, displayedCount + PAGE_SIZE);
+
+            page.forEach(item => {
+                const card = createNewsCard(item);
+                container.appendChild(card);
+            });
+
+            displayedCount += page.length;
+            document.getElementById('load-more-btn').style.display = displayedCount < filtered.length ? 'block' : 'none';
+        }
+
+        function loadMore() { renderNews(); }
+
+        function createNewsCard(item) {
+            const div = document.createElement('article');
+            div.className = 'rasad-card rounded-xl overflow-hidden';
+            div.dataset.tag = item.tag || '';
+
+            const tagConfig = getTagConfig(item.tag);
+            const timeStr = item.timestamp ? new Date(item.timestamp * 1000).toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' }) : '--:--';
+
+            div.innerHTML = `
+                <div class="p-5">
+                    <div class="flex items-start gap-3">
+                        <div class="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center" style="background:${tagConfig.badgeBg.replace('bg-', 'bg-').replace('text-', 'text-').replace('border-', 'border-')}">
+                            <i class="fas ${tagConfig.icon} text-sm"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="rasad-kicker">${tagConfig.kicker}</span>
+                                <span class="text-xs text-rasad-subtext">${timeStr}</span>
+                            </div>
+                            <h3 class="font-bold text-rasad-navy leading-snug mb-2">${item.title_fa || item.title_en || 'بدون عنوان'}</h3>
+                            <div class="text-sm text-rasad-subtext space-y-1 mb-3" style="max-height: 80px; overflow: hidden;">
+                                ${(item.summary || []).map(s => `• ${s}`).join('<br>')}
+                            </div>
+                            <div class="border-t border-rasad-border pt-3">
+                                <p class="text-xs text-rasad-subtext mb-2"><i class="fas fa-lightbulb ml-1"></i> <strong>تحلیل:</strong> ${item.impact || '—'}</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs text-rasad-subtext"><i class="fas fa-newspaper ml-1"></i> ${item.source || '—'}</span>
+                                    <a href="${item.url}" target="_blank" class="text-xs font-medium text-rasad-red hover:underline flex items-center gap-1">
+                                        خواندن کامل <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            return div;
+        }
+
+        function loadMore() { renderNews(); }
+
+        // ─── TAG CONFIG ───
+        function getTagConfig(rawTag) {
+            const tag = (rawTag || '').trim().toLowerCase();
+            const configs = {
+                'تشدید': { kicker: 'خبر فوری / تشدید تنش', icon: 'fa-bolt', badgeBg: 'bg-red-100 text-rasad-red border-red-300' },
+                'نظامی': { kicker: 'اقدام نظامی / دفاعی', icon: 'fa-crosshairs', badgeBg: 'bg-red-50 text-rasad-red border-red-200' },
+                'اقتصادی': { kicker: 'بازار و تحریم‌ها', icon: 'fa-chart-line', badgeBg: 'bg-green-100 text-green-800 border-green-300' },
+                'دیپلماسی': { kicker: 'روابط بین‌الملل', icon: 'fa-globe-americas', badgeBg: 'bg-sky-100 text-sky-800 border-sky-300' },
+                'هسته‌ای': { kicker: 'پرونده هسته‌ای', icon: 'fa-radiation', badgeBg: 'bg-amber-100 text-amber-800 border-amber-300' },
+                'نیابتی': { kicker: 'تحرکات منطقه‌ای / نیابتی', icon: 'fa-user-shield', badgeBg: 'bg-orange-100 text-orange-700 border-orange-300' },
+                'هرمز': { kicker: 'تنگه هرمز', icon: 'fa-anchor', badgeBg: 'bg-blue-100 text-blue-800 border-blue-300' },
+            };
+            for (const [key, val] of Object.entries(configs)) {
+                if (tag.includes(key)) return val;
+            }
+            return { kicker: rawTag || 'گزارش رصد', icon: 'fa-newspaper', badgeBg: 'bg-gray-100 text-gray-700 border-gray-300' };
+        }
+
+        // ─── SPECIAL REPORT ───
+        async function loadSpecialReport() {
+            try {
+                const res = await fetch('https://raw.githubusercontent.com/freefireforme22-eng/rasad-clone/main/data/special_reports.json?' + Date.now());
+                const data = await res.json();
+                if (data.headline) {
+                    document.getElementById('special-report').classList.remove('hidden');
+                    document.getElementById('special-tag').textContent = `پرونده پرخبر: ${data.topic_tag || '—'}`;
+                    document.getElementById('special-headline').textContent = data.headline;
+                    document.getElementById('special-lead').textContent = data.lead_paragraph || '';
+                }
+            } catch (e) { console.error('Special report load failed:', e); }
+        }
+
+        function openSpecialReport() {
+            // Load full report content
+            fetch('https://raw.githubusercontent.com/freefireforme22-eng/rasad-clone/main/data/special_reports.json?' + Date.now())
+                .then(r => r.json())
+                .then(data => {
+                    document.getElementById('modal-tag').textContent = data.topic_tag || '';
+                    document.getElementById('modal-headline').textContent = data.headline || '';
+                    document.getElementById('modal-content').innerHTML = `
+                        <p class="text-sm text-rasad-subtext leading-relaxed mb-4 bg-rasad-graybg p-3 rounded border">${data.lead_paragraph || ''}</p>
+                        ${data.key_findings?.length ? `
+                            <h3 class="font-bold text-rasad-navy mb-2"><i class="fas fa-lightbulb ml-1"></i> نکات کلیدی</h3>
+                            <ul class="space-y-1 mb-4">
+                                ${data.key_findings.map(f => `<li class="text-sm text-rasad-subtext flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-0.5"></i> ${f}</li>`).join('')}
+                            </ul>
+                        ` : ''}
+                        ${data.regime_vs_reality ? `
+                            <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 p-4 rounded mb-4">
+                                <h3 class="font-bold text-rasad-red mb-2"><i class="fas fa-balance-scale ml-1"></i> ادعای حاکمیت در برابر واقعیت میدانی</h3>
+                                <p class="text-sm text-red-700 dark:text-red-300">${data.regime_vs_reality}</p>
+                            </div>
+                        ` : ''}
+                        ${data.strategic_outlook ? `
+                            <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 p-4 rounded">
+                                <h3 class="font-bold text-blue-800 dark:text-blue-200 mb-2"><i class="fas fa-chess ml-1"></i> چشم‌انداز استراتژیک</h3>
+                                <p class="text-sm text-blue-700 dark:text-blue-300">${data.strategic_outlook}</p>
+                            </div>
+                        ` : ''}
+                    `;
+                    document.getElementById('special-modal').classList.remove('hidden');
+                    document.getElementById('special-modal').classList.add('flex');
+                });
+        }
+
+        function closeSpecialReport() {
+            document.getElementById('special-modal').classList.add('hidden');
+            document.getElementById('special-modal').classList.remove('flex');
+        }
+    </script>
+</body>
+</html>

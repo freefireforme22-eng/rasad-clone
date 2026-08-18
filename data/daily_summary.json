@@ -1,0 +1,24 @@
+{
+  "date": "",
+  "executive_tldr": "",
+  "themes": [],
+  "regime_vulnerabilities": {
+    "regime_internal_friction": "",
+    "infrastructure_vulnerability": "",
+    "sanctions_evasion_watch": ""
+  },
+  "forecast": {
+    "most_likely_scenario": "",
+    "regime_worst_case_scenario": "",
+    "flashpoint_indicator": ""
+  },
+  "probability_matrix": {
+    "military_escalation_percent": 0,
+    "economic_shock_percent": 0,
+    "domestic_unrest_percent": 0,
+    "regime_defection_risk_percent": 0
+  },
+  "market_impact": "",
+  "currency_outlook": "",
+  "risk_level": 0
+}
