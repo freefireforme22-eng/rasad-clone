@@ -1,6 +1,6 @@
-# Rasad News Radar - Starter Kit
+# Subaru News Radar - Starter Kit
 
-یک کلون ساده‌شده از **رصد نیوز** برای پایش اخبار ایران، با:
+یک کلون ساده‌شده برای پایش اخبار ایران، با:
 - **دیتا در GitHub Pages** (JSON files)
 - **GitHub Actions** برای اتوماسیون هر ۱۵ دقیقه
 - **سایت SPA** با Tailwind + Vazirmatn
@@ -25,7 +25,7 @@ cd rasad-clone
 Settings → Pages → Source: **GitHub Actions**
 
 ### ۴. Workflow رو اجرا کن
-Actions → "Rasad News Radar" → Run workflow
+Actions → **"Subaru News Radar"** → Run workflow
 
 ### ۵. آدرس سایت
 `https://YOUR_USERNAME.github.io/rasad-clone/`
@@ -103,7 +103,7 @@ async def analyze_with_ai(text):
     # call Pollinations API
 ```
 
-### موارد پیشرفته (از رصد نیوز اصلی)
+### موارد پیشرفته (از سیستم اصلی)
 - `special_reports.json` با `key_findings`, `regime_vs_reality`, `strategic_outlook`
 - `daily_summary.json` با `probability_matrix`, `forecast`
 - `bulletins.json` صبح/شام

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Rasad News Clone - Minimal Starter
+# Subaru News Radar - Minimal Starter
 Fetches market data, news, generates AI summaries, posts to Telegram.
 Runs every 15 minutes via GitHub Actions.
 """
@@ -134,7 +134,7 @@ def fallback_image(text: str) -> str:
     return 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80'
 
 # ─── CORE CLASS ──────────────────────────────────────────────────────────
-class RasadRadar:
+class SubaruRadar:
     def __init__(self):
         self.scraper = cloudscraper.create_scraper(
             browser={'browser': 'chrome', 'platform': 'windows', 'mobile': False}
@@ -300,7 +300,7 @@ Return JSON with these exact keys:
 
     # ─── PROCESS PIPELINE ────────────────────────────────────────────────
     def process(self):
-        logger.info("=== Starting Rasad Radar cycle ===")
+        logger.info("=== Starting Subaru Radar cycle ===")
         # 1. Market
         self.fetch_market()
         # 2. News
@@ -392,7 +392,7 @@ Return JSON with these exact keys:
 
 # ─── MAIN / SCHEDULER ────────────────────────────────────────────────────
 def main():
-    radar = RasadRadar()
+    radar = SubaruRadar()
     radar.process()
 
 if __name__ == "__main__":
