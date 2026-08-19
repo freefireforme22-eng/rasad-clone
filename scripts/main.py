@@ -307,73 +307,210 @@ class SubaruRadar:
         return items
 
     def _generate_persian_title(self, title_en):
-        """Generate Persian title with English terms in parentheses"""
-        # Keyword mapping: Persian (English) format
-        replacements = {
-            'AI': 'هوش مصنوعی (AI)', 'Artificial Intelligence': 'هوش مصنوعی (AI)',
-            'Machine Learning': 'ماشین لرنینگ (Machine Learning)', 'Deep Learning': 'دیپ لرنینگ (Deep Learning)',
-            'LLM': 'ال‌ام‌ال (LLM)', 'Large Language Model': 'مدل زبانی بزرگ (LLM)',
-            'GPT': 'جی‌پی‌یو (GPT)', 'Generative AI': 'هوش مصنوعی مولد (Generative AI)',
-            'OpenAI': 'اوپن‌ای‌آی (OpenAI)', 'Anthropic': 'آنتروپیک (Anthropic)',
-            'Google': 'گوگل (Google)', 'DeepMind': 'دیپ‌مایند (DeepMind)',
-            'Meta': 'مِتا (Meta)', 'Microsoft': 'مایکروسافت (Microsoft)',
-            'NVIDIA': 'انویدیا (NVIDIA)', 'GPU': 'جی‌پی‌یو (GPU)',
-            'Model': 'مدل (Model)', 'Release': 'انتشار (Release)', 'Launch': 'راه‌اندازی (Launch)',
-            'Research': 'تحقیق (Research)', 'Paper': 'مقاله (Paper)', 'Study': 'مطالعه (Study)',
-            'Benchmark': 'بنچ‌مارک (Benchmark)', 'Training': 'آموزش (Training)',
-            'Agent': 'عامل (Agent)', 'Tool': 'ابزار (Tool)', 'API': 'ای‌پی‌آی (API)',
-            'Open Source': 'بازمتن (Open Source)', 'Coding': 'کدنویسی (Coding)',
-            'Safety': 'امنیت (Safety)', 'Regulation': 'تنظیمات (Regulation)',
-            'Chip': 'تراشه (Chip)', 'Hardware': 'سخت‌افزار (Hardware)',
-            'Funding': 'سرمایه‌گذاری (Funding)', 'Investment': 'سرمایه‌گذاری (Investment)',
-            'Startup': 'استارتاپ (Startup)', 'Company': 'شرکت (Company)',
-            'News': 'اخبار (News)', 'Latest': 'جدیدترین (Latest)', 'Insights': 'بینش‌ها (Insights)',
-            'Analysis': 'تحلیل (Analysis)', 'Powering': 'قدرت‌بخشی به (Powering)', 'Driven': 'مبتنی بر (Driven)',
-            'Business': 'کسب‌وکار (Business)', 'Growth': 'رشد (Growth)', 'Headlines': 'سرتیترها (Headlines)',
-            'Developments': 'توسعه‌ها (Developments)', 'Updates': 'به‌روزرسانی‌ها (Updates)',
-            'Artificial': 'مصنوعی (Artificial)', 'Intelligence': 'هوش (Intelligence)',
-            'Technology': 'تکنولوژی (Technology)', 'Tech': 'تک (Tech)',
-            'Annual': 'سالانه (Annual)', 'Report': 'گزارش (Report)', 'Review': 'بررسی (Review)',
-            'Guide': 'راهنما (Guide)', 'Tutorial': 'آموزش (Tutorial)', 'Explained': 'توضیح داده شده (Explained)',
-            'Embedding': 'امبدینگ (Embedding)', 'Vector': 'برداری (Vector)', 'Multi-Vector': 'چند برداری (Multi-Vector)',
-            'Sentence': 'جمله (Sentence)', 'Transformer': 'ترنسفورمر (Transformer)', 'Transformers': 'ترنسفورمرها (Transformers)',
-            'Late Interaction': 'تعامل دیرهنگام (Late Interaction)', 'Decoder': 'دی‌کدر (Decoder)',
-            'Claude': 'کلود (Claude)', 'Gemini': 'جمینی (Gemini)', 'Llama': 'لاما (Llama)', 'Mistral': 'مِیسترال (Mistral)',
-            'RAG': 'رگ (RAG)', 'RAG': 'RAG', 'Fine-tuning': 'فاین‌تیونینگ (Fine-tuning)',
-            'Inference': 'استنتاج (Inference)', 'Prompt': 'پرامپت (Prompt)', 'Prompting': 'پرامپتینگ (Prompting)',
-            'Context': 'بافت (Context)', 'Attention': 'توجه (Attention)', 'Attention Mechanism': 'مکانیزم توجه (Attention Mechanism)',
-            'Neural Network': 'شبکه عصبی (Neural Network)', 'Parameters': 'پارامترها (Parameters)',
-            'Tokens': 'توکن‌ها (Tokens)', 'Dataset': 'دیتاست (Dataset)', 'Benchmark': 'بنچ‌مارک (Benchmark)',
-            'Open-weight': 'باز‌وزن (Open-weight)', 'Open-weight Model': 'مدل باز‌وزن (Open-weight Model)',
-            'Nous Research': 'نوس ریسرچ (Nous Research)', 'NousCoder': 'نوس‌کدر (NousCoder)',
-            'Salesforce': 'سیِلزفورس (Salesforce)', 'Slackbot': 'اسلک‌بات (Slackbot)', 'Cowork': 'کاوورک (Cowork)',
-            'Railway': 'ریلوِی (Railway)', 'AWS': 'ا‌دابلیو‌اس (AWS)', 'Cloud': 'کلاد (Cloud)',
-            'Infrastructure': 'زیرساخت (Infrastructure)', 'Workspace': 'ورک‌اسپیس (Workspace)',
-            'Desktop': 'دسکتاپ (Desktop)', 'Files': 'فایل‌ها (Files)', 'Coding': 'کدنویسی (Coding)',
-            'Decodability': 'کدپذیری (Decodability)', 'Hidden State': 'حالت پنهان (Hidden State)',
-            'Majority Voting': 'رأی‌گیری اکثریت (Majority Voting)', 'Selection': 'انتخاب (Selection)',
-            'Prediction': 'پیش‌بینی (Prediction)', 'Road Safety': 'ایمنی راه (Road Safety)',
-            'Intervention': 'مداخله (Intervention)', 'Driving': 'رانندگی (Driving)', 'Hotspots': 'هات‌اسپات‌ها (Hotspots)',
-            'Connected Vehicle': 'خودرو متصل (Connected Vehicle)', 'Data': 'دیتا (Data)',
-            'Classical': 'کلاسیک (Classical)', 'Transformer-based': 'ترنسفورمر-بیس (Transformer-based)',
-            'Document': 'سند (Document)', 'Sensitivity': 'حساسیت (Sensitivity)', 'Classification': 'طبقه‌بندی (Classification)',
-            'Daily-Scale': 'روزانه (Daily-Scale)', 'Longitudinal': 'طی‌دراز (Longitudinal)', 'Multimodal': 'چند حالته (Multimodal)',
-            'Readmission': 'بازآسپذیری (Readmission)', 'Margin-Regularized': 'مرز-منظم‌شده (Margin-Regularized)',
-            'Structured': 'ساختاریافته (Structured)', 'Semantic': 'سمنتیک (Semantic)', 'Alignment': 'الاینمنت (Alignment)',
-            'Brain': 'مغز (Brain)', 'Language': 'زبان (Language)', 'Correspondence': 'همبستگی (Correspondence)',
-            'Cross-Model': 'کراس-مدل (Cross-Model)', 'Memory': 'حافظه (Memory)', 'Transfer': 'ترنسفر (Transfer)',
-            'Target-Side': 'هدف-سمت (Target-Side)', 'Reader': 'ریدر (Reader)', 'Adaptation': 'آدابتیشن (Adaptation)',
-            'Institution-Specific': 'مؤسسه-مخصوص (Institution-Specific)', 'PHI': 'فی‌آی‌اچ (PHI)',
-            'De-identification': 'دی‌آی‌نتیفیکیشن (De-identification)', 'Gold Standards': 'استانداردهای طلایی (Gold Standards)',
-            'Uncertainty': 'عدم اطمینان (Uncertainty)', 'Decision Making': 'تصمیم‌گیری (Decision Making)',
-            'Safer': 'امن‌تر (Safer)', 'Agents': 'عامل‌ها (Agents)', 'Capable': 'قادر (Capable)',
-            'System 2': 'سیستم ۲ (System 2)', 'Thinking': 'تفکر (Thinking)', 'Access': 'دسترسی (Access)',
-            'Untrusted': 'غیرموثوق (Untrusted)', 'Documents': 'اسناد (Documents)',
+        """Generate Persian title with English terms in parentheses - single pass to avoid nested replacements"""
+        import re
+        
+        # Combined terms (phrases) - longest first to avoid partial matches
+        phrases = [
+            ('Multi-Vector', 'چند برداری (Multi-Vector)'),
+            ('Late Interaction', 'تعامل دیرهنگام (Late Interaction)'),
+            ('Sentence Transformers', 'سنتنس ترنسفورمرز (Sentence Transformers)'),
+            ('Open Source', 'بازمتن (Open Source)'),
+            ('Open-weight', 'باز‌وزن (Open-weight)'),
+            ('Open-weight Model', 'مدل باز‌وزن (Open-weight Model)'),
+            ('Large Language Model', 'مدل زبانی بزرگ (LLM)'),
+            ('Artificial Intelligence', 'هوش مصنوعی (AI)'),
+            ('Machine Learning', 'ماشین لرنینگ (Machine Learning)'),
+            ('Deep Learning', 'دیپ لرنینگ (Deep Learning)'),
+            ('Generative AI', 'هوش مصنوعی مولد (Generative AI)'),
+            ('Neural Network', 'شبکه عصبی (Neural Network)'),
+            ('Attention Mechanism', 'مکانیزم توجه (Attention Mechanism)'),
+            ('Fine-tuning', 'فاین‌تیونینگ (Fine-tuning)'),
+            ('Hidden State', 'حالت پنهان (Hidden State)'),
+            ('Majority Voting', 'رأی‌گیری اکثریت (Majority Voting)'),
+            ('Road Safety', 'ایمنی راه (Road Safety)'),
+            ('Connected Vehicle', 'خودرو متصل (Connected Vehicle)'),
+            ('Transformer-based', 'ترنسفورمر-بیس (Transformer-based)'),
+            ('Daily-Scale', 'روزانه (Daily-Scale)'),
+            ('Longitudinal', 'طی‌دراز (Longitudinal)'),
+            ('Multimodal', 'چند حالته (Multimodal)'),
+            ('Readmission', 'بازآسپذیری (Readmission)'),
+            ('Margin-Regularized', 'مرز-منظم‌شده (Margin-Regularized)'),
+            ('Structured Semantic Alignment', 'الاینمنت سمنتیک ساختاریافته (Structured Semantic Alignment)'),
+            ('Brain-Language Correspondence', 'همبستگی مغز-زبان (Brain-Language Correspondence)'),
+            ('Cross-Model Memory Transfer', 'ترنسفر حافظه کراس-مدل (Cross-Model Memory Transfer)'),
+            ('Target-Side Reader Adaptation', 'آدابتیشن ریدر هدف-سمت (Target-Side Reader Adaptation)'),
+            ('Institution-Specific', 'مؤسسه-مخصوص (Institution-Specific)'),
+            ('De-identification', 'دی‌آی‌نتیفیکیشن (De-identification)'),
+            ('Gold Standards', 'استانداردهای طلایی (Gold Standards)'),
+            ('Decision Making', 'تصمیم‌گیری (Decision Making)'),
+            ('System 2', 'سیستم ۲ (System 2)'),
+            ('Untrusted Documents', 'اسناد غیرموثوق (Untrusted Documents)'),
+            ('Safer RAG', 'رگ امن‌تر (Safer RAG)'),
+        ]
+        
+        # Single words - after phrases
+        single_words = {
+            'AI': 'هوش مصنوعی (AI)',
+            'LLM': 'ال‌ام‌ال (LLM)',
+            'GPT': 'جی‌پی‌یو (GPT)',
+            'RAG': 'رگ (RAG)',
+            'GPU': 'جی‌پی‌یو (GPU)',
+            'API': 'ای‌پی‌آی (API)',
+            'AWS': 'ا‌دابلیو‌اس (AWS)',
+            'PHI': 'فی‌آی‌اچ (PHI)',
+            
+            'Model': 'مدل (Model)',
+            'Models': 'مدل‌ها (Models)',
+            'Modeling': 'مدل‌سازی (Modeling)',
+            
+            'Embedding': 'امبدینگ (Embedding)',
+            'Embeddings': 'امبدینگ‌ها (Embeddings)',
+            
+            'Vector': 'برداری (Vector)',
+            'Vectors': 'برداری‌ها (Vectors)',
+            
+            'Transformer': 'ترنسفورمر (Transformer)',
+            'Transformers': 'ترنسفورمرها (Transformers)',
+            
+            'Decoder': 'دی‌کدر (Decoder)',
+            'Decodability': 'کدپذیری (Decodability)',
+            
+            'Sentence': 'جمله (Sentence)',
+            'Sentences': 'جملات (Sentences)',
+            
+            'Claude': 'کلود (Claude)',
+            'Gemini': 'جمینی (Gemini)',
+            'Llama': 'لاما (Llama)',
+            'Mistral': 'مِیسترال (Mistral)',
+            'NousCoder': 'نوس‌کدر (NousCoder)',
+            'Nous Research': 'نوس ریسرچ (Nous Research)',
+            'Cowork': 'کاوورک (Cowork)',
+            'Slackbot': 'اسلک‌بات (Slackbot)',
+            'Salesforce': 'سیِلزفورس (Salesforce)',
+            'Railway': 'ریلوِی (Railway)',
+            
+            'OpenAI': 'اوپن‌ای‌آی (OpenAI)',
+            'Anthropic': 'آنتروپیک (Anthropic)',
+            'Google': 'گوگل (Google)',
+            'DeepMind': 'دیپ‌مایند (DeepMind)',
+            'Meta': 'مِتا (Meta)',
+            'Microsoft': 'مایکروسافت (Microsoft)',
+            'NVIDIA': 'انویدیا (NVIDIA)',
+            
+            'Research': 'تحقیق (Research)',
+            'Paper': 'مقاله (Paper)',
+            'Study': 'مطالعه (Study)',
+            'Benchmark': 'بنچ‌مارک (Benchmark)',
+            'Training': 'آموزش (Training)',
+            'Inference': 'استنتاج (Inference)',
+            
+            'Agent': 'عامل (Agent)',
+            'Agents': 'عامل‌ها (Agents)',
+            'Tool': 'ابزار (Tool)',
+            'Tools': 'ابزارها (Tools)',
+            
+            'Release': 'انتشار (Release)',
+            'Launch': 'راه‌اندازی (Launch)',
+            
+            'Coding': 'کدنویسی (Coding)',
+            'Desktop': 'دسکتاپ (Desktop)',
+            'Files': 'فایل‌ها (Files)',
+            'Workspace': 'ورک‌اسپیس (Workspace)',
+            'Cloud': 'کلاد (Cloud)',
+            'Infrastructure': 'زیرساخت (Infrastructure)',
+            
+            'Safety': 'امنیت (Safety)',
+            'Security': 'امنیت (Security)',
+            'Privacy': 'حریم خصوصی (Privacy)',
+            'Regulation': 'تنظیمات (Regulation)',
+            'Ethics': 'اخلاق (Ethics)',
+            
+            'Chip': 'تراشه (Chip)',
+            'Chips': 'تراشه‌ها (Chips)',
+            'Hardware': 'سخت‌افزار (Hardware)',
+            
+            'Funding': 'سرمایه‌گذاری (Funding)',
+            'Investment': 'سرمایه‌گذاری (Investment)',
+            'Startup': 'استارتاپ (Startup)',
+            'Company': 'شرکت (Company)',
+            'Business': 'کسب‌وکار (Business)',
+            'Growth': 'رشد (Growth)',
+            
+            'News': 'اخبار (News)',
+            'Latest': 'جدیدترین (Latest)',
+            'Insights': 'بینش‌ها (Insights)',
+            'Analysis': 'تحلیل (Analysis)',
+            'Developments': 'توسعه‌ها (Developments)',
+            'Updates': 'به‌روزرسانی‌ها (Updates)',
+            
+            'Technology': 'تکنولوژی (Technology)',
+            'Tech': 'تک (Tech)',
+            
+            'Annual': 'سالانه (Annual)',
+            'Report': 'گزارش (Report)',
+            'Review': 'بررسی (Review)',
+            'Guide': 'راهنما (Guide)',
+            'Tutorial': 'آموزش (Tutorial)',
+            'Explained': 'توضیح داده شده (Explained)',
+            
+            'Prediction': 'پیش‌بینی (Prediction)',
+            'Intervention': 'مداخله (Intervention)',
+            'Driving': 'رانندگی (Driving)',
+            'Hotspots': 'هات‌اسپات‌ها (Hotspots)',
+            'Data': 'دیتا (Data)',
+            
+            'Classical': 'کلاسیک (Classical)',
+            'Document': 'سند (Document)',
+            'Documents': 'اسناد (Documents)',
+            'Sensitivity': 'حساسیت (Sensitivity)',
+            'Classification': 'طبقه‌بندی (Classification)',
+            
+            'Uncertainty': 'عدم اطمینان (Uncertainty)',
+            'Thinking': 'تفکر (Thinking)',
+            'Access': 'دسترسی (Access)',
+            'Capable': 'قادر (Capable)',
+            
+            'Context': 'بافت (Context)',
+            'Attention': 'توجه (Attention)',
+            'Parameters': 'پارامترها (Parameters)',
+            'Tokens': 'توکن‌ها (Tokens)',
+            'Dataset': 'دیتاست (Dataset)',
+            
+            'Prompt': 'پرامپت (Prompt)',
+            'Prompting': 'پرامپتینگ (Prompting)',
+            
+            'Alignment': 'الاینمنت (Alignment)',
+            'Semantic': 'سمنتیک (Semantic)',
+            'Structured': 'ساختاریافته (Structured)',
+            'Correspondence': 'همبستگی (Correspondence)',
+            'Transfer': 'ترنسفر (Transfer)',
+            'Memory': 'حافظه (Memory)',
+            'Reader': 'ریدر (Reader)',
+            'Adaptation': 'آدابتیشن (Adaptation)',
+            'Brain': 'مغز (Brain)',
+            'Language': 'زبان (Language)',
+            
+            'Selection': 'انتخاب (Selection)',
+            'Voting': 'رأی‌گیری (Voting)',
+            'Majority': 'اکثریت (Majority)',
         }
+        
+        # Apply phrase replacements first (exact match, case-sensitive)
         fa_title = title_en
-        # Sort by length descending to avoid partial replacements
-        for en, fa in sorted(replacements.items(), key=lambda x: -len(x[0])):
-            fa_title = fa_title.replace(en, fa)
+        for en_phrase, fa_phrase in phrases:
+            fa_title = fa_title.replace(en_phrase, fa_phrase)
+        
+        # Apply single word replacements with word boundaries to avoid nested
+        for en_word, fa_word in single_words.items():
+            # Use regex with word boundaries to avoid partial matches
+            pattern = r'\b' + re.escape(en_word) + r'\b'
+            fa_title = re.sub(pattern, fa_word, fa_title)
+        
+        # Clean up any remaining untranslated technical terms that got partially replaced
+        # Fix any "Multi-برداری (Vector)" type issues
+        fa_title = re.sub(r'\(([^)]*\([^)]*\)[^)]*)\)', lambda m: m.group(0).replace(m.group(1), m.group(1).split('(')[0].strip()), fa_title)
+        
         # Truncate
         if len(fa_title) > 120:
             fa_title = fa_title[:117] + '...'
