@@ -189,6 +189,56 @@ class SubaruRadar:
         
         return False
 
+    def fetch_article_content(self, url):
+        """Fetch and extract article content from URL"""
+        try:
+            resp = self.scraper.get(url, timeout=20)
+            if resp.status_code != 200:
+                return ""
+            
+            soup = BeautifulSoup(resp.content, 'lxml')
+            
+            # Remove unwanted elements
+            for elem in soup(['script', 'style', 'nav', 'header', 'footer', 'aside', 'form', 'button', 'iframe', 'noscript']):
+                elem.decompose()
+            
+            # Try common article selectors
+            article_selectors = [
+                'article',
+                '[role="article"]',
+                '.post-content',
+                '.entry-content',
+                '.article-content',
+                '.content-body',
+                '.post-body',
+                'main',
+                '.main-content',
+                '#content',
+                '.article-text',
+                '.story-body',
+            ]
+            
+            article_text = ""
+            for selector in article_selectors:
+                elements = soup.select(selector)
+                if elements:
+                    article_text = ' '.join([el.get_text(strip=True) for el in elements])
+                    if len(article_text) > 500:
+                        break
+            
+            # Fallback: get all paragraph text
+            if not article_text or len(article_text) < 500:
+                paragraphs = soup.find_all('p')
+                article_text = ' '.join([p.get_text(strip=True) for p in paragraphs if len(p.get_text(strip=True)) > 50])
+            
+            # Clean up
+            article_text = re.sub(r'\s+', ' ', article_text)
+            return article_text[:8000]  # Limit for token budget
+            
+        except Exception as e:
+            logger.warning(f"Failed to fetch article content from {url}: {e}")
+            return ""
+
     def get_source_priority(self, url):
         try:
             host = urlparse(url or '').netloc.lower().replace('www.', '')
@@ -254,15 +304,18 @@ class SubaruRadar:
 
         for item in items:
             enriched = False
+            # Fetch article content for better summarization
+            article_content = self.fetch_article_content(item['url'])
             try:
                 prompt = f"""این خبر هوش مصنوعی رو تحلیل کن و فقط JSON برگردان:
 عنوان: {item['title_en']}
 منبع: {item['source']}
 لینک: {item['url']}
+متن مقاله: {article_content[:4000] if article_content else 'در دسترس نیست'}
 
-فیلدهای خروجی (همه به فارسی، کلمات انگلیسی به تلفظ فارسی):
+فیلدهای خروجی (همه به فارسی، کلمات انگلیسی در پرانتز مثل: هوش مصنوعی (AI)، ال‌ام‌ال (LLM)، جی‌پی‌یو (GPU)):
 - title_fa: عنوان فارسی (ماکس ۸۰ کاراکتر)
-- summary: ۲-۳ نکته کلیدی به فارسی (فقط کلمات فارسی، انگلیسی‌ها به تلفظ فارسی مثل: ماشین لرنینگ، ال‌ام‌ال، جی‌پی‌یو، اوپن‌ای‌آی)
+- summary: ۲-۳ نکته کلیدی به فارسی (خلاصه واقعی از متن مقاله، نه جنریک)
 - impact: تحلیل اهمیت به فارسی (یک خط)
 - ai_category: یکی از [مدل، تحقیق، ابزار، کسب‌وکار، سیاست، سخت‌افزار، امنیت]
 - sentiment: -۱ تا ۱ (منفی تا مثبت)
