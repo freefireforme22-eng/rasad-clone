@@ -1,5 +1,268 @@
 [
   {
+    "id": "5505591929",
+    "title_en": "NVIDIA vs AMD vs Custom AI Chips: Future of AI Hardware (2026 Guide)",
+    "title_fa": "انویدیا vs AMD vs Custom هوش مصنوعی تراشه‌ها: Future of هوش مصنوعی سخت‌افزار (2026 راهنما)",
+    "summary": [
+      "Thanks to the rapidly changing field of generative هوش مصنوعی tools and autonomous systems, most modern artificial intelligence models have enormous requirements for computing power",
+      "The major competition in هوش مصنوعی hardware is between three major types of هوش مصنوعی hardware: Understanding how each of these technologies competes gives insight into where هوش مصنوعی computing will go next",
+      "مقایسه تراشه‌های هوش مصنوعی انویدیا، ای‌م‌دی و سفارشی برای آینده سخت‌افزار"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "digibuggy.com",
+    "url": "https://digibuggy.com/blog-details/nvidia-vs-amd-vs-custom-ai-chips-the-future-of-ai-hardware",
+    "clean_url": "https://digibuggy.com/blog-details/nvidia-vs-amd-vs-custom-ai-chips-the-future-of-ai-hardware",
+    "image": "",
+    "timestamp": 1787173128.7224727,
+    "ai_category": "سخت‌افزار",
+    "article_content": "Artificial intelligence is growing rapidly. Thanks to the rapidly changing field of generative AI tools and autonomous systems, most modern artificial intelligence models have enormous requirements for computing power. The major competition in AI hardware is between three major types of AI hardware: Understanding how each of these technologies competes gives insight into where AI computing will go next. The demand of today’s modern AI systems for processing speed is very high, especially as more advanced models continue to emerge. At a minimum, at least 10 million CPU clock cycles are required to train and run modern AIs. To be able to support the extremely demanding workloads characteristic of AI training and deployment, many traditional processors will not be capable of handling them efficiently. That’s why AI computing hardware must be designed specifically for high parallel processing, large memory bandwidth, fast data movement, and energy efficiency. Because of this need for high-performance AI, GPUs and specially designed AI chips have become the primary hardware base for today's AI infrastructure. NVIDIA is the current AI hardware market leader and is driving the development of many of the world's largest AI training systems. CUDA ecosystem- A very popular programming environment for AI development. AI-optimized GPUs- Areas of hardware built specifically for executing deep learning workloads. Strong software ecosystem- Many of the leading AI frameworks, including PyTorch and TensorFlow, have been developed with NVIDIA GPU optimization in mind. Wide use- Used by most cloud vendors, AI start-ups and research labs. This mature ecosystem will continue to make NVIDIA the 'go-to' choice for large-scale AI training. With new accelerator technologies, Advanced Micro Devices (AMD) is growing rapidly in the AI infrastructure market. The Instinct MI series of accelerators designed specifically for the demands of AI and the data center workloads. The ROCm Open Compute Platform, which was developed as an alternative platform to CUDA. AMD's aggressive pricing has enabled it to be competitive with large-scale deployment of AI hardware. Superior integration of CPU and GPU technologies allows AMD to create very powerful, high-performance computing systems. AMD is currently behind in the maturity of its software ecosystem but has established itself as a viable competitor in the AI hardware market. Tech giants in today's marketplace are designing artificial intelligence processors that are purpose-built for their distinct usage models. - They reduced overall infrastructure expenses for large-scale data centers. The growth of these AI chips has resulted in increased usage in both cloud-based services for AI throughout the Internet and AI inferencing in large-scale databases. As AI workloads continue expanding beyond the walls of data centers, developers, researchers and creators will also require highly capable computing hardware to deliver those applications. If you need assistance to develop an AI-ready workstation, GPU workstation or a custom computing solution, there are websites like Digibuggy that allow users to: Create high-performance workstations that Deliver Superior Performance for AI, gaming, or content creation Find more options to build an AI PC or learning how to build a PC through Digibuggy's Custom PC Builder -https://digibuggy.com/product/configure In the future, a hybrid AI ecosystem will probably exist, as opposed to one winner in AI. NVIDIA retains its lead with regards to the high-end AI training market There will be a growth in demand for specialized compute hardware As AI continues to grow, the need will become increasingly greater for different kinds of hardware architectures. The leading firm in terms of AI hardware equipment (at present) is NVIDIA based largely upon their extremely high-performance GPUs as well as their well-established CUDA offering (software) across many millions of developers. Yes. AMD has a strong competitor in FPGAs with their Instinct MI300 series of AI accelerators plus their Open Computing ROCm specification where companies can freely use AMD GPUs in conjunction with their FPGAs for their own custom applications. A custom AI chip is an ASIC created for the sole purpose of handling many of the heavy computational loads associated with machine learning and other AI functions. Companies design these chips to be tailored specifically to their own hardware to maximize performance and efficiency within their AI solution. No, NVIDIA GPUs will always be used for general-purpose AI workloads. There is increasing adoption of custom ACS chips to replace NVIDIA GPUs for mass-producing results (inference). However, because of the excellent price-to-performance of NVIDIA GPUs, they will continue to be relied upon heavily in AI R&D and AI training projects.",
+    "images": []
+  },
+  {
+    "id": "84ef3554f9",
+    "title_en": "Lists of open-source artificial intelligence software - Wikipedia",
+    "title_fa": "Lists of open-source artificial intelligence software - Wikipedia",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "بازمتن بودن این پروژه نوآوری و دسترسی گسترده را تسریع می‌کند",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "en.wikipedia.org",
+    "url": "https://en.wikipedia.org/wiki/Lists_of_open-source_artificial_intelligence_software",
+    "clean_url": "https://en.wikipedia.org/wiki/Lists_of_open-source_artificial_intelligence_software",
+    "image": "",
+    "timestamp": 1787173128.2979097,
+    "ai_category": "ابزار",
+    "article_content": "",
+    "images": []
+  },
+  {
+    "id": "b5f3aabf3e",
+    "title_en": "AI Regulation: The New Compliance Frontier | Insights | Holland & Knight",
+    "title_fa": "هوش مصنوعی تنظیمات: The New Compliance Frontier | بینش‌ها | Holland & Knight",
+    "summary": [
+      "April 21, 2026 هوش مصنوعی Regulation: The New Compliance Frontier Holland & Knight Alert Adoption of artificial intelligence (هوش مصنوعی) has outpaced legislation and overall policy development at the federal level, ...",
+      "Different state requirements, particularly around bias and discrimination requirements, pose a risk of creating a fragmented regulatory environment that could constrain هوش مصنوعی deployment",
+      "تنظیمات هوش مصنوعی در بخش درمان پیش از قانون‌گذاری فدرال توسط ایالت‌ها پیشرو شده"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "hklaw.com",
+    "url": "https://www.hklaw.com/en/insights/publications/2026/04/ai-regulation-the-new-compliance-frontier",
+    "clean_url": "https://www.hklaw.com/en/insights/publications/2026/04/ai-regulation-the-new-compliance-frontier",
+    "image": "",
+    "timestamp": 1787173126.9612815,
+    "ai_category": "امنیت",
+    "article_content": "April 21, 2026 AI Regulation: The New Compliance Frontier Holland & Knight Alert Adoption of artificial intelligence (AI) has outpaced legislation and overall policy development at the federal level, leaving state legislatures to take the lead in regulating the deployment of AI in the healthcare industry. Different state requirements, particularly around bias and discrimination requirements, pose a risk of creating a fragmented regulatory environment that could constrain AI deployment. The Trump Administration proposes a single federal approach for regulating AI use, with specific guardrails on areas that include child safety, free speech, intellectual property, workforce impacts and national security. Artificial intelligence (AI) utilization in healthcare has rapidly transformed from peripheral use cases to core clinical and operational infrastructure. It is increasingly embedded across clinical decision support (CDS), diagnostics and administrative workflows. As a result of this rapid acceleration, AI adoption has outpaced legislation and overall policy development at the federal level, leaving state legislatures to take the lead in regulating the deployment of AI in the healthcare industry. State-Level Activity: Near-Term Landscape, Long-Term Implications States have emerged as primary actors in regulating the use of AI in the healthcare industry. In 2025, more than 250 AI-related healthcare bills were introduced in state legislatures, with a consistent focus on: patient disclosure and informed consent frameworks for AI-enabled care ensuring AI use does not lead to biased or otherwise discriminatory effects preservation of clinician accountability for AI-informed decisions ensuring AI technologies do not provide services that are reserved for licensed healthcare professionals restricting the use of AI by health insurers, particularly in coverage determinations and utilization review Different state requirements, particularly around bias and discrimination requirements, pose a risk of creating a fragmented regulatory environment that could constrain AI deployment. Federal Activity: U.S. Congress and the Trump Administration Congress has not passed any significant legislation to date that directly impacts the use of AI in healthcare. Rather, lawmakers have focused their efforts on oversight and policy development. The policy focus of congressional Republicans has shifted focus toward adopting an industry-agnostic framework of laws that focuses on supporting innovation and addresses targeted risks such as child safety, intellectual property and infrastructure costs. The Trump Administration released a \" National Policy Framework for Artificial Intelligence \" on March 20, 2026, that asks Congress to establish a single federal approach for regulating AI use, with specific guardrails on areas including child safety, free speech, intellectual property, workforce impacts and national security. The framework also calls for codifying elements of President Donald Trump's December 11, 2025, executive order on the National Policy Framework for Artificial Intelligence that sought to preempt state-level AI activity. Executive orders, however, do not carry the force of law needed to preempt state statutes. Federal Activity: HHS AI Actions Under the current U.S. Department of Health and Human Services (HHS), AI-related activity remains incremental but directionally significant, with the U.S. Food and Drug Administration (FDA), Centers for Medicare & Medicaid Services (CMS), Centers for Disease Control and Prevention (CDC), and National Institute of Standards and Technology (NIST) advancing policy through targeted guidance and pilot programs rather than new rulemakings. FDA Actions The FDA is advancing AI policy through guidance, targeted pilots and internal modernization efforts. Agency activity remains focused on clarifying how existing statutory and regulatory authorities apply to AI-enabled technologies, particularly in clinical and diagnostic contexts. Recent actions of note: clarification of CDS boundaries, with continued emphasis on whether clinicians can independently evaluate the basis for recommendations when distinguishing non‑device CDS from regulated software use of pilots and enforcement discretion, including initiatives such as the Technology-Enabled Meaningful Patient Outcomes (TEMPO) Pilot , which aims to utilize real‑world evidence generation for certain digital health technologies, including AI‑enabled tools, in coordination with CMS payment models expansion of low-risk pathways, including general wellness and other lower‑risk digital health products, signaling reduced regulatory burden for certain applications increased expectations for transparency and validation, particularly with respect to data inputs, model development, intended use and known limitations movement toward life cycle oversight, including post‑deployment monitoring, change management and performance tracking for adaptive algorithms In parallel, the FDA has deployed AI tools internally to support scientific review, inspections and surveillance functions, reflecting the agency's interest in operational use of AI. CMS Actions CMS is shaping AI adoption primarily through payment models, demonstrations and administrative pilots rather than direct regulation. Through the Center for Medicare and Medicaid Innovation, CMS is testing how AI-enabled and data-driven tools can be integrated into care delivery and program administration. Recent actions of note include: Advancing Chronic Care with Effective, Scalable Solutions (ACCESS) model, which tests outcome-based payment approaches for technology-enabled chronic care in Original Medicare and is structured to support AI-enabled analytics and decision-support tools Wasteful and Inappropriate Service Reduction (WISeR) model, which pilots the use of AI and machine learning to support prior authorization and utilization review for select services in traditional Medicare Agency-wide AI engagement, including requests for information and AI-focused demonstration efforts such as CMS \"Demo Days,\" to assess commercially available tools relevant to care delivery, enrollment and program integrity CDC Actions The CDC is approaching AI through research guidance, internal governance and public health capacity building, with an emphasis on responsible use and public trust. Recent actions of note include: agentic research guidance released on March 12, 2026, titled \" Considerations for Agentic Research in Public Health ,\" addressing the use of \"deep research\" tools that autonomously plan and execute multistep research tasks, emphasizing human oversight and clearly defined use cases agency-wide AI strategy released on March 13, 2026, titled \" CDC's Vision for AI in Public Health \" NIST Actions NIST continues to shape AI governance through voluntary standards, technical frameworks and stakeholder-driven processes rather than regulation. Recent actions of note include: The AI Standards \" Zero Drafts \" pilot project aims to accelerate standards development by producing preliminary, technically grounded drafts for submission into private sector-led standards development organizations. Initial focus areas include AI dataset and model documentation, testing and evaluation methodologies, and foundational concepts related to transparency and validation. Cross-Agency Themes These actions reflect a coordinated approach within the department, reinforced by HHS' Artificial Intelligence Strategy , released on December 4, 2025. The strategy outlines how HHS intends to integrate AI across departmental operations, including research and public health programs, with an emphasis on governance, responsible use, workforce readiness and operational efficiency. Within this framework, agency‑level guidance, payment models, pilots and standards activities function as complementary components of HHS' broader effort to incorporate AI across health and human services on a risk‑bas",
+    "images": []
+  },
+  {
+    "id": "97a520b833",
+    "title_en": "White House Releases a National Policy Framework for Artificial Intelligence | Insights | Holland & Knight",
+    "title_fa": "White House Releases a National Policy Framework for هوش مصنوعی | بینش‌ها | Holland & Knight",
+    "summary": [
+      "March 27, 2026 White House Releases a National Policy Framework for Artificial Intelligence A Look at Scope, Priorities and Policy Implications Holland & Knight Alert The White House released a Nation...",
+      "The Framework prioritizes child safety, community protections, free speech, innovation, workforce readiness and targeted federal preemption, and cautions against vague standards, open‑ended liability ...",
+      "خانه سفید چارچوب سیاست ملی هوش مصنوعی با اولویت امنیت کودکان را منتشر کرد"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "hklaw.com",
+    "url": "https://www.hklaw.com/en/insights/publications/2026/03/white-house-releases-a-national-policy-framework-for-artificial",
+    "clean_url": "https://www.hklaw.com/en/insights/publications/2026/03/white-house-releases-a-national-policy-framework-for-artificial",
+    "image": "",
+    "timestamp": 1787173126.961236,
+    "ai_category": "مدل",
+    "article_content": "March 27, 2026 White House Releases a National Policy Framework for Artificial Intelligence A Look at Scope, Priorities and Policy Implications Holland & Knight Alert The White House released a National Policy Framework for Artificial Intelligence (AI) (Framework), outlining nonbinding legislative recommendations to inform congressional consideration of a unified federal approach to AI regulation. The Framework prioritizes child safety, community protections, free speech, innovation, workforce readiness and targeted federal preemption, and cautions against vague standards, open‑ended liability and fragmented state regulation. This Holland & Knight alert reviews the Framework's core policy positions and situates them alongside related congressional proposals, including U.S. Sen. Marsha Blackburn's updated TRUMP AMERICA AI Act. The White House released a National Policy Framework for Artificial Intelligence (Framework) on March 20, 2026, outlining legislative recommendations intended to guide U.S. Congress as it considers federal artificial intelligence (AI) legislation. The Framework is not a binding document and does not, on its own, create new legal obligations or direct agencies to undertake specific regulatory actions. The legislative recommendations reflect President Donald Trump's long-standing position that the growing patchwork of state AI laws is creating barriers to innovation and underscoring the need for a unified national standard, and Congress should take targeted action in specific areas to mitigate potential individual and economic harms associated with the continued adoption of AI technologies. Last summer, the Trump Administration urged Congress to adopt a temporary federal \"moratorium\" preempting certain state AI laws, but Congress ultimately declined to pursue that approach. Executive Order (EO) 14365: Removing Barriers to American Leadership in AI The Trump Administration issued \" Removing Barriers to American Leadership in Artificial Intelligence \" (EO 14365) on December 11, 2025, which initiated a coordinated federal review of state-level AI laws and directed agencies to develop policy recommendations, standards and legislative proposals to inform a national approach. Notably, EO 14365 required the U.S. Department of Commerce Secretary to submit, within 90 days, an evaluation identifying \"onerous\" state AI laws and recommend potential referrals to a newly established AI Litigation Task Force tasked with challenging unconstitutional or preempted state measures. Though the Task Force was announced on January 9, 2026, within the required 30-day timeframe, the Commerce Department has not yet publicly released its required evaluation, which had been due by March 11, 2026. This delay introduces some uncertainty regarding the Trump Administration's near-term posture on state preemption enforcement, even as the Framework reinforces a clear preference for national uniformity. Further, the Framework's endorsement of federal preemption is particularly notable when viewed against the current state-led approach to AI regulation. Though the Framework outlines a high-level policy direction, congressional efforts are beginning to operationalize these priorities in more detailed and prescriptive ways. On March 18, 2026, just two days prior to the Framework's release, U.S. Sen. Marsha Blackburn (R-Tenn.) released an updated discussion draft of The Republic Unifying Meritocratic Performance Advancing Machine Intelligence by Eliminating Regulatory Interstate Chaos Across American Industry (TRUMP AMERICA AI Act), building on her original December 2025 proposal. The 291-page legislative draft reflects a more prescriptive governance approach, seeking to codify elements of the Trump Administration's AI‑related EOs, impose new requirements on AI developers and constrain states' ability to regulate AI systems. Legislative Recommendations Released shortly thereafter, the four-page Framework reflects a more discrete policy posture. Rather than attempting to address the full universe of AI‑related issues, it focuses on identifying priority areas for federal coordination and signaling where restraint and flexibility are warranted. This contrast underscores a challenge for Republicans to balance a light-touch, innovation-forward framework with increasing political pressure to address safety and consumer protection risks. The Framework organizes its legislative recommendations across seven thematic areas: protecting children and empowering parents safeguarding and strengthening communities respecting intellectual property (IP) and supporting creators preventing censorship and protecting free speech enabling innovation and U.S. AI dominance educating an AI‑ready workforce establishing a federal policy framework with targeted preemption of state AI laws Across these areas, the Framework consistently emphasizes national uniformity, reliance on existing legal and regulatory structures, and avoidance of prescriptive or open‑ended approaches that could introduce compliance burdens without clear benefit. This approach has been embraced by many congressional Republicans as a starting point for legislative action and a signal toward a unified national strategy. This approach differs from proposals that seek to construct a comprehensive AI governance architecture in a single step. Sen. Blackburn's TRUMP AMERICA AI Act, for example, spans 17 titles and addresses a wide range of issues, including: developer duties of care liability and enforcement regimes labor reporting requirements product liability research infrastructure advanced AI risk evaluation content provenance By contrast, the Framework narrows its focus to setting federal priorities, identifying areas of consensus and highlighting risks that may warrant congressional attention – leaving questions of statutory design, enforcement mechanisms and institutional structure to subsequent legislative deliberation. Children's Privacy and Protections The Framework's most detailed recommendations concern children, parents and youth protection. It urges Congress to empower parents with tools to manage children's privacy, screen time, content exposure and account controls. It recommends commercially reasonable and privacy‑protective age assurance for AI platforms and services likely to be accessed by minors, along with safeguards to reduce risks of sexual exploitation and self‑harm. It also affirms that existing child privacy protections apply to AI systems, including limits on data collection for training and targeted advertising. At the same time, the Framework cautions against ambiguous content standards and open‑ended liability that could drive excessive litigation and explicitly preserves states' authority to enforce generally applicable child protection laws. Sen. Blackburn's legislation addresses many of these same concerns through enforceable mandates. The TRUMP AMERICA AI Act imposes a duty of care on AI chatbot developers, establishes extensive online safety requirements for children and creates criminal prohibitions under the Guidelines for User Age-verification and Responsible Dialogue (GUARD) Act. The comparison highlights the Framework's role as a moderating policy document that treats child safety as a central federal concern while emphasizing the importance of tailoring guardrails to avoid unintended consequences. Beyond child protection, the Framework devotes significant attention to community and infrastructure impacts associated with AI deployment. It recommends that Congress codify the Trump Administration's ratepayer protection pledge, requiring technology companies to supply or pay for the electricity used by AI data centers. It also urges streamlined federal permitting to support on‑site or behind‑the‑meter power generation and improve grid reliability. IP Protections In addition, the Framework highlights the need to strengthen enforcement against AI‑enabled fraud and impersonation scams and provid",
+    "images": []
+  },
+  {
+    "id": "67ec617996",
+    "title_en": "Ensuring a National Policy Framework for Artificial Intelligence – The White House",
+    "title_fa": "Ensuring a National Policy Framework for هوش مصنوعی – The White House",
+    "summary": [
+      "خانه سفید چارچوب سیاست ملی هوش مصنوعی با اولویت امنیت کودکان را منتشر کرد"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "whitehouse.gov",
+    "url": "https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/",
+    "clean_url": "https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy",
+    "image": "",
+    "timestamp": 1787173126.961171,
+    "ai_category": "امنیت",
+    "article_content": "",
+    "images": []
+  },
+  {
+    "id": "c7925f30b5",
+    "title_en": "InsideAIPolicy.com - exclusive coverage about emerging federal standards and regulations for artificial intelligence",
+    "title_fa": "InsideAIPolicy.com - exclusive coverage about emerging federal standards and regulations for artificial intelligence",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "insideaipolicy.com",
+    "url": "https://insideaipolicy.com/",
+    "clean_url": "https://insideaipolicy.com",
+    "image": "",
+    "timestamp": 1787173126.9611397,
+    "ai_category": "امنیت",
+    "article_content": "",
+    "images": []
+  },
+  {
+    "id": "59aaa95996",
+    "title_en": "Large Language Model News, Analysis and Resources",
+    "title_fa": "Large زبان مدل اخبار, تحلیل and Resources",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "thenewstack.io",
+    "url": "https://thenewstack.io/llm/",
+    "clean_url": "https://thenewstack.io/llm",
+    "image": "",
+    "timestamp": 1787173125.3789718,
+    "ai_category": "مدل",
+    "article_content": "",
+    "images": []
+  },
+  {
+    "id": "bfec985600",
+    "title_en": "LLM News & Updates — Latest in Large Language Models and AI",
+    "title_fa": "ال‌ام‌ال اخبار & به‌روزرسانی‌ها — جدیدترین in Large زبان مدل‌ها and هوش مصنوعی",
+    "summary": [
+      "fx - Tiny, open, native coding agent fx is a tiny (~6MB), open-source coding agent CLI in Zig, designed for resource-limited environments, supporting WebAssembly and network operations with a minimali...",
+      "sh هوش مصنوعی usage patterns in software teams Report analyzing هوش مصنوعی adoption trends in software product development across various company roles, revealing increased هوش مصنوعی-generated outputs, blurred roles between...",
+      "مدل کوئن ۲۷ میلیارد پارامتری با عملکرد هم‌سطح مدل‌های پیشرو معرفی شد"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "llmnews.ai",
+    "url": "https://llmnews.ai/",
+    "clean_url": "https://llmnews.ai",
+    "image": "",
+    "timestamp": 1787173125.3789198,
+    "ai_category": "مدل",
+    "article_content": "fx - Tiny, open, native coding agent fx is a tiny (~6MB), open-source coding agent CLI in Zig, designed for resource-limited environments, supporting WebAssembly and network operations with a minimalist shell interface. ⏱️ 20 hours ago 🔗 fx.sh AI usage patterns in software teams Report analyzing AI adoption trends in software product development across various company roles, revealing increased AI-generated outputs, blurred roles between engineers and non-engineers, and added work layers. ⏱️ 20 hours ago 🔗 linear.app GLM-5.3 (max) - Intelligence, Performance & Price Analysis This analysis presents detailed benchmarking of GLM-5.3 AI model across nine benchmarks focusing on knowledge reliability, reasoning, hallucinations, and cost efficiency for Retrieval Augmented Generation workflows. ⏱️ 20 hours ago 🔗 artificialanalysis.ai GPU Offload in Rust: Portable, Safe, and Fast Introduces a Rust-based GPU programming framework achieving memory safety and high performance across GPU vendors, using LLVM Offload infrastructure and novel compilation strategies. ⏱️ 1 day ago 🔗 arxiv.org Ahmad (@TheAhmadOsman) on X Threads criticize Anthropic for creating a closed AI ecosystem using regulatory and policy influence, urging support for open-source AI for freedom and decentralization. ⏱️ 1 day ago 🔗 twitter.com Why Open Source Matters for AI Discusses open source’s critical role in AI innovation, advocating modular, interoperable systems over closed models, highlighting initiatives for open AI ecosystems. ⏱️ 1 day ago 🔗 oreillyradar.substack.com Anthropic’s ‘Watermark’ Text Adulteration in Claude Is a Perversion of Writing Critique of Anthropic’s semantic watermarking in Claude AI that subtly alters text generation impacting writing quality, questioning regulatory fairness and watermarking methods’ effects on authenticity. ⏱️ 1 day ago 🔗 daringfireball.net One AI. One memory. — Wild Static An AI experience retaining persistent memory explored by users, emphasizing the need to verify AI-generated facts and track AI evolution. ⏱️ 1 day ago 🔗 wildstatic.com Wiz Red Agent Finds Its Way Into Snowflake’s Internal Jira Through a Flaw in a GitHub Copilot–Assisted PR Wiz's AI security tool Red Agent discovered a critical vulnerability caused by AI-assisted code in Snowflake's public CI, underscoring the risks of AI-generated code in security workflows. ⏱️ 1 day ago 🔗 www.wiz.io A simple fix for LLM tail latency | HOAi Proposes a cost-effective technique to reduce tail latency in large language model responses by sending requests twice and returning the fastest response, improving real-time AI usability. ⏱️ 1 day ago 🔗 engineering.myhoai.com The Router for Voice AI | Speko Speko offers a voice AI routing platform that selects optimal speech-to-text models per language and task, balancing performance and cost with easy API integration. ⏱️ 1 day ago 🔗 speko.ai Stripe will reportedly acquire AI gateway startup OpenRouter for $7B+ | TechCrunch Stripe is nearing a $7 billion acquisition of OpenRouter, a platform offering multi-model AI access to prevent vendor lock-in, described as a 'Stripe for AI'. ⏱️ 1 day ago 🔗 techcrunch.com Qwen 3.8 27B is excellent, but it defaults to wildly overthinking things Review of Alibaba’s vision-capable Qwen 3.8 27B LLM highlights advanced features but notes default overthinking mode causes slower responses, urging speed optimizations for practical use on consumer hardware. ⏱️ 1 day ago 🔗 simonwillison.net GPT 5.6 Sol is the best \"vision\" model OpenAI ever released OpenAI’s GPT-5.6 models significantly improve vision tasks like object detection and counting, with Sol leading but at higher cost and latency; advances edge AI closer to vision-language leadership. ⏱️ 1 day ago 🔗 blog.roboflow.com Cloudflare: Machine Traffic Could Hit 1,000x Human Traffic In 5 Years Cloudflare warns AI-driven machine traffic online may exceed human traffic 1,000-fold soon; author reveals a major AI crawler scans for credentials rather than content. ⏱️ 1 day ago 🔗 www.searchenginejournal.com statuslin.es A community gallery presenting Claude Code status lines with detailed real-time insights on session context, costs, and usage metrics styled for coding monitoring. ⏱️ 1 day ago 🔗 statuslin.es Release v0.1.0 · ggml-org/llama.cpp Announcement of llama.cpp version 0.1.0 release with details and assets, providing a lightweight implementation for running LLaMA models locally. ⏱️ 1 day ago 🔗 github.com AI;DR (AI; Didn’t Read) Author stresses the importance of human editing and skepticism towards unreviewed AI-generated content, advocating thoughtful curation despite widespread AI use for writing. ⏱️ 1 day ago 🔗 www.rickmanelius.com How to disable or avoid intrusive AI Provides instructions to disable intrusive AI features on various platforms and apps including browsers, operating systems, and services, helping users minimize AI presence. ⏱️ 1 day ago 🔗 www.librarian.net GPT-5.6 Sol - API Pricing & Benchmarks The content for this page is currently not available in this workspace. ⏱️ 1 day ago 🔗 openrouter.ai Roboflow Playground: Try and Compare 30+ Computer Vision Models Roboflow Playground enables users to test and compare outputs from multiple leading computer vision models simultaneously without infrastructure setup, supporting tasks like detection and OCR. ⏱️ 1 day ago 🔗 blog.roboflow.com Qwen3.8 27B - Intelligence, Performance & Price Analysis Comprehensive intelligence and performance evaluation of Qwen3.8 27B AI model across benchmarks, cost, knowledge reliability, hallucination rate, and contextual metrics for operational insights. ⏱️ 1 day ago 🔗 artificialanalysis.ai HN Guideline Violations Live feed and browser extension service detects guideline violations in Hacker News comments using fine-tuned embeddings, enabling community moderation. ⏱️ 1 day ago 🔗 classify.stylometry.net GitHub - liventruth/UL-SMF-Cache-Compression: The Unified Latent-State Memory Fabric (UL-SMF) is a hardware-software co-designed memory compression fabric that solves the memory bottleneck in long-context Transformer inference. UL-SMF compresses Transformer KV-cache tensors up to 384x with over 94% semantic retention, reducing memory bottlenecks in long-context inference, supporting models like Mistral, Llama, and Qwen. ⏱️ 1 day ago 🔗 github.com GitHub degradation affecting some Cursor services — Automations, Cloud Agents, Codebase Cursor services experienced degradation linked to upstream GitHub issues, impacting cloud agents and code automation but have since recovered after investigation and monitoring. ⏱️ 1 day ago 🔗 status.cursor.com The Red Queen hypothesis - a new way forward for self-improving AI New method enabling co-evolution of AI agents and evaluators improves task performance and reduces costs, promoting open-source and hybrid model approaches. ⏱️ 1 day ago 🔗 www.cst.cam.ac.uk steadfastgaze/DeepSeek-V4-Flash-0731-Coder-56.8GB-MoEspressoV2 · Hugging Face Describes a 56.8GB MoEspresso package specialized for coding tasks with optimized model parameters and improved code generation capabilities. ⏱️ 2 days ago 🔗 huggingface.co Qwen/Qwen3.8-27B-FP8 · Hugging Face Details on Qwen3.8-27B, a 27B-parameter FP8-quantized model optimized for vision-language and multi-step tasks with superior coding and reasoning capabilities. ⏱️ 2 days ago 🔗 huggingface.co AI Isn’t Outthinking Mathematicians. It’s Out-Remembering Them. Explores AI's advantage in math as stemming from vast working memory and symbolic context handling, enabling complex reasoning beyond human cognitive limits. ⏱️ 2 days ago 🔗 davidepiffer.com",
+    "images": []
+  },
+  {
+    "id": "46ad29e334",
+    "title_en": "Artificial Intelligence - The New York Times",
+    "title_fa": "هوش مصنوعی - The New York Times",
+    "summary": [
+      "Star? Designers at a new crop of creative studios create fake personas they hope real people will love",
+      "Are they distorting culture or mirroring it? By Reggie Ugwu Credit Inception Point هوش مصنوعی Critic’s Notebook As Comedians Toy With A"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "nytimes.com",
+    "url": "https://www.nytimes.com/spotlight/artificial-intelligence",
+    "clean_url": "https://www.nytimes.com/spotlight/artificial-intelligence",
+    "image": "",
+    "timestamp": 1787173124.8604507,
+    "ai_category": "سخت‌افزار",
+    "article_content": "Tech Fix I Tested a Popular A.I. Slop Detector. It Felt Empowering. Pangram excels at distinguishing chatbot-generated words from human writing. But it’s not reliable for spotting artificial images. By Brian X. Chen Credit Sisi Yu So You Want to Build an A.I. Star? Designers at a new crop of creative studios create fake personas they hope real people will love. Are they distorting culture or mirroring it? By Reggie Ugwu Credit Inception Point AI Critic’s Notebook As Comedians Toy With A.I., Who Will Get the Last Laugh? Several acts at the Edinburgh Fringe are testing the boundaries of creativity using artificial intelligence. By Houman Barekat Credit Avalon What Are Companies Getting for All That A.I. Spending? A new field of “tokenomics” has emerged to measure the return on all the money companies are pouring into artificial intelligence. By Lydia DePillis Credit Nicol&aacute;s Ortega More Fed Officials Lost Patience About Elevated Inflation at Latest Meeting Minutes from the Federal Reserve’s July gathering showed broadening support for higher borrowing costs to stamp out lingering price pressures. By Colby Smith Stripe Buys A.I. Start-Up OpenRouter for $7.5 Billion The deal is significant for the artificial intelligence industry, uniting Stripe’s payments business with OpenRouter’s helping businesses direct their spending on A.I. models. By Erin Griffith Tech Fix Google’s New Phone Comes With Plenty of A.I. Does Anyone Want That? The phone’s artificial intelligence can order groceries, book tables and take photos on a user’s behalf. But is it something people really want? By Brian X. Chen and Minh Connors Times Video Inside the Data Center Capital of the World Cecilia Kang, who covers technology and regulatory policy for The New York Times, traveled to the “data center capital of the world” to see how the A.I. boom is affecting Loudoun County, Va. By Cecilia Kang, Laura Bult, Gilad Thaler, Jon Miller, Thomas Vollkommer, June Kim and Jeff Ricker A County Got Rich From Data Centers. Some Question ‘At What Cost?’ Loudoun County, Va., hosts more than 250 data centers that bring in huge tax revenues. But some officials and residents worry the county has become too dependent on that cash. By Cecilia Kang and Caroline Gutman Nonfiction A Government for the People, but Not by People In a new book, Jill Lepore examines what happens when we abandon liberal democracy for rule by automation and machines. By Jennifer Szalai I Dictated It Everyone’s Using This A.I. Dictation App That I Want to Murder With a Hammer Wispr Flow is supposed to make writing effortless and magical. So I “wrote” this column with it. By Amy X. Wang China Wants Its Tech Champions to Raise Money at Home Blockbuster market debuts by two technology companies show how Beijing is turning to local investors to finance its A.I. ambitions and reduce reliance on Wall Street. By Steve Lohr and Xinyun Wu 阅读简体中文版 閱讀繁體中文版 Times Video Is A.I. Development Really on a Safe Path? The recent OpenAI Hugging Face hack has raised questions about the safety of frontier A.I. models. Helen Toner, the executive director of Georgetown’s Center for Security and Emerging Technology, discusses ways to improve A.I. safety without pausing development. letters A Bitter Anniversary for Afghan Women Readers respond to a guest essay about the U.S. failure in Afghanistan and the Taliban’s oppression of women. Also: the use of A.I. in medicine.",
+    "images": [
+      "https://static01.nyt.com/images/2026/08/15/business/12biz-techfix/12biz-techfix-thumbLarge.jpg?auto=webp",
+      "https://static01.nyt.com/images/2026/08/15/business/12biz-techfix/12biz-techfix-threeByTwoMediumAt2X.jpg?auto=webp",
+      "https://static01.nyt.com/images/2026/08/13/multimedia/13cul-AI-characters-07-TOP2-fktz/13cul-AI-characters-07-TOP2-fktz-thumbLarge.jpg?auto=webp"
+    ]
+  },
+  {
+    "id": "2abdd3b8b4",
+    "title_en": "AI (artificial intelligence) | The Guardian",
+    "title_fa": "هوش مصنوعی (artificial intelligence) | The Guardian",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "theguardian.com",
+    "url": "https://www.theguardian.com/technology/artificialintelligenceai",
+    "clean_url": "https://www.theguardian.com/technology/artificialintelligenceai",
+    "image": "",
+    "timestamp": 1787173124.86043,
+    "ai_category": "سخت‌افزار",
+    "article_content": "",
+    "images": [
+      "https://i.guim.co.uk/img/media/ad85a9abed95abdd431f53ef872369fb0344b714/0_54_2400_1919/master/2400.jpg?width=120&dpr=1&s=none&crop=5%3A4",
+      "https://i.guim.co.uk/img/media/97c70a6b185a61783623194a6c08e38ab9881a23/0_0_3000_2400/master/3000.jpg?width=120&dpr=1&s=none&crop=5%3A4",
+      "https://i.guim.co.uk/img/media/c12b42fdf0dc3326ec19c52fea573f18a034d5e8/493_0_4913_3933/master/4913.jpg?width=120&dpr=1&s=none&crop=5%3A4"
+    ]
+  },
+  {
+    "id": "a9ca37360f",
+    "title_en": "The Latest AI News, Insights and Reports | AI Magazine",
+    "title_fa": "The جدیدترین هوش مصنوعی اخبار, بینش‌ها and Reports | هوش مصنوعی Magazine",
+    "summary": [
+      "View all Shayan Mohanty, Chief Data & هوش مصنوعی Officer at Thoughtworks, talks cognitive debt, persona cloning and why accountability always sits with humans alone … Bournemouth University’s COO, Gerry Greyl...",
+      "com, on building هوش مصنوعی tools for engineers and customers alike … The engineer-turned-data leader on building a 50-strong team from scratch and why هوش مصنوعی will reshape how analysts work … Mathieu Manalo, CISO..."
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "aimagazine.com",
+    "url": "https://aimagazine.com/",
+    "clean_url": "https://aimagazine.com",
+    "image": "",
+    "timestamp": 1787173124.8604085,
+    "ai_category": "عمومی",
+    "article_content": "View all Shayan Mohanty, Chief Data & AI Officer at Thoughtworks, talks cognitive debt, persona cloning and why accountability always sits with humans alone … Bournemouth University’s COO, Gerry Greyling, explains how the institution is breaking down silos and embracing AI to build the campus of the future … Liz Eastaugh, Vice President of Global Technology Platforms at Just Eat Takeaway.com, on building AI tools for engineers and customers alike … The engineer-turned-data leader on building a 50-strong team from scratch and why AI will reshape how analysts work … Mathieu Manalo, CISO at leading finance and leasing company ORIX METRO, explores the best way to keep employees engaged on best security practice … Shayan Mohanty, Chief Data & AI Officer at Thoughtworks, talks cognitive debt, persona cloning and why accountability always sits with humans alone … Bournemouth University’s COO, Gerry Greyling, explains how the institution is breaking down silos and embracing AI to build the campus of the future … Liz Eastaugh, Vice President of Global Technology Platforms at Just Eat Takeaway.com, on building AI tools for engineers and customers alike … The engineer-turned-data leader on building a 50-strong team from scratch and why AI will reshape how analysts work … Mathieu Manalo, CISO at leading finance and leasing company ORIX METRO, explores the best way to keep employees engaged on best security practice … View all View all Discover how AI in procurement is transforming decision-making and supplier management in this webinar from Procurement Magazine and Amazon Business … View all View all Forget waiting for applicants. Sam Fletcher breaks down how an “always-on” model of global talent scouting keeps Coca-Cola HBC steps ahead of rivals … View all View all A Workiva survey reveals one in four executives face public AI errors, warning that poor data quality threatens reporting accuracy and investor confidence … View all View all A family of premium hearing aids built on GN Hearing’s AI platform shows how technology can automatically lift the speech the user wants to focus on … View all",
+    "images": []
+  },
+  {
+    "id": "4a28c9a5d7",
+    "title_en": "Artificial intelligence news: Chat AI, ChatGPT, AI generator, AI Chatbot and Bard | NBC News",
+    "title_fa": "Artificial intelligence news: Chat هوش مصنوعی, ChatGPT, هوش مصنوعی generator, هوش مصنوعی Chatbot and Bard | NBC اخبار",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "nbcnews.com",
+    "url": "https://www.nbcnews.com/artificial-intelligence",
+    "clean_url": "https://www.nbcnews.com/artificial-intelligence",
+    "image": "",
+    "timestamp": 1787173124.8603818,
+    "ai_category": "مدل",
+    "article_content": "",
+    "images": []
+  },
+  {
     "id": "7550eaf867",
     "title_en": "Multi-Vector (Late Interaction) Embedding Models with Sentence Transformers",
     "title_fa": "چند برداری (تعامل دیرهنگام) امبدینگ مدل‌ها with سنتنس ترنسفورمرز",
