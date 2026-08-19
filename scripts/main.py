@@ -307,87 +307,122 @@ class SubaruRadar:
         return items
 
     def _generate_persian_title(self, title_en):
-        """Generate Persian title from English using keyword mapping"""
-        # Simple keyword-based translation
+        """Generate Persian title with English terms in parentheses"""
+        # Keyword mapping: Persian (English) format
         replacements = {
-            'AI': 'هوش مصنوعی', 'Artificial Intelligence': 'هوش مصنوعی',
-            'Machine Learning': 'ماشین لرنینگ', 'Deep Learning': 'دیپ لرنینگ',
-            'LLM': 'ال‌ام‌ال', 'Large Language Model': 'مدل زبانی بزرگ',
-            'GPT': 'جی‌پی‌یو', 'Generative AI': 'هوش مصنوعی مولد',
-            'OpenAI': 'اوپن‌ای‌آی', 'Anthropic': 'آنتروپیک',
-            'Google': 'گوگل', 'DeepMind': 'دیپ‌مایند',
-            'Meta': 'مِتا', 'Microsoft': 'مایکروسافت',
-            'NVIDIA': 'انویدیا', 'GPU': 'جی‌پی‌یو',
-            'Model': 'مدل', 'Release': 'انتشار', 'Launch': 'راه‌اندازی',
-            'Research': 'تحقیق', 'Paper': 'مقاله', 'Study': 'مطالعه',
-            'Benchmark': 'بنچ‌مارک', 'Training': 'آموزش',
-            'Agent': 'عامل', 'Tool': 'ابزار', 'API': 'ای‌پی‌آی',
-            'Open Source': 'بازمتن', 'Coding': 'کدنویسی',
-            'Safety': 'امنیت', 'Regulation': 'تنظیمات',
-            'Chip': 'تراشه', 'Hardware': 'سخت‌افزار',
-            'Funding': 'سرمایه‌گذاری', 'Investment': 'سرمایه‌گذاری',
-            'Startup': 'استارتاپ', 'Company': 'شرکت',
-            'News': 'اخبار', 'Latest': 'جدیدترین', 'Insights': 'بینش‌ها',
-            'Analysis': 'تحلیل', 'Powering': 'قدرت‌بخشی به', 'Driven': 'مبتنی بر',
-            'Business': 'کسب‌وکار', 'Growth': 'رشد', 'Headlines': 'سرتیترها',
-            'Developments': 'توسعه‌ها', 'Updates': 'به‌روزرسانی‌ها',
-            'Artificial': 'مصنوعی', 'Intelligence': 'هوش',
-            'Technology': 'تکنولوژی', 'Tech': 'تک',
-            'Annual': 'سالانه', 'Report': 'گزارش', 'Review': 'بررسی',
-            'Guide': 'راهنما', 'Tutorial': 'آموزش', 'Explained': 'توضیح داده شده',
+            'AI': 'هوش مصنوعی (AI)', 'Artificial Intelligence': 'هوش مصنوعی (AI)',
+            'Machine Learning': 'ماشین لرنینگ (Machine Learning)', 'Deep Learning': 'دیپ لرنینگ (Deep Learning)',
+            'LLM': 'ال‌ام‌ال (LLM)', 'Large Language Model': 'مدل زبانی بزرگ (LLM)',
+            'GPT': 'جی‌پی‌یو (GPT)', 'Generative AI': 'هوش مصنوعی مولد (Generative AI)',
+            'OpenAI': 'اوپن‌ای‌آی (OpenAI)', 'Anthropic': 'آنتروپیک (Anthropic)',
+            'Google': 'گوگل (Google)', 'DeepMind': 'دیپ‌مایند (DeepMind)',
+            'Meta': 'مِتا (Meta)', 'Microsoft': 'مایکروسافت (Microsoft)',
+            'NVIDIA': 'انویدیا (NVIDIA)', 'GPU': 'جی‌پی‌یو (GPU)',
+            'Model': 'مدل (Model)', 'Release': 'انتشار (Release)', 'Launch': 'راه‌اندازی (Launch)',
+            'Research': 'تحقیق (Research)', 'Paper': 'مقاله (Paper)', 'Study': 'مطالعه (Study)',
+            'Benchmark': 'بنچ‌مارک (Benchmark)', 'Training': 'آموزش (Training)',
+            'Agent': 'عامل (Agent)', 'Tool': 'ابزار (Tool)', 'API': 'ای‌پی‌آی (API)',
+            'Open Source': 'بازمتن (Open Source)', 'Coding': 'کدنویسی (Coding)',
+            'Safety': 'امنیت (Safety)', 'Regulation': 'تنظیمات (Regulation)',
+            'Chip': 'تراشه (Chip)', 'Hardware': 'سخت‌افزار (Hardware)',
+            'Funding': 'سرمایه‌گذاری (Funding)', 'Investment': 'سرمایه‌گذاری (Investment)',
+            'Startup': 'استارتاپ (Startup)', 'Company': 'شرکت (Company)',
+            'News': 'اخبار (News)', 'Latest': 'جدیدترین (Latest)', 'Insights': 'بینش‌ها (Insights)',
+            'Analysis': 'تحلیل (Analysis)', 'Powering': 'قدرت‌بخشی به (Powering)', 'Driven': 'مبتنی بر (Driven)',
+            'Business': 'کسب‌وکار (Business)', 'Growth': 'رشد (Growth)', 'Headlines': 'سرتیترها (Headlines)',
+            'Developments': 'توسعه‌ها (Developments)', 'Updates': 'به‌روزرسانی‌ها (Updates)',
+            'Artificial': 'مصنوعی (Artificial)', 'Intelligence': 'هوش (Intelligence)',
+            'Technology': 'تکنولوژی (Technology)', 'Tech': 'تک (Tech)',
+            'Annual': 'سالانه (Annual)', 'Report': 'گزارش (Report)', 'Review': 'بررسی (Review)',
+            'Guide': 'راهنما (Guide)', 'Tutorial': 'آموزش (Tutorial)', 'Explained': 'توضیح داده شده (Explained)',
+            'Embedding': 'امبدینگ (Embedding)', 'Vector': 'برداری (Vector)', 'Multi-Vector': 'چند برداری (Multi-Vector)',
+            'Sentence': 'جمله (Sentence)', 'Transformer': 'ترنسفورمر (Transformer)', 'Transformers': 'ترنسفورمرها (Transformers)',
+            'Late Interaction': 'تعامل دیرهنگام (Late Interaction)', 'Decoder': 'دی‌کدر (Decoder)',
+            'Claude': 'کلود (Claude)', 'Gemini': 'جمینی (Gemini)', 'Llama': 'لاما (Llama)', 'Mistral': 'مِیسترال (Mistral)',
+            'RAG': 'رگ (RAG)', 'RAG': 'RAG', 'Fine-tuning': 'فاین‌تیونینگ (Fine-tuning)',
+            'Inference': 'استنتاج (Inference)', 'Prompt': 'پرامپت (Prompt)', 'Prompting': 'پرامپتینگ (Prompting)',
+            'Context': 'بافت (Context)', 'Attention': 'توجه (Attention)', 'Attention Mechanism': 'مکانیزم توجه (Attention Mechanism)',
+            'Neural Network': 'شبکه عصبی (Neural Network)', 'Parameters': 'پارامترها (Parameters)',
+            'Tokens': 'توکن‌ها (Tokens)', 'Dataset': 'دیتاست (Dataset)', 'Benchmark': 'بنچ‌مارک (Benchmark)',
+            'Open-weight': 'باز‌وزن (Open-weight)', 'Open-weight Model': 'مدل باز‌وزن (Open-weight Model)',
+            'Nous Research': 'نوس ریسرچ (Nous Research)', 'NousCoder': 'نوس‌کدر (NousCoder)',
+            'Salesforce': 'سیِلزفورس (Salesforce)', 'Slackbot': 'اسلک‌بات (Slackbot)', 'Cowork': 'کاوورک (Cowork)',
+            'Railway': 'ریلوِی (Railway)', 'AWS': 'ا‌دابلیو‌اس (AWS)', 'Cloud': 'کلاد (Cloud)',
+            'Infrastructure': 'زیرساخت (Infrastructure)', 'Workspace': 'ورک‌اسپیس (Workspace)',
+            'Desktop': 'دسکتاپ (Desktop)', 'Files': 'فایل‌ها (Files)', 'Coding': 'کدنویسی (Coding)',
+            'Decodability': 'کدپذیری (Decodability)', 'Hidden State': 'حالت پنهان (Hidden State)',
+            'Majority Voting': 'رأی‌گیری اکثریت (Majority Voting)', 'Selection': 'انتخاب (Selection)',
+            'Prediction': 'پیش‌بینی (Prediction)', 'Road Safety': 'ایمنی راه (Road Safety)',
+            'Intervention': 'مداخله (Intervention)', 'Driving': 'رانندگی (Driving)', 'Hotspots': 'هات‌اسپات‌ها (Hotspots)',
+            'Connected Vehicle': 'خودرو متصل (Connected Vehicle)', 'Data': 'دیتا (Data)',
+            'Classical': 'کلاسیک (Classical)', 'Transformer-based': 'ترنسفورمر-بیس (Transformer-based)',
+            'Document': 'سند (Document)', 'Sensitivity': 'حساسیت (Sensitivity)', 'Classification': 'طبقه‌بندی (Classification)',
+            'Daily-Scale': 'روزانه (Daily-Scale)', 'Longitudinal': 'طی‌دراز (Longitudinal)', 'Multimodal': 'چند حالته (Multimodal)',
+            'Readmission': 'بازآسپذیری (Readmission)', 'Margin-Regularized': 'مرز-منظم‌شده (Margin-Regularized)',
+            'Structured': 'ساختاریافته (Structured)', 'Semantic': 'سمنتیک (Semantic)', 'Alignment': 'الاینمنت (Alignment)',
+            'Brain': 'مغز (Brain)', 'Language': 'زبان (Language)', 'Correspondence': 'همبستگی (Correspondence)',
+            'Cross-Model': 'کراس-مدل (Cross-Model)', 'Memory': 'حافظه (Memory)', 'Transfer': 'ترنسفر (Transfer)',
+            'Target-Side': 'هدف-سمت (Target-Side)', 'Reader': 'ریدر (Reader)', 'Adaptation': 'آدابتیشن (Adaptation)',
+            'Institution-Specific': 'مؤسسه-مخصوص (Institution-Specific)', 'PHI': 'فی‌آی‌اچ (PHI)',
+            'De-identification': 'دی‌آی‌نتیفیکیشن (De-identification)', 'Gold Standards': 'استانداردهای طلایی (Gold Standards)',
+            'Uncertainty': 'عدم اطمینان (Uncertainty)', 'Decision Making': 'تصمیم‌گیری (Decision Making)',
+            'Safer': 'امن‌تر (Safer)', 'Agents': 'عامل‌ها (Agents)', 'Capable': 'قادر (Capable)',
+            'System 2': 'سیستم ۲ (System 2)', 'Thinking': 'تفکر (Thinking)', 'Access': 'دسترسی (Access)',
+            'Untrusted': 'غیرموثوق (Untrusted)', 'Documents': 'اسناد (Documents)',
         }
         fa_title = title_en
-        for en, fa in replacements.items():
+        # Sort by length descending to avoid partial replacements
+        for en, fa in sorted(replacements.items(), key=lambda x: -len(x[0])):
             fa_title = fa_title.replace(en, fa)
         # Truncate
-        if len(fa_title) > 80:
-            fa_title = fa_title[:77] + '...'
+        if len(fa_title) > 120:
+            fa_title = fa_title[:117] + '...'
         return fa_title
 
     def _generate_persian_summary(self, title_en, source):
-        """Generate Persian summary points"""
+        """Generate Persian summary points with English terms in parentheses"""
         summaries = []
         title_lower = title_en.lower()
     
         if any(kw in title_lower for kw in ['release', 'launch', 'announce', 'unveil']):
-            summaries.append("نسخه جدید منتشر و در دسترس عموم قرار گرفته")
+            summaries.append("نسخه جدید (Release) منتشر و در دسترس عموم قرار گرفته")
         if any(kw in title_lower for kw in ['model', 'llm', 'gpt', 'claude', 'gemini', 'llama']):
-            summaries.append("مدل هوش مصنوعی با قابلیت‌های پیشرفته معرفی شده")
+            summaries.append("مدل هوش مصنوعی (AI Model) با قابلیت‌های پیشرفته معرفی شده")
         if any(kw in title_lower for kw in ['open source', 'open-source']):
-            summaries.append("این پروژه به صورت بازمتن منتشر شده و قابل استفاده رایگان است")
+            summaries.append("این پروژه به صورت بازمتن (Open Source) منتشر شده و قابل استفاده رایگان است")
         if any(kw in title_lower for kw in ['funding', 'investment', 'million', 'billion', 'raises']):
-            summaries.append("سرمایه‌گذاری جدید برای توسعه تکنولوژی‌های هوش مصنوعی انجام شده")
+            summaries.append("سرمایه‌گذاری جدید (Funding) برای توسعه تکنولوژی‌های هوش مصنوعی انجام شده")
         if any(kw in title_lower for kw in ['research', 'paper', 'study', 'arxiv', 'benchmark']):
-            summaries.append("نتایج پژوهشی جدید در مورد عملکرد و قابلیت‌های مدل‌ها منتشر شده")
+            summaries.append("نتایج پژوهشی جدید (Research) در مورد عملکرد و قابلیت‌های مدل‌ها منتشر شده")
         if any(kw in title_lower for kw in ['agent', 'tool', 'api', 'coding']):
-            summaries.append("ابزار یا عامل هوش مصنوعی جدید برای توسعه‌دهندگان عرضه شده")
+            summaries.append("ابزار یا عامل هوش مصنوعی (AI Agent/Tool) جدید برای توسعه‌دهندگان عرضه شده")
         if any(kw in title_lower for kw in ['safety', 'security', 'privacy', 'regulation']):
-            summaries.append("مسائل امنیتی و اخلاقی در توسعه هوش مصنوعی مورد بررسی قرار گرفته")
+            summaries.append("مسائل امنیتی و اخلاقی (Safety/Ethics) در توسعه هوش مصنوعی مورد بررسی قرار گرفته")
         if any(kw in title_lower for kw in ['chip', 'gpu', 'hardware', 'nvidia']):
-            summaries.append("پیشرفت در سخت‌افزار و تراشه‌های مخصوص هوش مصنوعی گزارش شده")
+            summaries.append("پیشرفت در سخت‌افزار (Hardware) و تراشه‌های مخصوص هوش مصنوعی گزارش شده")
     
         if not summaries:
             summaries = [
-                "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+                "پیشرفت جدید در حوزه هوش مصنوعی (AI) گزارش شده",
                 "تأثیر این توسعه بر صنعت و کاربران مورد تحلیل قرار گرفته"
             ]
     
         return summaries[:3]
 
     def _generate_persian_impact(self, title_en):
-        """Generate Persian impact analysis"""
+        """Generate Persian impact analysis with English terms in parentheses"""
         title_lower = title_en.lower()
     
         if any(kw in title_lower for kw in ['openai', 'anthropic', 'google', 'deepmind', 'meta', 'microsoft']):
-            return "شرکت‌های بزرگ تکنولوژی پیشروی در توسعه هوش مصنوعی را ادامه می‌دهند"
+            return "شرکت‌های بزرگ تکنولوژی (Big Tech) پیشروی در توسعه هوش مصنوعی (AI) را ادامه می‌دهند"
         if any(kw in title_lower for kw in ['open source', 'open-source']):
-            return "بازمتن بودن این پروژه نوآوری و دسترسی گسترده را تسریع می‌کند"
+            return "بازمتن بودن این پروژه (Open Source) نوآوری و دسترسی گسترده را تسریع می‌کند"
         if any(kw in title_lower for kw in ['funding', 'investment', 'million', 'billion']):
-            return "جذب سرمایه نشان‌دهنده اعتماد بازار به آینده هوش مصنوعی است"
+            return "جذب سرمایه (Funding) نشان‌دهنده اعتماد بازار به آینده هوش مصنوعی (AI) است"
         if any(kw in title_lower for kw in ['research', 'paper', 'arxiv', 'study']):
-            return "پیشرفت‌های علمی پایه برای کاربردهای آینده فراهم می‌آورند"
+            return "پیشرفت‌های علمی (Research) پایه برای کاربردهای آینده فراهم می‌آورند"
     
-        return "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد"
+        return "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی (AI) تأثیر بگذارد"
 
     def _guess_category(self, title_en):
         """Guess AI category from title"""
