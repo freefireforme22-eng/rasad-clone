@@ -1,5 +1,50 @@
 [
   {
+    "id": "86251336a7",
+    "title_en": "The Urgency of Open Source AI - cleverhack dot com",
+    "title_fa": "The Urgency of بازمتن هوش مصنوعی - cleverhack dot com",
+    "summary": [
+      "It was inspired by a technically oriented friend who was interested in learning more about open models, but found Hugging Face confusing and overwhelming for non-هوش مصنوعی/ML practitioners",
+      "I hope this resource can at least serve as a quick introduction to some of the more important open model releases",
+      "۱۰۰ میلیون دلار سرمایه‌گذاری برای توسعه زیرساخت ابری بومی هوش مصنوعی جذب شد"
+    ],
+    "impact": "بازمتن بودن این پروژه نوآوری و دسترسی گسترده را تسریع می‌کند",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "cleverhack.com",
+    "url": "https://cleverhack.com/the-urgency-of-open-source-ai",
+    "clean_url": "https://cleverhack.com/the-urgency-of-open-source-ai",
+    "image": "",
+    "timestamp": 1787176514.7694044,
+    "ai_category": "ابزار",
+    "article_content": "Editor's Note: I originally started this page as a global community resource. It was inspired by a technically oriented friend who was interested in learning more about open models, but found Hugging Face confusing and overwhelming for non-AI/ML practitioners. I hope this resource can at least serve as a quick introduction to some of the more important open model releases. OSS AI Licenses|OSS AI Defintions|Open & Sovereign AI|OSS AI Leaderboards|OSS AI Resources - DeepSeek-V4-Pro-0813 (August 2026) - China — A 1.57T total / 48B active parameter sparse MoE model with a DSpark speculative decoding module and three selectable reasoning effort levels (low, high, max). Scores 87.9% on Terminal-Bench 2.1, 83.3% on CyberGym, 60.0% on HLE with tools, and 62.7% on DeepSWE. Notably strong at vulnerability discovery, rediscovering 87.5% of benchmark CVEs at pass@3 — ahead of Opus 5 and Qwen 3.8 at 81.3% — though only 65.6% of its reported findings were valid, a recall-over-precision tradeoff. Supports 1M context with recommended output lengths up to 384K tokens in higher reasoning modes. Released under a MIT license.🔗:https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813 - Qwen3.8-2.4T-A95B (August 2026) - China — A 2.4T total / 95B active parameter sparse MoE model with 512 experts (10 routed + 1 shared), built on a repeating Gated DeltaNet linear attention + Gated Attention architecture. The first Max-class Qwen model released with open weights. Scores 92.6% on GPQA Diamond, 67.7% on SWE-bench Pro, 56.6% on DeepSWE 1.1, and 93.0% on PaperBench. Text-only, with reasoning always enabled and no option to disable thinking. Supports 262K native context, extensible to roughly 1M. Weights are free to download under the custom Qwen3.8-Max license, but a separate commercial licence is required to operate model-as-a-service or AI work assistant businesses exceeding $50M in revenue over any 12-month period; internal corporate use is exempt.🔗:https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B - Meta Muse Glimmer (August 2026) - United States — A 30B dense multimodal transformer with grouped-query attention (32 query heads, 2 KV heads) in a [Local, Local, Local, Global] pattern, paired with a ~1.8B ViT-G/14 perception encoder for image input. Optimized for always-on local agent workflows on consumer hardware. Scores 75.5% on MCP-Atlas, 74.6% on DeepSearch QA, 51.2% on SWE-bench Pro, and 43.3% on Gaia2. Includes a lightweight DFlash drafter for speculative decoding, and 4-bit quantization brings the weights under 20GB so the full setup runs on a single 24GB GPU. Supports 131K context. Released under an Apache 2.0 license.🔗:https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model - Apertus 1.5 (July 2026) - Switzerland — A 72B parameter dense decoder-only transformer (also released in a 9B size) with grouped-query attention and the xIELU activation function, extending the original Apertus family with native multimodal input support for images and audio alongside text. Positioned as a fully transparent alternative to closed frontier models: open weights, open training data, and full training documentation rather than a competitive benchmark play. Adds a thinking mode for improved reasoning along with enhanced tool-use and instruction-following. Supports 262,144 tokens of context, a four-fold increase over v1.0. Complements the earlier Apertus Mini suite (0.5B–4B distilled models) for resource-constrained deployment. Released under an Apache 2.0 license.🔗:https://ai.ethz.ch/news-and-events/ai-center-news/2026/07/apertus-15-building-the-next-generation-of-open-ai-infrastructure.html - Cisco Antares (July 2026) - United States — A family of open-weight security small language models built on IBM Granite 4.0, released in two sizes (350M and 1B params; a 3B is coming soon), purpose-built to localize known vulnerabilities within a codebase by operating as a terminal agent — issuing grep, find, and cat commands to navigate a repository and narrow in on the affected files. Trained via a two-stage pipeline of supervised fine-tuning followed by GRPO reinforcement learning over multi-turn agent trajectories. On the new Vulnerability Localization Benchmark (500 tasks across 290 real-world repositories), Antares-1B scores a 0.209 File F1, outperforming Gemini 3 Pro (0.152), GLM-5.2 (0.186), and GPT-5 Mini (0.098); Antares-350M scores 0.135. Supports a 128K context window. Released under an Apache 2.0 license.🔗:https://blogs.cisco.com/ai/introducing-antares-the-most-efficient-open-weight-ai-models-for-vulnerability-localization - Poolside Laguna S 2.1 (July 2026) - United States — A 118B total / 8B active parameter sparse MoE model with 256 routed experts (top-10) plus 1 shared expert, using grouped-query attention across 48 layers in a mixed global/sliding-window layout (12 global, 36 sliding-window). Scores 70.2% on Terminal-Bench 2.1, 78.5% on SWE-Bench Multilingual, 59.4% on SWE-Bench Pro, and 40.4% on DeepSWE. Optimized for agentic coding and long-horizon work, with native interleaved reasoning and full evaluation trajectories published for every benchmark trial. Supports 1,048,576-token (1M) context. Released under an OpenMDW-1.1 license.🔗:https://poolside.ai/blog/introducing-laguna-s-2-1 - Motif Technologies Motif-3 Beta (July 2026) - South Korea — A 314B total / 13B active parameter sparse MoE model with 384 routed experts (top-8) plus 1 shared expert, built on a fully in-house architecture the lab calls Grouped Differential Latent Attention with a per-expert Grouped PolyNorm activation, rather than a re-parameterization of existing open designs. Scores 44 on the Artificial Analysis Intelligence Index, well above the median for its price tier. Supports 262,144-token (256K) context. This is a preview checkpoint, not the final release. Non-commercial use permitted for personal, educational, and research purposes; commercial use requires prior written permission from Motif Technologies.🔗:https://huggingface.co/Motif-Technologies/Motif-3-Beta - Kimi K3 (July 2026) - China — A 2.8 trillion total / 104 billion active parameter MoE model, the first open model at 3T-class scale, built on Kimi Delta Attention (KDA) and Attention Residuals (AttnRes), with a Stable LatentMoE framework that activates 16 of 896 routed experts. Scores 88.3% on Terminal-Bench 2.1, 81.2% on FrontierSWE, 93.5% on GPQA Diamond, and 91.2% on BrowseComp. Optimized for long-horizon coding, agentic knowledge work, and reasoning, with native vision through a MoonViT-V2 encoder and quantization-aware training that ships the weights natively in MXFP4. Supports a 1-million-token context window. Released under the Kimi K3 License, an MIT-style grant with two conditions: model-as-a-service operators earning more than $20 million over any 12 consecutive months must sign a separate agreement with Moonshot AI, and products with more than 100 million monthly active users or $20 million in monthly revenue must display \"Kimi K3\" in their interface.🔗:https://www.kimi.com/blog/kimi-k3 - Thinking Machines Inkling (July 2026) - United States — A 975B total / 41B active parameter mixture-of-experts transformer with 256 routed experts (6 active per token) plus 2 shared experts, using a hybrid of local and global attention layers and native (encoder-free) multimodal input for text, images, and audio. Scores 77.6% on SWE-bench Verified, 87.9% on GPQA Diamond, and 97.1% on AIME 2026, with controllable \"thinking effort\" that lets it match Nemotron 3 Ultra's Terminal-Bench 2.1 score using roughly a third of the tokens. Pretrained on 45 trillion tokens and built as a generalist foundation model rather than a narrow benchmark leader, it's the first release in a planned model family, alongside a smaller 276B/12B-active preview variant called Inkling-Small. Supports up to 1M tokens of context. Released under an Apache 2.0 license.🔗:https://thinkingmachines.ai/news/introducing-inkling/ - PrismML Bonsai 27B (July 2026) - United Sta",
+    "images": [
+      "https://cleverhack.com/img/opensourceaifish.png"
+    ]
+  },
+  {
+    "id": "ca950f1a1f",
+    "title_en": "LLM News: Latest Large Language Model Updates | AINews.ai",
+    "title_fa": "ال‌ام‌ال اخبار: جدیدترین Large زبان مدل به‌روزرسانی‌ها | AINews.ai",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "ainews.ai",
+    "url": "https://ainews.ai/llms",
+    "clean_url": "https://ainews.ai/llms",
+    "image": "",
+    "timestamp": 1787176509.6431725,
+    "ai_category": "مدل",
+    "article_content": "",
+    "images": []
+  },
+  {
     "id": "dca0f9511c",
     "title_en": "AI Governance Watch - AI Compliance & Regulation News",
     "title_fa": "هوش مصنوعی Governance Watch - هوش مصنوعی Compliance & تنظیمات اخبار",
