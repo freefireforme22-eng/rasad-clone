@@ -208,6 +208,9 @@ class SubaruRadar:
             for elem in soup.find_all(id=re.compile(r'(nav|menu|sidebar|footer|header|ad|banner|cookie|popup|modal|share|social|related|recommended|newsletter|subscribe|comment|breadcrumb|pagination)', re.I)):
                 elem.decompose()
             
+            # Extract images FIRST (before potentially decomposing them)
+            images = self._extract_article_images(soup, url)
+            
             # Try common article selectors with priority
             article_selectors = [
                 'article[role="article"]',
@@ -273,11 +276,60 @@ class SubaruRadar:
             # Remove common boilerplate patterns
             article_text = re.sub(r'(?i)(subscribe|newsletter|sign up|follow us|share this|advertisement|sponsored|cookie policy|privacy policy|terms of use|all rights reserved|copyright).*?\.', '', article_text)
             
-            return article_text[:8000]  # Limit for token budget
+            return article_text[:8000], images
             
         except Exception as e:
             logger.warning(f"Failed to fetch article content from {url}: {e}")
-            return ""
+            return "", []
+
+    def _extract_article_images(self, soup, base_url):
+        """Extract relevant images from article page"""
+        images = []
+        from urllib.parse import urljoin
+        
+        # Priority 1: Open Graph / Twitter Card images
+        og_image = soup.find('meta', property='og:image') or soup.find('meta', attrs={'name': 'twitter:image'})
+        if og_image and og_image.get('content'):
+            img_url = urljoin(base_url, og_image['content'])
+            images.append(img_url)
+        
+        # Priority 2: First large image in article content
+        article_imgs = soup.select('article img, .post-content img, .entry-content img, .article-content img, .content-body img, main img, .main-content img')
+        for img in article_imgs[:5]:
+            src = img.get('src') or img.get('data-src') or img.get('data-lazy-src')
+            if src:
+                width = img.get('width')
+                height = img.get('height')
+                if width and height:
+                    try:
+                        if int(width) < 200 or int(height) < 150:
+                            continue
+                    except:
+                        pass
+                img_url = urljoin(base_url, src)
+                if img_url not in images:
+                    images.append(img_url)
+        
+        # Priority 3: Any large img in main content area
+        if len(images) < 3:
+            main_imgs = soup.select('main img, .content img, #content img, .post img, .article img')
+            for img in main_imgs[:5]:
+                src = img.get('src') or img.get('data-src') or img.get('data-lazy-src')
+                if src:
+                    width = img.get('width')
+                    height = img.get('height')
+                    if width and height:
+                        try:
+                            if int(width) < 200 or int(height) < 150:
+                                continue
+                        except:
+                            pass
+                    img_url = urljoin(base_url, src)
+                    if img_url not in images:
+                        images.append(img_url)
+        
+        # Limit to max 3 images per article
+        return images[:3]
 
     def get_source_priority(self, url):
         try:
@@ -344,8 +396,9 @@ class SubaruRadar:
 
         for item in items:
             # Fetch article content for better summarization
-            article_content = self.fetch_article_content(item['url'])
+            article_content, images = self.fetch_article_content(item['url'])
             item['article_content'] = article_content
+            item['images'] = images
 
             # Use content-aware local Persian generation (PRIMARY METHOD)
             item['title_fa'] = self._generate_persian_title(item['title_en'])
@@ -901,6 +954,76 @@ class SubaruRadar:
             logger.error(f"Telegram send failed: {e}")
             return False
 
+    def send_media_group_to_telegram(self, items):
+        """Send AI news as media group (album) with images to Telegram"""
+        token = CONFIG['TELEGRAM']['BOT_TOKEN']
+        chat_id = CONFIG['TELEGRAM']['CHANNEL_ID']
+        if not token or not chat_id:
+            logger.warning("Telegram credentials not configured")
+            return False
+
+        # Group items by those with and without images
+        items_with_images = [item for item in items if item.get('images')]
+        items_without_images = [item for item in items if not item.get('images')]
+
+        success = True
+
+        # Send items with images as media groups (max 10 per group)
+        for i in range(0, len(items_with_images), 10):
+            batch = items_with_images[i:i+10]
+            media = []
+            for idx, item in enumerate(batch):
+                images = item.get('images', [])
+                if not images:
+                    continue
+                # Use first image for each item
+                img_url = images[0]
+                # Build caption for first item only (to avoid too long captions)
+                if idx == 0:
+                    title = self._escape_markdown(item.get('title_fa') or item.get('title_en', 'بدون عنوان'))
+                    source = self._escape_markdown(item.get('source', 'منبع ناشناس'))
+                    url = item.get('url', '')
+                    summary = item.get('summary', [])
+                    caption = f"📰 **{title}** ({source})\n"
+                    for s in summary[:2]:
+                        s_clean = self._escape_markdown(s)
+                        caption += f"▸ {s_clean}\n"
+                    caption += f"🔗 {url}"
+                else:
+                    caption = ""
+                
+                media.append({
+                    'type': 'photo',
+                    'media': img_url,
+                    'caption': caption if idx == 0 else "",
+                    'parse_mode': 'Markdown' if idx == 0 else None
+                })
+
+            if media:
+                url = f"https://api.telegram.org/bot{token}/sendMediaGroup"
+                payload = {
+                    'chat_id': chat_id,
+                    'media': media
+                }
+                try:
+                    resp = self.scraper.post(url, json=payload, timeout=30)
+                    if resp.status_code == 200:
+                        logger.info(f"✅ Telegram media group sent: {len(media)} photos")
+                    else:
+                        logger.error(f"Telegram media group error: {resp.status_code} - {resp.text}")
+                        success = False
+                except Exception as e:
+                    logger.error(f"Telegram media group send failed: {e}")
+                    success = False
+
+        # Send items without images as regular message
+        if items_without_images:
+            telegram_text = self.format_ai_news_for_telegram(items_without_images)
+            if not self.send_to_telegram(telegram_text):
+                success = False
+
+        return success
+
     def run(self):
         logger.info("🚀 Starting Subaru Radar...")
 
@@ -915,8 +1038,7 @@ class SubaruRadar:
 
         # 3. Send to Telegram if new items
         if new_ai_items:
-            telegram_text = self.format_ai_news_for_telegram(new_ai_items)
-            self.send_to_telegram(telegram_text)
+            self.send_media_group_to_telegram(new_ai_items)
         else:
             logger.info("No new AI news to send")
 
