@@ -209,34 +209,33 @@ class SubaruRadar:
         for item in items:
             try:
                 prompt = f"""
-Analyze this AI news and return JSON only:
-Title: {item['title_en']}
-Source: {item['source']}
-URL: {item['url']}
+این خبر هوش مصنوعی رو تحلیل کن و فقط JSON برگردان:
+عنوان: {item['title_en']}
+منبع: {item['source']}
+لینک: {item['url']}
 
-Return JSON with:
-- title_fa: Persian title (max 80 chars)
-- summary: 2-3 bullet points in Persian (key facts only)
-- impact: One line Persian analysis of significance
-- ai_category: One of [Model, Research, Tools, Biz, Policy, Hardware, Safety]
-- sentiment: -1 to 1 (negative to positive)
-- urgency: 1-9 (breaking=9, important=7, normal=5)
+فیلدهای خروجی (همه به فارسی، کلمات انگلیسی به تلفظ فارسی):
+- title_fa: عنوان فارسی (مакس ۸۰ کاراکتر)
+- summary: ۲-۳ نکته کلیدی به فارسی (فقط کلمات فارسی، انگلیسی‌ها به تلفظ فارسی مثل: ماشین لرنینگ، ال‌ام‌ال، جی‌پی‌یو، اوپن‌ای‌آی)
+- impact: تحلیل اهمیت به فارسی (یک خط)
+- ai_category: یکی از [مدل، تحقیق، ابزار، کسب‌وکار، سیاست، سخت‌افزار، امنیت]
+- sentiment: -۱ تا ۱ (منفی تا مثبت)
+- urgency: ۱-۹ (خبر فوری=۹، مهم=۷، معمولی=۵)
 
-No markdown, no extra text. Pure JSON.
+فقط JSON خالص، بدون متن اضافی، بدون مارک‌داون.
 """
-                # Use Pollinations free API
+                # Use Pollinations free API with longer timeout
                 pollinations_url = "https://text.pollinations.ai/openai"
                 payload = {
                     "messages": [{"role": "user", "content": prompt}],
                     "model": "gpt-4o-mini",
                     "temperature": 0.3,
-                    "max_tokens": 500,
+                    "max_tokens": 600,
                 }
-                resp = self.scraper.post(pollinations_url, json=payload, timeout=30)
+                resp = self.scraper.post(pollinations_url, json=payload, timeout=60)
                 if resp.status_code == 200:
                     result = resp.json()
                     content = result.get('choices', [{}])[0].get('message', {}).get('content', '{}')
-                    # Parse JSON from response
                     import re
                     json_match = re.search(r'\{.*\}', content, re.DOTALL)
                     if json_match:
@@ -244,7 +243,7 @@ No markdown, no extra text. Pure JSON.
                         item['title_fa'] = ai_data.get('title_fa', item['title_en'])
                         item['summary'] = ai_data.get('summary', [])
                         item['impact'] = ai_data.get('impact', '')
-                        item['ai_category'] = ai_data.get('ai_category', 'general')
+                        item['ai_category'] = ai_data.get('ai_category', 'عمومی')
                         item['sentiment'] = ai_data.get('sentiment', 0.0)
                         item['urgency'] = ai_data.get('urgency', item['urgency'])
             except Exception as e:
@@ -273,42 +272,65 @@ No markdown, no extra text. Pure JSON.
         return enriched
 
     # ─── TELEGRAM FORMATTER (Rasad-style) ───
+    def _escape_markdown(self, text):
+        """Escape Markdown special characters"""
+        if not text: return ""
+        # Escape: _ * [ ] ( ) ~ ` > # + - = | { } . !
+        escape_chars = r'_*[]()~`>#+-=|{}.!'
+        return ''.join(f'\\{c}' if c in escape_chars else c for c in text)
+
     def format_ai_news_for_telegram(self, items):
-        """Format AI news in Rasad-style for Telegram"""
+        """Format AI news in Rasad-style for Telegram (full Persian)"""
         if not items: return ""
 
-        lines = ["🤖 **اخبار هوش مصنوعی - Subaru News**", ""]
+        lines = ["🤖 **اخبار هوش مصنوعی - سوبارو نیوز**", ""]
 
         for item in items:
-            # Category emoji
             cat_emoji = {
-                'Model': '🧠', 'Research': '🔬', 'Tools': '🛠',
-                'Biz': '💼', 'Policy': '⚖️', 'Hardware': '💾',
-                'Safety': '🛡️', 'general': '📰'
-            }.get(item.get('ai_category', 'general'), '📰')
+                'مدل': '🧠', 'تحقیق': '🔬', 'ابزار': '🛠',
+                'کسب‌وکار': '💼', 'سیاست': '⚖️', 'سخت‌افزار': '💾',
+                'امنیت': '🛡️', 'عمومی': '📰'
+            }.get(item.get('ai_category', 'عمومی'), '📰')
 
-            title = item.get('title_fa') or item.get('title_en', 'بدون عنوان')
-            source = item.get('source', 'منبع ناشناس')
+            title = self._escape_markdown(item.get('title_fa') or item.get('title_en', 'بدون عنوان'))
+            source = self._escape_markdown(item.get('source', 'منبع ناشناس'))
             url = item.get('url', '')
-            ai_cat = item.get('ai_category', 'general')
+            ai_cat = item.get('ai_category', 'عمومی')
 
-            # Hashtags
-            tags = ['#AI', f'#{ai_cat}']
-            if 'OpenAI' in (item.get('title_en', '') + item.get('title_fa', '')):
-                tags.append('#OpenAI')
-            if 'Google' in (item.get('title_en', '') + item.get('title_fa', '')):
-                tags.append('#Google')
-            if 'NVIDIA' in (item.get('title_en', '') + item.get('title_fa', '')):
-                tags.append('#NVIDIA')
+            # Summary
+            summary = item.get('summary', [])
+            if summary:
+                for s in summary:
+                    s_clean = self._escape_markdown(s)
+                    lines.append(f"▸ {s_clean}")
 
-            lines.append(f"{cat_emoji} **{title}** ({source})")
+            # Impact
+            impact = item.get('impact', '')
+            if impact:
+                lines.append(f"💡 {self._escape_markdown(impact)}")
+
+            # Source and link
+            lines.append(f"📰 منبع: {source}")
             lines.append(f"🔗 {url}")
-            lines.append(f"{' '.join(tags)}")
-            lines.append("")
 
-        lines.append("---")
+            # Hashtags (Persian)
+            tags = ['#هوش_مصنوعی', f'#{ai_cat}']
+            title_text = (item.get('title_fa', '') + ' ' + item.get('title_en', '')).lower()
+            if 'openai' in title_text or 'اوپن‌ای‌آی' in title_text:
+                tags.append('#اوپن_ای_آی')
+            if 'google' in title_text or 'گوگل' in title_text:
+                tags.append('#گوگل')
+            if 'nvidia' in title_text or 'انویدیا' in title_text:
+                tags.append('#انویدیا')
+            if 'مایکروسافت' in title_text or 'microsoft' in title_text:
+                tags.append('#مایکروسافت')
+
+            lines.append(f"{' '.join(tags)}")
+            lines.append("━━━━━━━━━━━━━━━━")
+
+        lines.append("")
         lines.append(f"⏰ آپدیت: {datetime.now(timezone(timedelta(hours=3, minutes=30))).strftime('%H:%M')} | 🔄 هر ۳ ساعت")
-        lines.append("#SubaruNews #AI #ArtificialIntelligence")
+        lines.append("#سوبارو_نیوز #هوش_مصنوعی #AI")
 
         return "\n".join(lines)
 
