@@ -24,7 +24,6 @@ CONFIG = {
     'AI_RSS_FEEDS': [
         'https://openai.com/blog/rss.xml',
         'https://deepmind.google/blog/rss.xml',
-        'https://blog.anthropic.com/rss/',
         'https://ai.googleblog.com/feeds/posts/default',
         'https://huggingface.co/blog/feed.xml',
         'https://www.technologyreview.com/feed/',
@@ -591,6 +590,9 @@ class SubaruRadar:
         logger.info(f"🤖 Enriching {len(unique_items)} items with AI...")
         enriched = self.enrich_with_ai(unique_items)
 
+        # Limit to 15 newest items
+        enriched = enriched[:15]
+
         # Add to existing (newest first)
         self.existing_ai_news = enriched + self.existing_ai_news
         # Keep history size
@@ -676,8 +678,11 @@ class SubaruRadar:
         return ''.join(f'\\{c}' if c in escape_chars else c for c in text)
 
     def format_ai_news_for_telegram(self, items):
-        """Format AI news in Rasad-style for Telegram (full Persian)"""
+        """Format AI news in Rasad-style for Telegram (full Persian) - max 15 items"""
         if not items: return ""
+
+        # Limit to 15 items max
+        items = items[:15]
 
         lines = ["🤖 **اخبار هوش مصنوعی - سوبارو نیوز**", ""]
 
@@ -728,7 +733,24 @@ class SubaruRadar:
         lines.append(f"⏰ آپدیت: {datetime.now(timezone(timedelta(hours=3, minutes=30))).strftime('%H:%M')} | 🔄 هر ۳ ساعت")
         lines.append("#سوبارو_نیوز #هوش_مصنوعی #AI")
 
-        return "\n".join(lines)
+        result = "\n".join(lines)
+        
+        # Telegram message limit is 4096 chars - truncate if needed
+        if len(result) > 4000:
+            # Keep header and first items that fit
+            truncated_lines = ["🤖 **اخبار هوش مصنوعی - سوبارو نیوز**", ""]
+            for line in lines[2:]:  # Skip header
+                test_result = "\n".join(truncated_lines + [line])
+                if len(test_result) > 3900:
+                    break
+                truncated_lines.append(line)
+            truncated_lines.append("")
+            truncated_lines.append("... (محدودیت طول پیام تلگرام)")
+            truncated_lines.append(f"⏰ آپدیت: {datetime.now(timezone(timedelta(hours=3, minutes=30))).strftime('%H:%M')} | 🔄 هر ۳ ساعت")
+            truncated_lines.append("#سوبارو_نیوز #هوش_مصنوعی #AI")
+            result = "\n".join(truncated_lines)
+        
+        return result
 
     def send_to_telegram(self, text):
         """Send formatted message to Telegram channel"""
