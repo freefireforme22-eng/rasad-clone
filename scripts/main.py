@@ -190,7 +190,7 @@ class SubaruRadar:
         return False
 
     def fetch_article_content(self, url):
-        """Fetch and extract article content from URL"""
+        """Fetch and extract article content from URL - improved extraction"""
         try:
             resp = self.scraper.get(url, timeout=20)
             if resp.status_code != 200:
@@ -198,12 +198,21 @@ class SubaruRadar:
             
             soup = BeautifulSoup(resp.content, 'lxml')
             
-            # Remove unwanted elements
-            for elem in soup(['script', 'style', 'nav', 'header', 'footer', 'aside', 'form', 'button', 'iframe', 'noscript']):
+            # Remove unwanted elements FIRST
+            for elem in soup(['script', 'style', 'nav', 'header', 'footer', 'aside', 'form', 'button', 'iframe', 'noscript', 'meta', 'link']):
                 elem.decompose()
             
-            # Try common article selectors
+            # Also remove common non-content classes/ids
+            for elem in soup.find_all(class_=re.compile(r'(nav|menu|sidebar|footer|header|ad|banner|cookie|popup|modal|share|social|related|recommended|newsletter|subscribe|comment|author|breadcrumb|pagination|tag|category)', re.I)):
+                elem.decompose()
+            for elem in soup.find_all(id=re.compile(r'(nav|menu|sidebar|footer|header|ad|banner|cookie|popup|modal|share|social|related|recommended|newsletter|subscribe|comment|breadcrumb|pagination)', re.I)):
+                elem.decompose()
+            
+            # Try common article selectors with priority
             article_selectors = [
+                'article[role="article"]',
+                'article.post',
+                'article.entry',
                 'article',
                 '[role="article"]',
                 '.post-content',
@@ -211,28 +220,59 @@ class SubaruRadar:
                 '.article-content',
                 '.content-body',
                 '.post-body',
-                'main',
+                '.article-body',
+                '.story-body',
+                '.entry-body',
+                'main.content',
                 '.main-content',
                 '#content',
+                '#main-content',
                 '.article-text',
-                '.story-body',
+                '.story-content',
             ]
             
             article_text = ""
             for selector in article_selectors:
                 elements = soup.select(selector)
                 if elements:
-                    article_text = ' '.join([el.get_text(strip=True) for el in elements])
-                    if len(article_text) > 500:
-                        break
+                    # Get text from all matching elements
+                    texts = []
+                    for el in elements:
+                        text = el.get_text(separator=' ', strip=True)
+                        if len(text) > 100:  # Only substantial content
+                            texts.append(text)
+                    if texts:
+                        article_text = ' '.join(texts)
+                        if len(article_text) > 500:
+                            break
             
-            # Fallback: get all paragraph text
+            # Fallback: get all paragraph text from main content area
             if not article_text or len(article_text) < 500:
-                paragraphs = soup.find_all('p')
-                article_text = ' '.join([p.get_text(strip=True) for p in paragraphs if len(p.get_text(strip=True)) > 50])
+                # Try to find main content container
+                main_candidates = soup.select('main, .main, #main, .content, #content, .post, .article, .entry')
+                if main_candidates:
+                    paragraphs = main_candidates[0].find_all('p')
+                else:
+                    paragraphs = soup.find_all('p')
+                
+                article_text = ' '.join([
+                    p.get_text(strip=True) 
+                    for p in paragraphs 
+                    if len(p.get_text(strip=True)) > 60
+                    and not any(skip in p.get_text(strip=True).lower() for skip in [
+                        'read more', 'click here', 'subscribe', 'follow us', 'sign up',
+                        'privacy policy', 'terms of use', 'cookie policy', 'all rights reserved',
+                        'copyright', 'advertisement', 'sponsored', 'affiliate', 'share this',
+                        'tweet', 'share on', 'like us', 'follow on'
+                    ])
+                ])
             
             # Clean up
             article_text = re.sub(r'\s+', ' ', article_text)
+            
+            # Remove common boilerplate patterns
+            article_text = re.sub(r'(?i)(subscribe|newsletter|sign up|follow us|share this|advertisement|sponsored|cookie policy|privacy policy|terms of use|all rights reserved|copyright).*?\.', '', article_text)
+            
             return article_text[:8000]  # Limit for token budget
             
         except Exception as e:
