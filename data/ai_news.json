@@ -1,5 +1,114 @@
 [
   {
+    "id": "5505591929",
+    "title_en": "NVIDIA vs AMD vs Custom AI Chips: Future of AI Hardware (2026 Guide)",
+    "title_fa": "انویدیا vs AMD vs Custom هوش مصنوعی تراشهs: Future of هوش مصنوعی سخت‌افزار (2...",
+    "summary": [
+      "پیشرفت در سخت‌افزار و تراشه‌های مخصوص هوش مصنوعی گزارش شده"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "digibuggy.com",
+    "url": "https://digibuggy.com/blog-details/nvidia-vs-amd-vs-custom-ai-chips-the-future-of-ai-hardware",
+    "clean_url": "https://digibuggy.com/blog-details/nvidia-vs-amd-vs-custom-ai-chips-the-future-of-ai-hardware",
+    "image": "",
+    "timestamp": 1787140540.117954,
+    "ai_category": "سخت‌افزار"
+  },
+  {
+    "id": "84ef3554f9",
+    "title_en": "Lists of open-source artificial intelligence software - Wikipedia",
+    "title_fa": "Lists of open-source artificial intelligence software - Wikipedia",
+    "summary": [
+      "این پروژه به صورت بازمتن منتشر شده و قابل استفاده رایگان است"
+    ],
+    "impact": "بازمتن بودن این پروژه نوآوری و دسترسی گسترده را تسریع می‌کند",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "en.wikipedia.org",
+    "url": "https://en.wikipedia.org/wiki/Lists_of_open-source_artificial_intelligence_software",
+    "clean_url": "https://en.wikipedia.org/wiki/Lists_of_open-source_artificial_intelligence_software",
+    "image": "",
+    "timestamp": 1787140538.486805,
+    "ai_category": "ابزار"
+  },
+  {
+    "id": "b5f3aabf3e",
+    "title_en": "AI Regulation: The New Compliance Frontier | Insights | Holland & Knight",
+    "title_fa": "هوش مصنوعی تنظیمات: The New Compliance Frontier | بینش‌ها | Holland & Knight",
+    "summary": [
+      "مسائل امنیتی و اخلاقی در توسعه هوش مصنوعی مورد بررسی قرار گرفته"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "hklaw.com",
+    "url": "https://www.hklaw.com/en/insights/publications/2026/04/ai-regulation-the-new-compliance-frontier",
+    "clean_url": "https://www.hklaw.com/en/insights/publications/2026/04/ai-regulation-the-new-compliance-frontier",
+    "image": "",
+    "timestamp": 1787140537.644897,
+    "ai_category": "امنیت"
+  },
+  {
+    "id": "97a520b833",
+    "title_en": "White House Releases a National Policy Framework for Artificial Intelligence | Insights | Holland & Knight",
+    "title_fa": "White House انتشارs a National Policy Framework for هوش مصنوعی | بینش‌ها | Ho...",
+    "summary": [
+      "نسخه جدید منتشر و در دسترس عموم قرار گرفته"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "hklaw.com",
+    "url": "https://www.hklaw.com/en/insights/publications/2026/03/white-house-releases-a-national-policy-framework-for-artificial",
+    "clean_url": "https://www.hklaw.com/en/insights/publications/2026/03/white-house-releases-a-national-policy-framework-for-artificial",
+    "image": "",
+    "timestamp": 1787140537.6448796,
+    "ai_category": "مدل"
+  },
+  {
+    "id": "67ec617996",
+    "title_en": "Ensuring a National Policy Framework for Artificial Intelligence – The White House",
+    "title_fa": "Ensuring a National Policy Framework for هوش مصنوعی – The White House",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "تأثیر این توسعه بر صنعت و کاربران مورد تحلیل قرار گرفته"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "whitehouse.gov",
+    "url": "https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/",
+    "clean_url": "https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy",
+    "image": "",
+    "timestamp": 1787140537.6448433,
+    "ai_category": "امنیت"
+  },
+  {
+    "id": "c7925f30b5",
+    "title_en": "InsideAIPolicy.com - exclusive coverage about emerging federal standards and regulations for artificial intelligence",
+    "title_fa": "Insideهوش مصنوعیPolicy.com - exclusive coverage about emerging federal standa...",
+    "summary": [
+      "مسائل امنیتی و اخلاقی در توسعه هوش مصنوعی مورد بررسی قرار گرفته"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "insideaipolicy.com",
+    "url": "https://insideaipolicy.com/",
+    "clean_url": "https://insideaipolicy.com",
+    "image": "",
+    "timestamp": 1787140537.644803,
+    "ai_category": "امنیت"
+  },
+  {
     "id": "7550eaf867",
     "title_en": "Multi-Vector (Late Interaction) Embedding Models with Sentence Transformers",
     "title_fa": "Multi-Vector (Late Interaction) Embedding مدلs with Sentence Transformers",
