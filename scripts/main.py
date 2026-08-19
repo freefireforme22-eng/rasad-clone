@@ -194,11 +194,14 @@ class SubaruRadar:
         try:
             resp = self.scraper.get(url, timeout=20)
             if resp.status_code != 200:
-                return ""
+                return "", []
             
             soup = BeautifulSoup(resp.content, 'lxml')
             
-            # Remove unwanted elements FIRST
+            # Extract images FIRST (before removing any elements)
+            images = self._extract_article_images(soup, url)
+            
+            # Remove unwanted elements
             for elem in soup(['script', 'style', 'nav', 'header', 'footer', 'aside', 'form', 'button', 'iframe', 'noscript', 'meta', 'link']):
                 elem.decompose()
             
@@ -207,9 +210,6 @@ class SubaruRadar:
                 elem.decompose()
             for elem in soup.find_all(id=re.compile(r'(nav|menu|sidebar|footer|header|ad|banner|cookie|popup|modal|share|social|related|recommended|newsletter|subscribe|comment|breadcrumb|pagination)', re.I)):
                 elem.decompose()
-            
-            # Extract images FIRST (before potentially decomposing them)
-            images = self._extract_article_images(soup, url)
             
             # Try common article selectors with priority
             article_selectors = [
