@@ -1,1 +1,462 @@
-[]
+[
+  {
+    "id": "7550eaf867",
+    "title_en": "Multi-Vector (Late Interaction) Embedding Models with Sentence Transformers",
+    "title_fa": "چند برداری (Multi-Vector) (تعامل دیرهنگام (Late Interaction)) امبدینگ (Embedding) مدل‌ها (Models) with سنتنس ترنسفورم...",
+    "summary": [
+      "مدل هوش مصنوعی (AI Model) با قابلیت‌های پیشرفته معرفی شده"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی (AI) تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "huggingface.co",
+    "url": "https://huggingface.co/blog/multi-vector-encoder",
+    "clean_url": "https://huggingface.co/blog/multi-vector-encoder",
+    "image": "",
+    "timestamp": 1787143862.7938418,
+    "ai_category": "مدل"
+  },
+  {
+    "id": "e670024b9a",
+    "title_en": "Railway secures $100 million to challenge AWS with AI-native cloud infrastructure",
+    "title_fa": "ریلوِی (Railway) secures $100 million to challenge ا‌دابلیو‌اس (AWS) with هوش مصنوعی (AI)-native cloud infrastructure",
+    "summary": [
+      "سرمایه‌گذاری جدید (Funding) برای توسعه تکنولوژی‌های هوش مصنوعی انجام شده"
+    ],
+    "impact": "جذب سرمایه (Funding) نشان‌دهنده اعتماد بازار به آینده هوش مصنوعی (AI) است",
+    "tag": "AI",
+    "urgency": 8,
+    "sentiment": 0.1,
+    "source": "venturebeat.com",
+    "url": "https://venturebeat.com/infrastructure/railway-secures-usd100-million-to-challenge-aws-with-ai-native-cloud",
+    "clean_url": "https://venturebeat.com/infrastructure/railway-secures-usd100-million-to-challenge-aws-with-ai-native-cloud",
+    "image": "",
+    "timestamp": 1787143863.2222006,
+    "ai_category": "کسب‌وکار"
+  },
+  {
+    "id": "1bd5d5f60c",
+    "title_en": "Claude Code costs up to $200 a month. Goose does the same thing for free.",
+    "title_fa": "کلود (Claude) Code costs up to $200 a month. Goose does the same thing for free.",
+    "summary": [
+      "مدل هوش مصنوعی (AI Model) با قابلیت‌های پیشرفته معرفی شده"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی (AI) تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 8,
+    "sentiment": 0.1,
+    "source": "venturebeat.com",
+    "url": "https://venturebeat.com/infrastructure/claude-code-costs-up-to-usd200-a-month-goose-does-the-same-thing-for-free",
+    "clean_url": "https://venturebeat.com/infrastructure/claude-code-costs-up-to-usd200-a-month-goose-does-the-same-thing-for-free",
+    "image": "",
+    "timestamp": 1787143863.2223535,
+    "ai_category": "مدل"
+  },
+  {
+    "id": "db7ff708ed",
+    "title_en": "Salesforce rolls out new Slackbot AI agent as it battles Microsoft and Google in workplace AI",
+    "title_fa": "سیِلزفورس (Salesforce) rolls out new اسلک‌بات (Slackbot) هوش مصنوعی (AI) agent as it battles مایکروسافت (Microsoft) a...",
+    "summary": [
+      "ابزار یا عامل هوش مصنوعی (AI Agent/Tool) جدید برای توسعه‌دهندگان عرضه شده"
+    ],
+    "impact": "شرکت‌های بزرگ تکنولوژی (Big Tech) پیشروی در توسعه هوش مصنوعی (AI) را ادامه می‌دهند",
+    "tag": "AI",
+    "urgency": 8,
+    "sentiment": 0.1,
+    "source": "venturebeat.com",
+    "url": "https://venturebeat.com/technology/salesforce-rolls-out-new-slackbot-ai-agent-as-it-battles-microsoft-and",
+    "clean_url": "https://venturebeat.com/technology/salesforce-rolls-out-new-slackbot-ai-agent-as-it-battles-microsoft-and",
+    "image": "",
+    "timestamp": 1787143863.2228265,
+    "ai_category": "ابزار"
+  },
+  {
+    "id": "a102a18a5e",
+    "title_en": "Anthropic launches Cowork, a Claude Desktop agent that works in your files — no coding required",
+    "title_fa": "آنتروپیک (Anthropic) launches کاوورک (Cowork), a کلود (Claude) دسکتاپ (Desktop) agent that works in your files — no c...",
+    "summary": [
+      "نسخه جدید (Release) منتشر و در دسترس عموم قرار گرفته",
+      "مدل هوش مصنوعی (AI Model) با قابلیت‌های پیشرفته معرفی شده",
+      "ابزار یا عامل هوش مصنوعی (AI Agent/Tool) جدید برای توسعه‌دهندگان عرضه شده"
+    ],
+    "impact": "شرکت‌های بزرگ تکنولوژی (Big Tech) پیشروی در توسعه هوش مصنوعی (AI) را ادامه می‌دهند",
+    "tag": "AI",
+    "urgency": 8,
+    "sentiment": 0.1,
+    "source": "venturebeat.com",
+    "url": "https://venturebeat.com/technology/anthropic-launches-cowork-a-claude-desktop-agent-that-works-in-your-files-no",
+    "clean_url": "https://venturebeat.com/technology/anthropic-launches-cowork-a-claude-desktop-agent-that-works-in-your-files-no",
+    "image": "",
+    "timestamp": 1787143863.222964,
+    "ai_category": "مدل"
+  },
+  {
+    "id": "b37d936464",
+    "title_en": "Nous Research's NousCoder-14B is an open-source coding model landing right in the Claude Code moment",
+    "title_fa": "نوس ریسرچ (Nous Research)'s نوس‌کدر (NousCoder)-14B is an open-source coding model landing right in the کلود (Claude)...",
+    "summary": [
+      "مدل هوش مصنوعی (AI Model) با قابلیت‌های پیشرفته معرفی شده",
+      "این پروژه به صورت بازمتن (Open Source) منتشر شده و قابل استفاده رایگان است",
+      "نتایج پژوهشی جدید (Research) در مورد عملکرد و قابلیت‌های مدل‌ها منتشر شده"
+    ],
+    "impact": "بازمتن بودن این پروژه (Open Source) نوآوری و دسترسی گسترده را تسریع می‌کند",
+    "tag": "AI",
+    "urgency": 8,
+    "sentiment": 0.1,
+    "source": "venturebeat.com",
+    "url": "https://venturebeat.com/technology/nous-researchs-nouscoder-14b-is-an-open-source-coding-model-landing-right-in",
+    "clean_url": "https://venturebeat.com/technology/nous-researchs-nouscoder-14b-is-an-open-source-coding-model-landing-right-in",
+    "image": "",
+    "timestamp": 1787143863.2230697,
+    "ai_category": "مدل"
+  },
+  {
+    "id": "0b425b94be",
+    "title_en": "A decodability criterion predicts when hidden-state selection beats majority voting in large language models",
+    "title_fa": "A decodability criterion predicts when hidden-state selection beats majority voting in large language models",
+    "summary": [
+      "مدل هوش مصنوعی (AI Model) با قابلیت‌های پیشرفته معرفی شده"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی (AI) تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.17124",
+    "clean_url": "https://arxiv.org/abs/2608.17124",
+    "image": "",
+    "timestamp": 1787143863.7881746,
+    "ai_category": "مدل"
+  },
+  {
+    "id": "60af433067",
+    "title_en": "Proactive Road Safety Intervention in Australia: Predicting Risky Driving Hotspots from Connected Vehicle Data",
+    "title_fa": "Proactive ایمنی راه (Road Safety) مداخله (Intervention) in Australia: Predicting Risky رانندگی (Driving) هات‌اسپات‌ها...",
+    "summary": [
+      "مسائل امنیتی و اخلاقی (Safety/Ethics) در توسعه هوش مصنوعی مورد بررسی قرار گرفته"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی (AI) تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.16913",
+    "clean_url": "https://arxiv.org/abs/2608.16913",
+    "image": "",
+    "timestamp": 1787143863.851082,
+    "ai_category": "امنیت"
+  },
+  {
+    "id": "d7ecf8464e",
+    "title_en": "Benchmarking Classical and Transformer-Based Models for Document Sensitivity Classification",
+    "title_fa": "Benchmarking کلاسیک (Classical) and ترنسفورمر (Transformer)-Based مدل‌ها (Models) for سند (Document) حساسیت (Sensitiv...",
+    "summary": [
+      "مدل هوش مصنوعی (AI Model) با قابلیت‌های پیشرفته معرفی شده",
+      "نتایج پژوهشی جدید (Research) در مورد عملکرد و قابلیت‌های مدل‌ها منتشر شده"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی (AI) تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.16928",
+    "clean_url": "https://arxiv.org/abs/2608.16928",
+    "image": "",
+    "timestamp": 1787143863.8511846,
+    "ai_category": "مدل"
+  },
+  {
+    "id": "3608913729",
+    "title_en": "Mr.Dec: Daily-Scale Longitudinal Multimodal Modeling for 30-Day Readmission Prediction",
+    "title_fa": "Mr.Dec: روزانه (Daily-Scale) طی‌دراز (Longitudinal) چند حالته (Multimodal) مدل‌سازی (Modeling) for 30-Day بازآسپذیری ...",
+    "summary": [
+      "مدل هوش مصنوعی (AI Model) با قابلیت‌های پیشرفته معرفی شده"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی (AI) تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.16929",
+    "clean_url": "https://arxiv.org/abs/2608.16929",
+    "image": "",
+    "timestamp": 1787143863.8512125,
+    "ai_category": "مدل"
+  },
+  {
+    "id": "245ddeee91",
+    "title_en": "Margin-Regularized Structured Semantic Alignment for Brain-Language Correspondence",
+    "title_fa": "مرز-منظم‌شده (Margin-Regularized) ساختاریافته (Structured) سمنتیک (Semantic) الاینمنت (Alignment) for مغز (Brain)-زبا...",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی (AI) گزارش شده",
+      "تأثیر این توسعه بر صنعت و کاربران مورد تحلیل قرار گرفته"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی (AI) تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.16975",
+    "clean_url": "https://arxiv.org/abs/2608.16975",
+    "image": "",
+    "timestamp": 1787143863.9025524,
+    "ai_category": "عمومی"
+  },
+  {
+    "id": "32294e06ff",
+    "title_en": "Cross-Model Memory Transfer via Target-Side Reader Adaptation",
+    "title_fa": "Cross-مدل (Model) حافظه (Memory) ترنسفر (Transfer) via Target-Side ریدر (Reader) آدابتیشن (Adaptation)",
+    "summary": [
+      "مدل هوش مصنوعی (AI Model) با قابلیت‌های پیشرفته معرفی شده"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی (AI) تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.17050",
+    "clean_url": "https://arxiv.org/abs/2608.17050",
+    "image": "",
+    "timestamp": 1787143863.9025817,
+    "ai_category": "مدل"
+  },
+  {
+    "id": "e3b62829b2",
+    "title_en": "Institution-Specific LLM Prompting Recovers PHI That De-identification Systems and Their Gold Standards Both Miss",
+    "title_fa": "مؤسسه-مخصوص (Institution-Specific) ال‌ام‌ال (LLM) پرامپتینگ (Prompting) Recovers فی‌آی‌اچ (PHI) That دی‌آی‌نتیفیکیشن ...",
+    "summary": [
+      "مدل هوش مصنوعی (AI Model) با قابلیت‌های پیشرفته معرفی شده"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی (AI) تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.17051",
+    "clean_url": "https://arxiv.org/abs/2608.17051",
+    "image": "",
+    "timestamp": 1787143863.9026072,
+    "ai_category": "مدل"
+  },
+  {
+    "id": "19e7fc8d80",
+    "title_en": "Uncertainty-Aware Decision Making in Multimodal Large Language Models",
+    "title_fa": "عدم اطمینان (Uncertainty)-Aware تصمیم‌گیری (Decision Making) in چند حالته (Multimodal) Large زبان (Language) مدل‌ها (...",
+    "summary": [
+      "مدل هوش مصنوعی (AI Model) با قابلیت‌های پیشرفته معرفی شده"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی (AI) تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.17084",
+    "clean_url": "https://arxiv.org/abs/2608.17084",
+    "image": "",
+    "timestamp": 1787143863.90266,
+    "ai_category": "مدل"
+  },
+  {
+    "id": "2416d5465d",
+    "title_en": "Towards Safer RAG: Only Agents Capable of System 2 Thinking may Access Untrusted Documents",
+    "title_fa": "Towards رگ امن‌تر (Safer RAG): Only عامل‌ها (Agents) قادر (Capable) of سیستم ۲ (System 2) تفکر (Thinking) may دسترسی ...",
+    "summary": [
+      "ابزار یا عامل هوش مصنوعی (AI Agent/Tool) جدید برای توسعه‌دهندگان عرضه شده"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی (AI) تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.17153",
+    "clean_url": "https://arxiv.org/abs/2608.17153",
+    "image": "",
+    "timestamp": 1787143863.9027994,
+    "ai_category": "ابزار"
+  },
+  {
+    "id": "5505591929",
+    "title_en": "NVIDIA vs AMD vs Custom AI Chips: Future of AI Hardware (2026 Guide)",
+    "title_fa": "انویدیا (NVIDIA) vs AMD vs Custom هوش مصنوعی (AI) تراشه‌ها (Chips): Future of هوش مصنوعی (AI) سخت‌افزار (Hardware) (2...",
+    "summary": [
+      "پیشرفت در سخت‌افزار (Hardware) و تراشه‌های مخصوص هوش مصنوعی گزارش شده"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی (AI) تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "digibuggy.com",
+    "url": "https://digibuggy.com/blog-details/nvidia-vs-amd-vs-custom-ai-chips-the-future-of-ai-hardware",
+    "clean_url": "https://digibuggy.com/blog-details/nvidia-vs-amd-vs-custom-ai-chips-the-future-of-ai-hardware",
+    "image": "",
+    "timestamp": 1787143869.9141772,
+    "ai_category": "سخت‌افزار"
+  },
+  {
+    "id": "84ef3554f9",
+    "title_en": "Lists of open-source artificial intelligence software - Wikipedia",
+    "title_fa": "Lists of open-source artificial intelligence software - Wikipedia",
+    "summary": [
+      "این پروژه به صورت بازمتن (Open Source) منتشر شده و قابل استفاده رایگان است"
+    ],
+    "impact": "بازمتن بودن این پروژه (Open Source) نوآوری و دسترسی گسترده را تسریع می‌کند",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "en.wikipedia.org",
+    "url": "https://en.wikipedia.org/wiki/Lists_of_open-source_artificial_intelligence_software",
+    "clean_url": "https://en.wikipedia.org/wiki/Lists_of_open-source_artificial_intelligence_software",
+    "image": "",
+    "timestamp": 1787143869.3933773,
+    "ai_category": "ابزار"
+  },
+  {
+    "id": "67ec617996",
+    "title_en": "Ensuring a National Policy Framework for Artificial Intelligence – The White House",
+    "title_fa": "Ensuring a National Policy Framework for هوش مصنوعی (AI) – The White House",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی (AI) گزارش شده",
+      "تأثیر این توسعه بر صنعت و کاربران مورد تحلیل قرار گرفته"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی (AI) تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "whitehouse.gov",
+    "url": "https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/",
+    "clean_url": "https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy",
+    "image": "",
+    "timestamp": 1787143869.0755587,
+    "ai_category": "امنیت"
+  },
+  {
+    "id": "c7925f30b5",
+    "title_en": "InsideAIPolicy.com - exclusive coverage about emerging federal standards and regulations for artificial intelligence",
+    "title_fa": "InsideAIPolicy.com - exclusive coverage about emerging federal standards and regulations for artificial intelligence",
+    "summary": [
+      "مسائل امنیتی و اخلاقی (Safety/Ethics) در توسعه هوش مصنوعی مورد بررسی قرار گرفته"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی (AI) تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "insideaipolicy.com",
+    "url": "https://insideaipolicy.com/",
+    "clean_url": "https://insideaipolicy.com",
+    "image": "",
+    "timestamp": 1787143869.0755198,
+    "ai_category": "امنیت"
+  },
+  {
+    "id": "bfec985600",
+    "title_en": "LLM News & Updates — Latest in Large Language Models and AI",
+    "title_fa": "ال‌ام‌ال (LLM) اخبار (News) & به‌روزرسانی‌ها (Updates) — جدیدترین (Latest) in Large زبان (Language) مدل‌ها (Models) a...",
+    "summary": [
+      "مدل هوش مصنوعی (AI Model) با قابلیت‌های پیشرفته معرفی شده"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی (AI) تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "llmnews.ai",
+    "url": "https://llmnews.ai/",
+    "clean_url": "https://llmnews.ai",
+    "image": "",
+    "timestamp": 1787143866.7811754,
+    "ai_category": "مدل"
+  },
+  {
+    "id": "ca950f1a1f",
+    "title_en": "LLM News: Latest Large Language Model Updates | AINews.ai",
+    "title_fa": "ال‌ام‌ال (LLM) اخبار (News): جدیدترین (Latest) Large زبان (Language) مدل (Model) به‌روزرسانی‌ها (Updates) | AINews.ai",
+    "summary": [
+      "مدل هوش مصنوعی (AI Model) با قابلیت‌های پیشرفته معرفی شده"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی (AI) تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "ainews.ai",
+    "url": "https://ainews.ai/llms",
+    "clean_url": "https://ainews.ai/llms",
+    "image": "",
+    "timestamp": 1787143866.7811234,
+    "ai_category": "مدل"
+  },
+  {
+    "id": "46ad29e334",
+    "title_en": "Artificial Intelligence - The New York Times",
+    "title_fa": "هوش مصنوعی (AI) - The New York Times",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی (AI) گزارش شده",
+      "تأثیر این توسعه بر صنعت و کاربران مورد تحلیل قرار گرفته"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی (AI) تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "nytimes.com",
+    "url": "https://www.nytimes.com/spotlight/artificial-intelligence",
+    "clean_url": "https://www.nytimes.com/spotlight/artificial-intelligence",
+    "image": "",
+    "timestamp": 1787143865.7404895,
+    "ai_category": "سخت‌افزار"
+  },
+  {
+    "id": "2abdd3b8b4",
+    "title_en": "AI (artificial intelligence) | The Guardian",
+    "title_fa": "هوش مصنوعی (AI) (artificial intelligence) | The Guardian",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی (AI) گزارش شده",
+      "تأثیر این توسعه بر صنعت و کاربران مورد تحلیل قرار گرفته"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی (AI) تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "theguardian.com",
+    "url": "https://www.theguardian.com/technology/artificialintelligenceai",
+    "clean_url": "https://www.theguardian.com/technology/artificialintelligenceai",
+    "image": "",
+    "timestamp": 1787143865.740468,
+    "ai_category": "سخت‌افزار"
+  },
+  {
+    "id": "a9ca37360f",
+    "title_en": "The Latest AI News, Insights and Reports | AI Magazine",
+    "title_fa": "The جدیدترین (Latest) هوش مصنوعی (AI) اخبار (News), بینش‌ها (Insights) and Reports | هوش مصنوعی (AI) Magazine",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی (AI) گزارش شده",
+      "تأثیر این توسعه بر صنعت و کاربران مورد تحلیل قرار گرفته"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی (AI) تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "aimagazine.com",
+    "url": "https://aimagazine.com/",
+    "clean_url": "https://aimagazine.com",
+    "image": "",
+    "timestamp": 1787143865.74044,
+    "ai_category": "عمومی"
+  },
+  {
+    "id": "4a28c9a5d7",
+    "title_en": "Artificial intelligence news: Chat AI, ChatGPT, AI generator, AI Chatbot and Bard | NBC News",
+    "title_fa": "Artificial intelligence news: Chat هوش مصنوعی (AI), ChatGPT, هوش مصنوعی (AI) generator, هوش مصنوعی (AI) Chatbot and B...",
+    "summary": [
+      "مدل هوش مصنوعی (AI Model) با قابلیت‌های پیشرفته معرفی شده"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی (AI) تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "nbcnews.com",
+    "url": "https://www.nbcnews.com/artificial-intelligence",
+    "clean_url": "https://www.nbcnews.com/artificial-intelligence",
+    "image": "",
+    "timestamp": 1787143865.7404065,
+    "ai_category": "مدل"
+  }
+]
