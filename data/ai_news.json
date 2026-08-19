@@ -1,5 +1,26 @@
 [
   {
+    "id": "ec0867ad9d",
+    "title_en": "LLM Leaderboard & AI Model Benchmarks — August 2026 | 397 ...",
+    "title_fa": "ال‌ام‌ال Leaderboard & هوش مصنوعی مدل Benchmarks — August 2026 | 397 ...",
+    "summary": [
+      "نسخه جدید منتشر و در دسترس عموم قرار گرفته",
+      "مدل هوش مصنوعی جدید با قابلیت‌های پیشرفته معرفی شده",
+      "نتایج پژوهشی جدید در مورد عملکرد و قابلیت‌های مدل‌ها منتشر شده"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "benchlm.ai",
+    "url": "https://benchlm.ai/",
+    "clean_url": "https://benchlm.ai",
+    "image": "",
+    "timestamp": 1787162090.4933853,
+    "ai_category": "مدل",
+    "article_content": "LatestOrnith 1.5 releasedOrnith AI·Aug 18, 2026Source confirmed dots3-note Preview releasedDots Studio·Aug 14, 2026Source confirmed GLM-5.3 releasedZ.AI·Aug 14, 2026Source confirmed 1Claude Mythos 5AnthropicSupported83.25supported BenchAlign score 2Claude Opus 5AnthropicSupported83.1supported BenchAlign score 3Claude Fable 5AnthropicSupported83supported BenchAlign score 4GPT-5.6 SolOpenAISupported82.04supported BenchAlign score 5Kimi K3Moonshot AISupported80.53supported BenchAlign score 6Qwen3.8 MaxAlibabaSupported79.94supported BenchAlign score 7Muse Spark 1.1MetaSupported76.91supported BenchAlign score 8Claude Opus 4.8AnthropicSupported76.61supported BenchAlign score 9Gemini 3.6 FlashGoogleSupported75.57supported BenchAlign score 10Grok 4.5xAISupported75.45supported BenchAlign score 11GPT-5.5OpenAIEstimated73.45estimated BenchAlign score 12GPT-5.4OpenAISupported73.39supported BenchAlign score 13GPT-5.6 TerraOpenAIEstimated72.94estimated BenchAlign score 14Claude Opus 4.7 (Adaptive)AnthropicEstimated72.25estimated BenchAlign score 15Claude Opus 4.7AnthropicSupported71.9supported BenchAlign score 16Qwen3.7 MaxAlibabaSupported71.63supported BenchAlign score 17Muse SparkMetaSupported70.84supported BenchAlign score 18MiMo-V2.5-ProXiaomiSupported69.24supported BenchAlign score 19MiniMax M3MiniMaxSupported68.76supported BenchAlign score 20Ornith-1.5-397BOrnith AIEstimated68.5estimated BenchAlign score 21Hy3TencentSupported68.04supported BenchAlign score 22Claude Opus 4.6AnthropicSupported68supported BenchAlign score 23Gemini 3 ProGoogleSupported67.4supported BenchAlign score 24GPT-5.6 LunaOpenAIEstimated67.31estimated BenchAlign score 25InklingThinking Machines LabSupported67.06supported BenchAlign score"
+  },
+  {
     "id": "b5f3aabf3e",
     "title_en": "AI Regulation: The New Compliance Frontier | Insights | Holland & Knight",
     "title_fa": "هوش مصنوعی تنظیمات: The New Compliance Frontier | بینش‌ها | Holland & Knight",
