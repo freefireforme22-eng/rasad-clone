@@ -21,6 +21,20 @@ CONFIG = {
         'AI tools API open source release',
         'AI chips hardware NVIDIA AMD',
     ],
+    'AI_RSS_FEEDS': [
+        'https://openai.com/blog/rss.xml',
+        'https://deepmind.google/blog/rss.xml',
+        'https://blog.anthropic.com/rss/',
+        'https://ai.googleblog.com/feeds/posts/default',
+        'https://huggingface.co/blog/feed.xml',
+        'https://www.technologyreview.com/feed/',
+        'https://venturebeat.com/category/ai/feed/',
+        'https://techcrunch.com/tag/artificial-intelligence/feed/',
+        'https://www.theverge.com/ai-artificial-intelligence/rss/index.xml',
+        'https://arxiv.org/rss/cs.AI',
+        'https://arxiv.org/rss/cs.LG',
+        'https://arxiv.org/rss/cs.CL',
+    ],
     'AI_KEYWORDS': [
         'artificial intelligence', 'machine learning', 'deep learning',
         'LLM', 'large language model', 'GPT', 'generative AI',
@@ -253,14 +267,30 @@ class SubaruRadar:
         return items
 
     def fetch_and_process_ai_news(self):
-        logger.info("🔍 Fetching AI news via DDGS...")
-        raw_items = self.fetch_ai_news_ddgs()
-        if not raw_items:
+        logger.info("🔍 Fetching AI news via RSS + DDGS...")
+        
+        # 1. Fetch from RSS feeds (primary source)
+        rss_items = self.fetch_ai_news_rss()
+        
+        # 2. Fetch from DDGS (fallback)
+        ddgs_items = self.fetch_ai_news_ddgs()
+        
+        # Combine and deduplicate
+        all_raw_items = rss_items + ddgs_items
+        seen = set()
+        unique_items = []
+        for item in all_raw_items:
+            clean_url = self._clean_url(item['url'])
+            if clean_url not in seen:
+                seen.add(clean_url)
+                unique_items.append(item)
+        
+        if not unique_items:
             logger.info("No new AI news found")
             return []
 
-        logger.info(f"🤖 Enriching {len(raw_items)} items with AI...")
-        enriched = self.enrich_with_ai(raw_items)
+        logger.info(f"🤖 Enriching {len(unique_items)} items with AI...")
+        enriched = self.enrich_with_ai(unique_items)
 
         # Add to existing (newest first)
         self.existing_ai_news = enriched + self.existing_ai_news
@@ -270,6 +300,71 @@ class SubaruRadar:
 
         logger.info(f"✅ Saved {len(enriched)} new AI news items")
         return enriched
+
+    def fetch_ai_news_rss(self):
+        """Fetch AI news from RSS feeds"""
+        import xml.etree.ElementTree as ET
+        new_items = []
+
+        for feed_url in CONFIG['AI_RSS_FEEDS']:
+            try:
+                resp = self.scraper.get(feed_url, timeout=15)
+                if resp.status_code != 200:
+                    continue
+                
+                root = ET.fromstring(resp.content)
+                # Handle different RSS/Atom formats
+                items = root.findall('.//item') or root.findall('.//{http://www.w3.org/2005/Atom}entry')
+                
+                for item in items[:10]:  # Max 10 per feed
+                    if item.tag.endswith('item'):  # RSS
+                        title = item.findtext('title', '')
+                        link = item.findtext('link', '')
+                        description = item.findtext('description', '')
+                        pub_date = item.findtext('pubDate', '')
+                    else:  # Atom
+                        title = item.findtext('{http://www.w3.org/2005/Atom}title', '')
+                        link = item.find('{http://www.w3.org/2005/Atom}link')
+                        link = link.get('href', '') if link is not None else ''
+                        description = item.findtext('{http://www.w3.org/2005/Atom}summary', '')
+                        pub_date = item.findtext('{http://www.w3.org/2005/Atom}published', '')
+
+                    if not title or not link:
+                        continue
+                    
+                    # Check if AI related
+                    if not self.is_ai_related(title + ' ' + description):
+                        continue
+
+                    clean_url = self._clean_url(link)
+                    if clean_url in self.seen_urls:
+                        continue
+
+                    score = self.get_source_priority(link)
+                    
+                    news_item = {
+                        'id': hashlib.md5(clean_url.encode()).hexdigest()[:10],
+                        'title_en': title,
+                        'title_fa': '',
+                        'summary': [],
+                        'impact': '',
+                        'tag': 'AI',
+                        'urgency': min(score, 9),
+                        'sentiment': 0.0,
+                        'source': urlparse(link).netloc.replace('www.', ''),
+                        'url': link,
+                        'clean_url': clean_url,
+                        'image': '',
+                        'timestamp': time.time(),
+                        'ai_category': 'general',
+                    }
+                    new_items.append(news_item)
+                    self.seen_urls.add(clean_url)
+
+            except Exception as e:
+                logger.warning(f"RSS fetch failed for {feed_url}: {e}")
+
+        return new_items
 
     # ─── TELEGRAM FORMATTER (Rasad-style) ───
     def _escape_markdown(self, text):
