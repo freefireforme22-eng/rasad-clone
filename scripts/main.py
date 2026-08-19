@@ -320,7 +320,7 @@ class SubaruRadar:
 لینک: {item['url']}
 متن مقاله: {combined_content if combined_content else 'در دسترس نیست'}
 
-فیلدهای خروجی (همه به فارسی، کلمات انگلیسی در پرانتز مثل: هوش مصنوعی (AI)، ال‌ام‌ال (LLM)، جی‌پی‌یو (GPU)):
+فیلدهای خروجی (همه به فارسی، بدون هیچ کلمه انگلیسی):
 - title_fa: عنوان فارسی (ماکس ۸۰ کاراکتر)
 - summary: ۲-۳ نکته کلیدی به فارسی (خلاصه واقعی از متن مقاله، نه جنریک)
 - impact: تحلیل اهمیت به فارسی (یک خط)
@@ -366,335 +366,335 @@ class SubaruRadar:
         return items
 
     def _generate_persian_title(self, title_en):
-            """Generate Persian title with English terms in parentheses - token-based to avoid nested replacements"""
-            import re
-        
-            # All mappings: English -> "Persian (English)"
-            # Sorted by length descending for phrase matching
-            all_mappings = [
-                # Phrases (longest first)
-                ('Multi-Vector', 'چند برداری (Multi-Vector)'),
-                ('Late Interaction', 'تعامل دیرهنگام (Late Interaction)'),
-                ('Sentence Transformers', 'سنتنس ترنسفورمرز (Sentence Transformers)'),
-                ('Open Source', 'بازمتن (Open Source)'),
-                ('Open-weight Model', 'مدل باز‌وزن (Open-weight Model)'),
-                ('Open-weight', 'باز‌وزن (Open-weight)'),
-                ('Large Language Model', 'مدل زبانی بزرگ (LLM)'),
-                ('Artificial Intelligence', 'هوش مصنوعی (AI)'),
-                ('Machine Learning', 'ماشین لرنینگ (Machine Learning)'),
-                ('Deep Learning', 'دیپ لرنینگ (Deep Learning)'),
-                ('Generative AI', 'هوش مصنوعی مولد (Generative AI)'),
-                ('Neural Network', 'شبکه عصبی (Neural Network)'),
-                ('Attention Mechanism', 'مکانیزم توجه (Attention Mechanism)'),
-                ('Fine-tuning', 'فاین‌تیونینگ (Fine-tuning)'),
-                ('Hidden State', 'حالت پنهان (Hidden State)'),
-                ('Majority Voting', 'رأی‌گیری اکثریت (Majority Voting)'),
-                ('Road Safety', 'ایمنی راه (Road Safety)'),
-                ('Connected Vehicle', 'خودرو متصل (Connected Vehicle)'),
-                ('Transformer-based', 'ترنسفورمر-بیس (Transformer-based)'),
-                ('Daily-Scale', 'روزانه (Daily-Scale)'),
-                ('Longitudinal', 'طی‌دراز (Longitudinal)'),
-                ('Multimodal', 'چند حالته (Multimodal)'),
-                ('Readmission', 'بازآسپذیری (Readmission)'),
-                ('Margin-Regularized', 'مرز-منظم‌شده (Margin-Regularized)'),
-                ('Structured Semantic Alignment', 'الاینمنت سمنتیک ساختاریافته (Structured Semantic Alignment)'),
-                ('Brain-Language Correspondence', 'همبستگی مغز-زبان (Brain-Language Correspondence)'),
-                ('Cross-Model Memory Transfer', 'ترنسفر حافظه کراس-مدل (Cross-Model Memory Transfer)'),
-                ('Target-Side Reader Adaptation', 'آدابتیشن ریدر هدف-سمت (Target-Side Reader Adaptation)'),
-                ('Institution-Specific', 'مؤسسه-مخصوص (Institution-Specific)'),
-                ('De-identification', 'دی‌آی‌نتیفیکیشن (De-identification)'),
-                ('Gold Standards', 'استانداردهای طلایی (Gold Standards)'),
-                ('Decision Making', 'تصمیم‌گیری (Decision Making)'),
-                ('System 2', 'سیستم ۲ (System 2)'),
-                ('Untrusted Documents', 'اسناد غیرموثوق (Untrusted Documents)'),
-                ('Safer RAG', 'رگ امن‌تر (Safer RAG)'),
-            
-                # Single words
-                ('AI', 'هوش مصنوعی (AI)'),
-                ('LLM', 'ال‌ام‌ال (LLM)'),
-                ('GPT', 'جی‌پی‌یو (GPT)'),
-                ('RAG', 'رگ (RAG)'),
-                ('GPU', 'جی‌پی‌یو (GPU)'),
-                ('API', 'ای‌پی‌آی (API)'),
-                ('AWS', 'ا‌دابلیو‌اس (AWS)'),
-                ('PHI', 'فی‌آی‌اچ (PHI)'),
-                ('Model', 'مدل (Model)'),
-                ('Models', 'مدل‌ها (Models)'),
-                ('Modeling', 'مدل‌سازی (Modeling)'),
-                ('Embedding', 'امبدینگ (Embedding)'),
-                ('Embeddings', 'امبدینگ‌ها (Embeddings)'),
-                ('Vector', 'برداری (Vector)'),
-                ('Vectors', 'برداری‌ها (Vectors)'),
-                ('Transformer', 'ترنسفورمر (Transformer)'),
-                ('Transformers', 'ترنسفورمرها (Transformers)'),
-                ('Decoder', 'دی‌کدر (Decoder)'),
-                ('Decodability', 'کدپذیری (Decodability)'),
-                ('Sentence', 'جمله (Sentence)'),
-                ('Sentences', 'جملات (Sentences)'),
-                ('Claude', 'کلود (Claude)'),
-                ('Gemini', 'جمینی (Gemini)'),
-                ('Llama', 'لاما (Llama)'),
-                ('Mistral', 'مِیسترال (Mistral)'),
-                ('NousCoder', 'نوس‌کدر (NousCoder)'),
-                ('Nous Research', 'نوس ریسرچ (Nous Research)'),
-                ('Cowork', 'کاوورک (Cowork)'),
-                ('Slackbot', 'اسلک‌بات (Slackbot)'),
-                ('Salesforce', 'سیِلزفورس (Salesforce)'),
-                ('Railway', 'ریلوِی (Railway)'),
-                ('OpenAI', 'اوپن‌ای‌آی (OpenAI)'),
-                ('Anthropic', 'آنتروپیک (Anthropic)'),
-                ('Google', 'گوگل (Google)'),
-                ('DeepMind', 'دیپ‌مایند (DeepMind)'),
-                ('Meta', 'مِتا (Meta)'),
-                ('Microsoft', 'مایکروسافت (Microsoft)'),
-                ('NVIDIA', 'انویدیا (NVIDIA)'),
-                ('Research', 'تحقیق (Research)'),
-                ('Paper', 'مقاله (Paper)'),
-                ('Study', 'مطالعه (Study)'),
-                ('Benchmark', 'بنچ‌مارک (Benchmark)'),
-                ('Training', 'آموزش (Training)'),
-                ('Inference', 'استنتاج (Inference)'),
-                ('Agent', 'عامل (Agent)'),
-                ('Agents', 'عامل‌ها (Agents)'),
-                ('Tool', 'ابزار (Tool)'),
-                ('Tools', 'ابزارها (Tools)'),
-                ('Release', 'انتشار (Release)'),
-                ('Launch', 'راه‌اندازی (Launch)'),
-                ('Coding', 'کدنویسی (Coding)'),
-                ('Desktop', 'دسکتاپ (Desktop)'),
-                ('Files', 'فایل‌ها (Files)'),
-                ('Workspace', 'ورک‌اسپیس (Workspace)'),
-                ('Cloud', 'کلاد (Cloud)'),
-                ('Infrastructure', 'زیرساخت (Infrastructure)'),
-                ('Safety', 'امنیت (Safety)'),
-                ('Security', 'امنیت (Security)'),
-                ('Privacy', 'حریم خصوصی (Privacy)'),
-                ('Regulation', 'تنظیمات (Regulation)'),
-                ('Ethics', 'اخلاق (Ethics)'),
-                ('Chip', 'تراشه (Chip)'),
-                ('Chips', 'تراشه‌ها (Chips)'),
-                ('Hardware', 'سخت‌افزار (Hardware)'),
-                ('Funding', 'سرمایه‌گذاری (Funding)'),
-                ('Investment', 'سرمایه‌گذاری (Investment)'),
-                ('Startup', 'استارتاپ (Startup)'),
-                ('Company', 'شرکت (Company)'),
-                ('Business', 'کسب‌وکار (Business)'),
-                ('Growth', 'رشد (Growth)'),
-                ('News', 'اخبار (News)'),
-                ('Latest', 'جدیدترین (Latest)'),
-                ('Insights', 'بینش‌ها (Insights)'),
-                ('Analysis', 'تحلیل (Analysis)'),
-                ('Developments', 'توسعه‌ها (Developments)'),
-                ('Updates', 'به‌روزرسانی‌ها (Updates)'),
-                ('Technology', 'تکنولوژی (Technology)'),
-                ('Tech', 'تک (Tech)'),
-                ('Annual', 'سالانه (Annual)'),
-                ('Report', 'گزارش (Report)'),
-                ('Review', 'بررسی (Review)'),
-                ('Guide', 'راهنما (Guide)'),
-                ('Tutorial', 'آموزش (Tutorial)'),
-                ('Explained', 'توضیح داده شده (Explained)'),
-                ('Prediction', 'پیش‌بینی (Prediction)'),
-                ('Intervention', 'مداخله (Intervention)'),
-                ('Driving', 'رانندگی (Driving)'),
-                ('Hotspots', 'هات‌اسپات‌ها (Hotspots)'),
-                ('Data', 'دیتا (Data)'),
-                ('Classical', 'کلاسیک (Classical)'),
-                ('Document', 'سند (Document)'),
-                ('Documents', 'اسناد (Documents)'),
-                ('Sensitivity', 'حساسیت (Sensitivity)'),
-                ('Classification', 'طبقه‌بندی (Classification)'),
-                ('Uncertainty', 'عدم اطمینان (Uncertainty)'),
-                ('Thinking', 'تفکر (Thinking)'),
-                ('Access', 'دسترسی (Access)'),
-                ('Capable', 'قادر (Capable)'),
-                ('Context', 'بافت (Context)'),
-                ('Attention', 'توجه (Attention)'),
-                ('Parameters', 'پارامترها (Parameters)'),
-                ('Tokens', 'توکن‌ها (Tokens)'),
-                ('Dataset', 'دیتاست (Dataset)'),
-                ('Prompt', 'پرامپت (Prompt)'),
-                ('Prompting', 'پرامپتینگ (Prompting)'),
-                ('Alignment', 'الاینمنت (Alignment)'),
-                ('Semantic', 'سمنتیک (Semantic)'),
-                ('Structured', 'ساختاریافته (Structured)'),
-                ('Correspondence', 'همبستگی (Correspondence)'),
-                ('Transfer', 'ترنسفر (Transfer)'),
-                ('Memory', 'حافظه (Memory)'),
-                ('Reader', 'ریدر (Reader)'),
-                ('Adaptation', 'آدابتیشن (Adaptation)'),
-                ('Brain', 'مغز (Brain)'),
-                ('Language', 'زبان (Language)'),
-                ('Selection', 'انتخاب (Selection)'),
-                ('Voting', 'رأی‌گیری (Voting)'),
-                ('Majority', 'اکثریت (Majority)'),
-            ]
-        
-            # Tokenize: split on word boundaries while keeping delimiters
-            # This preserves punctuation, spaces, hyphens, etc.
-            tokens = re.findall(r'\w+|[^\w\s]|\s+', title_en)
-        
-            result_tokens = []
-            i = 0
-            while i < len(tokens):
-                matched = False
-                # Try to match phrases (up to 4 tokens ahead)
-                for phrase_len in range(4, 0, -1):
-                    if i + phrase_len <= len(tokens):
-                        candidate = ''.join(tokens[i:i+phrase_len])
-                        # Check if candidate matches any mapping
-                        for en_term, fa_term in all_mappings:
-                            if candidate == en_term:
-                                result_tokens.append(fa_term)
-                                i += phrase_len
-                                matched = True
+                """Generate Persian title ONLY (no English in parentheses) - token-based"""
+                import re
+
+                # All mappings: English -> Persian ONLY
+                # Sorted by length descending for phrase matching
+                all_mappings = [
+                    # Phrases (longest first)
+                    ('Multi-Vector', 'چند برداری'),
+                    ('Late Interaction', 'تعامل دیرهنگام'),
+                    ('Sentence Transformers', 'سنتنس ترنسفورمرز'),
+                    ('Open Source', 'بازمتن'),
+                    ('Open-weight Model', 'مدل باز‌وزن'),
+                    ('Open-weight', 'باز‌وزن'),
+                    ('Large Language Model', 'مدل زبانی بزرگ'),
+                    ('Artificial Intelligence', 'هوش مصنوعی'),
+                    ('Machine Learning', 'ماشین لرنینگ'),
+                    ('Deep Learning', 'دیپ لرنینگ'),
+                    ('Generative AI', 'هوش مصنوعی مولد'),
+                    ('Neural Network', 'شبکه عصبی'),
+                    ('Attention Mechanism', 'مکانیزم توجه'),
+                    ('Fine-tuning', 'فاین‌تیونینگ'),
+                    ('Hidden State', 'حالت پنهان'),
+                    ('Majority Voting', 'رأی‌گیری اکثریت'),
+                    ('Road Safety', 'ایمنی راه'),
+                    ('Connected Vehicle', 'خودرو متصل'),
+                    ('Transformer-based', 'ترنسفورمر-بیس'),
+                    ('Daily-Scale', 'روزانه'),
+                    ('Longitudinal', 'طی‌دراز'),
+                    ('Multimodal', 'چند حالته'),
+                    ('Readmission', 'بازآسپذیری'),
+                    ('Margin-Regularized', 'مرز-منظم‌شده'),
+                    ('Structured Semantic Alignment', 'الاینمنت سمنتیک ساختاریافته'),
+                    ('Brain-Language Correspondence', 'همبستگی مغز-زبان'),
+                    ('Cross-Model Memory Transfer', 'ترنسفر حافظه کراس-مدل'),
+                    ('Target-Side Reader Adaptation', 'آدابتیشن ریدر هدف-سمت'),
+                    ('Institution-Specific', 'مؤسسه-مخصوص'),
+                    ('De-identification', 'دی‌آی‌نتیفیکیشن'),
+                    ('Gold Standards', 'استانداردهای طلایی'),
+                    ('Decision Making', 'تصمیم‌گیری'),
+                    ('System 2', 'سیستم ۲'),
+                    ('Untrusted Documents', 'اسناد غیرموثوق'),
+                    ('Safer RAG', 'رگ امن‌تر'),
+
+                    # Single words
+                    ('AI', 'هوش مصنوعی'),
+                    ('LLM', 'ال‌ام‌ال'),
+                    ('GPT', 'جی‌پی‌یو'),
+                    ('RAG', 'رگ'),
+                    ('GPU', 'جی‌پی‌یو'),
+                    ('API', 'ای‌پی‌آی'),
+                    ('AWS', 'ا‌دابلیو‌اس'),
+                    ('PHI', 'فی‌آی‌اچ'),
+                    ('Model', 'مدل'),
+                    ('Models', 'مدل‌ها'),
+                    ('Modeling', 'مدل‌سازی'),
+                    ('Embedding', 'امبدینگ'),
+                    ('Embeddings', 'امبدینگ‌ها'),
+                    ('Vector', 'برداری'),
+                    ('Vectors', 'برداری‌ها'),
+                    ('Transformer', 'ترنسفورمر'),
+                    ('Transformers', 'ترنسفورمرها'),
+                    ('Decoder', 'دی‌کدر'),
+                    ('Decodability', 'کدپذیری'),
+                    ('Sentence', 'جمله'),
+                    ('Sentences', 'جملات'),
+                    ('Claude', 'کلود'),
+                    ('Gemini', 'جمینی'),
+                    ('Llama', 'لاما'),
+                    ('Mistral', 'مِیسترال'),
+                    ('NousCoder', 'نوس‌کدر'),
+                    ('Nous Research', 'نوس ریسرچ'),
+                    ('Cowork', 'کاوورک'),
+                    ('Slackbot', 'اسلک‌بات'),
+                    ('Salesforce', 'سیِلزفورس'),
+                    ('Railway', 'ریلوِی'),
+                    ('OpenAI', 'اوپن‌ای‌آی'),
+                    ('Anthropic', 'آنتروپیک'),
+                    ('Google', 'گوگل'),
+                    ('DeepMind', 'دیپ‌مایند'),
+                    ('Meta', 'مِتا'),
+                    ('Microsoft', 'مایکروسافت'),
+                    ('NVIDIA', 'انویدیا'),
+                    ('Research', 'تحقیق'),
+                    ('Paper', 'مقاله'),
+                    ('Study', 'مطالعه'),
+                    ('Benchmark', 'بنچ‌مارک'),
+                    ('Training', 'آموزش'),
+                    ('Inference', 'استنتاج'),
+                    ('Agent', 'عامل'),
+                    ('Agents', 'عامل‌ها'),
+                    ('Tool', 'ابزار'),
+                    ('Tools', 'ابزارها'),
+                    ('Release', 'انتشار'),
+                    ('Launch', 'راه‌اندازی'),
+                    ('Coding', 'کدنویسی'),
+                    ('Desktop', 'دسکتاپ'),
+                    ('Files', 'فایل‌ها'),
+                    ('Workspace', 'ورک‌اسپیس'),
+                    ('Cloud', 'کلاد'),
+                    ('Infrastructure', 'زیرساخت'),
+                    ('Safety', 'امنیت'),
+                    ('Security', 'امنیت'),
+                    ('Privacy', 'حریم خصوصی'),
+                    ('Regulation', 'تنظیمات'),
+                    ('Ethics', 'اخلاق'),
+                    ('Chip', 'تراشه'),
+                    ('Chips', 'تراشه‌ها'),
+                    ('Hardware', 'سخت‌افزار'),
+                    ('Funding', 'سرمایه‌گذاری'),
+                    ('Investment', 'سرمایه‌گذاری'),
+                    ('Startup', 'استارتاپ'),
+                    ('Company', 'شرکت'),
+                    ('Business', 'کسب‌وکار'),
+                    ('Growth', 'رشد'),
+                    ('News', 'اخبار'),
+                    ('Latest', 'جدیدترین'),
+                    ('Insights', 'بینش‌ها'),
+                    ('Analysis', 'تحلیل'),
+                    ('Developments', 'توسعه‌ها'),
+                    ('Updates', 'به‌روزرسانی‌ها'),
+                    ('Technology', 'تکنولوژی'),
+                    ('Tech', 'تک'),
+                    ('Annual', 'سالانه'),
+                    ('Report', 'گزارش'),
+                    ('Review', 'بررسی'),
+                    ('Guide', 'راهنما'),
+                    ('Tutorial', 'آموزش'),
+                    ('Explained', 'توضیح داده شده'),
+                    ('Prediction', 'پیش‌بینی'),
+                    ('Intervention', 'مداخله'),
+                    ('Driving', 'رانندگی'),
+                    ('Hotspots', 'هات‌اسپات‌ها'),
+                    ('Data', 'دیتا'),
+                    ('Classical', 'کلاسیک'),
+                    ('Document', 'سند'),
+                    ('Documents', 'اسناد'),
+                    ('Sensitivity', 'حساسیت'),
+                    ('Classification', 'طبقه‌بندی'),
+                    ('Uncertainty', 'عدم اطمینان'),
+                    ('Thinking', 'تفکر'),
+                    ('Access', 'دسترسی'),
+                    ('Capable', 'قادر'),
+                    ('Context', 'بافت'),
+                    ('Attention', 'توجه'),
+                    ('Parameters', 'پارامترها'),
+                    ('Tokens', 'توکن‌ها'),
+                    ('Dataset', 'دیتاست'),
+                    ('Prompt', 'پرامپت'),
+                    ('Prompting', 'پرامپتینگ'),
+                    ('Alignment', 'الاینمنت'),
+                    ('Semantic', 'سمنتیک'),
+                    ('Structured', 'ساختاریافته'),
+                    ('Correspondence', 'همبستگی'),
+                    ('Transfer', 'ترنسفر'),
+                    ('Memory', 'حافظه'),
+                    ('Reader', 'ریدر'),
+                    ('Adaptation', 'آدابتیشن'),
+                    ('Brain', 'مغز'),
+                    ('Language', 'زبان'),
+                    ('Selection', 'انتخاب'),
+                    ('Voting', 'رأی‌گیری'),
+                    ('Majority', 'اکثریت'),
+                ]
+
+                # Tokenize: split on word boundaries while keeping delimiters
+                # This preserves punctuation, spaces, hyphens, etc.
+                tokens = re.findall(r'\w+|[^\w\s]|\s+', title_en)
+
+                result_tokens = []
+                i = 0
+                while i < len(tokens):
+                    matched = False
+                    # Try to match phrases (up to 4 tokens ahead)
+                    for phrase_len in range(4, 0, -1):
+                        if i + phrase_len <= len(tokens):
+                            candidate = ''.join(tokens[i:i+phrase_len])
+                            # Check if candidate matches any mapping
+                            for en_term, fa_term in all_mappings:
+                                if candidate == en_term:
+                                    result_tokens.append(fa_term)
+                                    i += phrase_len
+                                    matched = True
+                                    break
+                            if matched:
                                 break
-                        if matched:
-                            break
-                if not matched:
-                    result_tokens.append(tokens[i])
-                    i += 1
-        
-            fa_title = ''.join(result_tokens)
-        
-            # Truncate
-            if len(fa_title) > 120:
-                fa_title = fa_title[:117] + '...'
-            return fa_title
+                    if not matched:
+                        result_tokens.append(tokens[i])
+                        i += 1
+
+                fa_title = ''.join(result_tokens)
+
+                # Truncate
+                if len(fa_title) > 120:
+                    fa_title = fa_title[:117] + '...'
+                return fa_title
 
     def _generate_persian_summary(self, title_en, source, article_content='', description=''):
-        """Generate Persian summary points with English terms in parentheses - using actual content"""
-        summaries = []
+            """Generate Persian summary points - ONLY Persian, no English"""
+            summaries = []
         
-        # Combine all available content
-        all_content = (title_en + ' ' + description + ' ' + article_content).lower()
+            # Combine all available content
+            all_content = (title_en + ' ' + description + ' ' + article_content).lower()
         
-        # Extract key information from actual content
-        # Look for specific details in the content
-        content_lower = article_content.lower() if article_content else ''
-        desc_lower = description.lower() if description else ''
+            # Extract key information from actual content
+            # Look for specific details in the content
+            content_lower = article_content.lower() if article_content else ''
+            desc_lower = description.lower() if description else ''
         
-        # Check for specific technical details in content
-        if any(kw in all_content for kw in ['release', 'launch', 'announce', 'unveil', 'released', 'launched']):
-            summaries.append("نسخه جدید منتشر و در دسترس عموم قرار گرفته")
+            # Check for specific technical details in content
+            if any(kw in all_content for kw in ['release', 'launch', 'announce', 'unveil', 'released', 'launched']):
+                summaries.append("نسخه جدید منتشر و در دسترس عموم قرار گرفته")
         
-        if any(kw in all_content for kw in ['model', 'llm', 'gpt', 'claude', 'gemini', 'llama', 'parameter', 'billion']):
-            if '27b' in all_content or '27 billion' in all_content:
-                summaries.append("مدل ۲۷ میلیارد پارامتری با عملکرد هم‌سطح مدل‌های پیشرو معرفی شد")
-            elif '14b' in all_content or '14 billion' in all_content:
-                summaries.append("مدل ۱۴ میلیارد پارامتری به عنوان مدل کدنویسی بازمتن عرضه شد")
-            else:
-                summaries.append("مدل هوش مصنوعی جدید با قابلیت‌های پیشرفته معرفی شده")
+            if any(kw in all_content for kw in ['model', 'llm', 'gpt', 'claude', 'gemini', 'llama', 'parameter', 'billion']):
+                if '27b' in all_content or '27 billion' in all_content:
+                    summaries.append("مدل ۲۷ میلیارد پارامتری با عملکرد هم‌سطح مدل‌های پیشرو معرفی شد")
+                elif '14b' in all_content or '14 billion' in all_content:
+                    summaries.append("مدل ۱۴ میلیارد پارامتری به عنوان مدل کدنویسی بازمتن عرضه شد")
+                else:
+                    summaries.append("مدل هوش مصنوعی جدید با قابلیت‌های پیشرفته معرفی شده")
         
-        if any(kw in all_content for kw in ['open source', 'open-source', 'opensource', 'github', 'huggingface']):
-            summaries.append("این پروژه به صورت بازمتن منتشر شده و قابل استفاده رایگان است")
+            if any(kw in all_content for kw in ['open source', 'open-source', 'opensource', 'github', 'huggingface']):
+                summaries.append("این پروژه به صورت بازمتن منتشر شده و قابل استفاده رایگان است")
         
-        if any(kw in all_content for kw in ['funding', 'investment', 'million', 'billion', 'raises', 'raised', 'secures']):
-            if '100 million' in all_content or '$100m' in all_content:
-                summaries.append("۱۰۰ میلیون دلار سرمایه‌گذاری برای توسعه زیرساخت ابری بومی هوش مصنوعی جذب شد")
-            else:
-                summaries.append("سرمایه‌گذاری جدید برای توسعه تکنولوژی‌های هوش مصنوعی انجام شد")
+            if any(kw in all_content for kw in ['funding', 'investment', 'million', 'billion', 'raises', 'raised', 'secures']):
+                if '100 million' in all_content or '$100m' in all_content:
+                    summaries.append("۱۰۰ میلیون دلار سرمایه‌گذاری برای توسعه زیرساخت ابری بومی هوش مصنوعی جذب شد")
+                else:
+                    summaries.append("سرمایه‌گذاری جدید برای توسعه تکنولوژی‌های هوش مصنوعی انجام شد")
         
-        if any(kw in all_content for kw in ['research', 'paper', 'study', 'arxiv', 'benchmark', 'evaluation']):
-            if 'rag' in all_content and 'cost' in all_content:
-                summaries.append("رویکرد آبشاری RAG هزینه استنتاج را ۶ برابر کاهش می‌دهد با حفظ دقت")
-            elif 'peer review' in all_content:
-                summaries.append("تحلیل تأثیر تولید مقاله‌های هوش مصنوعی بر سیستم داوران و چالش‌های موجود")
-            else:
-                summaries.append("نتایج پژوهشی جدید در مورد عملکرد و قابلیت‌های مدل‌ها منتشر شده")
+            if any(kw in all_content for kw in ['research', 'paper', 'study', 'arxiv', 'benchmark', 'evaluation']):
+                if 'rag' in all_content and 'cost' in all_content:
+                    summaries.append("رویکرد آبشاری رگ هزینه استنتاج را ۶ برابر کاهش می‌دهد با حفظ دقت")
+                elif 'peer review' in all_content:
+                    summaries.append("تحلیل تأثیر تولید مقاله‌های هوش مصنوعی بر سیستم داوران و چالش‌های موجود")
+                else:
+                    summaries.append("نتایج پژوهشی جدید در مورد عملکرد و قابلیت‌های مدل‌ها منتشر شده")
         
-        if any(kw in all_content for kw in ['agent', 'tool', 'api', 'coding', 'assistant', 'desktop']):
-            if 'cowork' in all_content or 'claude desktop' in all_content:
-                summaries.append("عامل دسکتاپ کلود که در فایل‌های کاربر کار می‌کند، بدون نیاز به کدنویسی عرضه شد")
-            elif 'slackbot' in all_content or 'slack' in all_content:
-                summaries.append("عامل هوش مصنوعی جدید برای محیط کار اسلک راه‌اندازی شد")
-            else:
-                summaries.append("ابزار یا عامل هوش مصنوعی جدید برای توسعه‌دهندگان عرضه شده")
+            if any(kw in all_content for kw in ['agent', 'tool', 'api', 'coding', 'assistant', 'desktop']):
+                if 'cowork' in all_content or 'claude desktop' in all_content:
+                    summaries.append("عامل دسکتاپ کلود که در فایل‌های کاربر کار می‌کند، بدون نیاز به کدنویسی عرضه شد")
+                elif 'slackbot' in all_content or 'slack' in all_content:
+                    summaries.append("عامل هوش مصنوعی جدید برای محیط کار اسلک راه‌اندازی شد")
+                else:
+                    summaries.append("ابزار یا عامل هوش مصنوعی جدید برای توسعه‌دهندگان عرضه شده")
         
-        if any(kw in all_content for kw in ['safety', 'security', 'privacy', 'regulation', 'policy', 'watermark']):
-            if 'watermark' in all_content:
-                summaries.append("واترمارک‌گذاری متن تولیدشده برای شناسایی محتوای هوش مصنوعی معرفی شد")
-            else:
-                summaries.append("مسائل امنیتی، اخلاقی و تنظيمی در توسعه هوش مصنوعی مورد بررسی قرار گرفت")
+            if any(kw in all_content for kw in ['safety', 'security', 'privacy', 'regulation', 'policy', 'watermark']):
+                if 'watermark' in all_content:
+                    summaries.append("واترمارک‌گذاری متن تولیدشده برای شناسایی محتوای هوش مصنوعی معرفی شد")
+                else:
+                    summaries.append("مسائل امنیتی، اخلاقی و تنظيمی در توسعه هوش مصنوعی مورد بررسی قرار گرفت")
         
-        if any(kw in all_content for kw in ['chip', 'gpu', 'hardware', 'nvidia', 'amd', 'processor', 'semiconductor']):
-            summaries.append("پیشرفت در سخت‌افزار و تراشه‌های مخصوص هوش مصنوعی گزارش شده")
+            if any(kw in all_content for kw in ['chip', 'gpu', 'hardware', 'nvidia', 'amd', 'processor', 'semiconductor']):
+                summaries.append("پیشرفت در سخت‌افزار و تراشه‌های مخصوص هوش مصنوعی گزارش شده")
         
-        if any(kw in all_content for kw in ['revenue', 'annualized', 'billion', 'growth', 'enterprise']):
-            if '65 billion' in all_content or '$65b' in all_content:
-                summaries.append("درآمد سالانه به ۶۵ میلیارد دلار رسید که نشان‌دهنده تقاضای شدید در بخش اینترپرایز است")
-            else:
-                summaries.append("رشد درآمدی و التجاري قابل‌توجه گزارش شده است")
+            if any(kw in all_content for kw in ['revenue', 'annualized', 'billion', 'growth', 'enterprise']):
+                if '65 billion' in all_content or '$65b' in all_content:
+                    summaries.append("درآمد سالانه به ۶۵ میلیارد دلار رسید که نشان‌دهنده تقاضای شدید در بخش اینترپرایز است")
+                else:
+                    summaries.append("رشد درآمدی و التجاري قابل‌توجه گزارش شده است")
         
-        if any(kw in all_content for kw in ['acquisition', 'acquire', 'buy', 'purchase', 'stripe', 'openrouter']):
-            summaries.append("مذاکره خرید گیت‌وے مدل‌های هوش مصنوعی OpenRouter توسط استراپ در جریان است")
+            if any(kw in all_content for kw in ['acquisition', 'acquire', 'buy', 'purchase', 'stripe', 'openrouter']):
+                summaries.append("مذاکره خرید گیت‌وے مدل‌های هوش مصنوعی اپن‌رایتر توسط استراپ در جریان است")
         
-        if any(kw in all_content for kw in ['cursor', 'origin', 'github', 'code hosting', 'ide']):
-            summaries.append("پلتفرم میزبانی کد Origin با یکپارچگی عمیق عامل در IDE راه‌اندازی شد")
+            if any(kw in all_content for kw in ['cursor', 'origin', 'github', 'code hosting', 'ide']):
+                summaries.append("پلتفرم میزبانی کد اوریجین با یکپارچگی عمیق عامل در آی‌دی‌ای راه‌اندازی شد")
         
-        if any(kw in all_content for kw in ['youtube', 'twitch', 'amazon', 'streamer', 'opt-in', 'training data']):
-            summaries.append("استفاده پیش‌فرض محتوای استریمرها برای آموزش هوش مصنوعی واکنش شدید برانگیخت")
+            if any(kw in all_content for kw in ['youtube', 'twitch', 'amazon', 'streamer', 'opt-in', 'training data']):
+                summaries.append("استفاده پیش‌فرض محتوای استریمرها برای آموزش هوش مصنوعی واکنش شدید برانگیخت")
         
-        if any(kw in all_content for kw in ['china', 'chinese', 'beijing', 'export', 'data', 'chatbot']):
-            summaries.append("چین قصد صادرات داده‌های آموزشی برای نفوذ روایات خود در چت‌بات‌های جهانی را دارد")
+            if any(kw in all_content for kw in ['china', 'chinese', 'beijing', 'export', 'data', 'chatbot']):
+                summaries.append("چین قصد صادرات داده‌های آموزشی برای نفوذ روایات خود در چت‌بات‌های جهانی را دارد")
         
-        if any(kw in all_content for kw in ['decodability', 'hidden state', 'majority voting', 'selection']):
-            summaries.append("معیار کدپذیری پیش‌بینی می‌کند که انتخاب حالت پنهان کجا بر رأی‌گیری اکثریت برتری دارد")
+            if any(kw in all_content for kw in ['decodability', 'hidden state', 'majority voting', 'selection']):
+                summaries.append("معیار کدپذیری پیش‌بینی می‌کند که انتخاب حالت پنهان کجا بر رأی‌گیری اکثریت برتری دارد")
         
-        if any(kw in all_content for kw in ['road safety', 'driving', 'hotspot', 'connected vehicle', 'australia']):
-            summaries.append("مداخله پیشگیرانه ایمنی راه با پیش‌بینی نقاط خطرناک رانندگی از داده‌های خودروهای متصل")
+            if any(kw in all_content for kw in ['road safety', 'driving', 'hotspot', 'connected vehicle', 'australia']):
+                summaries.append("مداخله پیشگیرانه ایمنی راه با پیش‌بینی نقاط خطرناک رانندگی از داده‌های خودروهای متصل")
         
-        if any(kw in all_content for kw in ['brain', 'language', 'correspondence', 'neural', 'fmri', 'alignment']):
-            summaries.append("الاینمنت سمنتیک ساختاریافته برای همبستگی مغز-زبان با رویکرد مرزی-منظم‌شده")
+            if any(kw in all_content for kw in ['brain', 'language', 'correspondence', 'neural', 'fmri', 'alignment']):
+                summaries.append("الاینمنت سمنتیک ساختاریافته برای همبستگی مغز-زبان با رویکرد مرزی-منظم‌شده")
         
-        if any(kw in all_content for kw in ['memory transfer', 'cross-model', 'reader adaptation', 'target side']):
-            summaries.append("ترنسفر حافظه بین مدل‌ها از طریق آدابتیشن ریدر سمت هدف امکان‌پذیر شد")
+            if any(kw in all_content for kw in ['memory transfer', 'cross-model', 'reader adaptation', 'target side']):
+                summaries.append("ترنسفر حافظه بین مدل‌ها از طریق آدابتیشن ریدر سمت هدف امکان‌پذیر شد")
         
-        if any(kw in all_content for kw in ['readmission', 'hospital', 'medical', 'healthcare', 'prediction', 'multimodal']):
-            summaries.append("مدل‌سازی چند حالته روزانه و پی‌ریزی برای پیش‌بینی بازآسپذیری ۳۰ روزه بیمار")
+            if any(kw in all_content for kw in ['readmission', 'hospital', 'medical', 'healthcare', 'prediction', 'multimodal']):
+                summaries.append("مدل‌سازی چند حالته روزانه و پی‌ریزی برای پیش‌بینی بازآسپذیری ۳۰ روزه بیمار")
         
-        if any(kw in all_content for kw in ['document sensitivity', 'classification', 'transformer', 'classical', 'phi', 'de-identification']):
-            if 'phi' in all_content or 'de-identification' in all_content:
-                summaries.append("پرامپتینگ مؤسسه-مخصوص LLM اطلاعات پزشکی را بازیابی کرد که سیستم‌های دی‌آی‌دنتیفیکیشن از دست داده بودند")
-            else:
-                summaries.append("مقایسه مدل‌های کلاسیک و مبتنی بر ترنسفورمر برای طبقه‌بندی حساسیت سند")
+            if any(kw in all_content for kw in ['document sensitivity', 'classification', 'transformer', 'classical', 'phi', 'de-identification']):
+                if 'phi' in all_content or 'de-identification' in all_content:
+                    summaries.append("پرامپتینگ مؤسسه-مخصوص ال‌ام‌ال اطلاعات پزشکی را بازیابی کرد که سیستم‌های دی‌آی‌دنتیفیکیشن از دست داده بودند")
+                else:
+                    summaries.append("مقایسه مدل‌های کلاسیک و مبتنی بر ترنسفورمر برای طبقه‌بندی حساسیت سند")
         
-        # Default fallback if nothing specific matched
-        if not summaries:
-            # Try to extract a meaningful sentence from description or content
-            if desc_lower and len(desc_lower) > 100:
-                # Take first meaningful sentence from description
-                sentences = [s.strip() for s in description.split('.') if len(s.strip()) > 30]
-                if sentences:
-                    summaries.append(sentences[0][:200] + '...' if len(sentences[0]) > 200 else sentences[0])
+            # Default fallback if nothing specific matched
+            if not summaries:
+                # Try to extract a meaningful sentence from description or content
+                if desc_lower and len(desc_lower) > 100:
+                    # Take first meaningful sentence from description
+                    sentences = [s.strip() for s in description.split('.') if len(s.strip()) > 30]
+                    if sentences:
+                        summaries.append(sentences[0][:200] + '...' if len(sentences[0]) > 200 else sentences[0])
+                    else:
+                        summaries.append("پیشرفت جدید در حوزه هوش مصنوعی گزارش شده")
+                elif content_lower and len(content_lower) > 100:
+                    sentences = [s.strip() for s in article_content.split('.') if len(s.strip()) > 30]
+                    if sentences:
+                        summaries.append(sentences[0][:200] + '...' if len(sentences[0]) > 200 else sentences[0])
+                    else:
+                        summaries.append("پیشرفت جدید در حوزه هوش مصنوعی گزارش شده")
                 else:
                     summaries.append("پیشرفت جدید در حوزه هوش مصنوعی گزارش شده")
-            elif content_lower and len(content_lower) > 100:
-                sentences = [s.strip() for s in article_content.split('.') if len(s.strip()) > 30]
-                if sentences:
-                    summaries.append(sentences[0][:200] + '...' if len(sentences[0]) > 200 else sentences[0])
-                else:
-                    summaries.append("پیشرفت جدید در حوزه هوش مصنوعی گزارش شده")
-            else:
-                summaries.append("پیشرفت جدید در حوزه هوش مصنوعی گزارش شده")
-                summaries.append("تأثیر این توسعه بر صنعت و کاربران مورد تحلیل قرار گرفته")
+                    summaries.append("تأثیر این توسعه بر صنعت و کاربران مورد تحلیل قرار گرفت")
         
-        return summaries[:3]
+            return summaries[:3]
 
     def _generate_persian_impact(self, title_en):
-        """Generate Persian impact analysis with English terms in parentheses"""
+        """Generate Persian impact analysis - ONLY Persian, no English"""
         title_lower = title_en.lower()
     
         if any(kw in title_lower for kw in ['openai', 'anthropic', 'google', 'deepmind', 'meta', 'microsoft']):
-            return "شرکت‌های بزرگ تکنولوژی (Big Tech) پیشروی در توسعه هوش مصنوعی (AI) را ادامه می‌دهند"
+            return "شرکت‌های بزرگ تکنولوژی پیشروی در توسعه هوش مصنوعی را ادامه می‌دهند"
         if any(kw in title_lower for kw in ['open source', 'open-source']):
-            return "بازمتن بودن این پروژه (Open Source) نوآوری و دسترسی گسترده را تسریع می‌کند"
+            return "بازمتن بودن این پروژه نوآوری و دسترسی گسترده را تسریع می‌کند"
         if any(kw in title_lower for kw in ['funding', 'investment', 'million', 'billion']):
-            return "جذب سرمایه (Funding) نشان‌دهنده اعتماد بازار به آینده هوش مصنوعی (AI) است"
+            return "جذب سرمایه نشان‌دهنده اعتماد بازار به آینده هوش مصنوعی است"
         if any(kw in title_lower for kw in ['research', 'paper', 'arxiv', 'study']):
-            return "پیشرفت‌های علمی (Research) پایه برای کاربردهای آینده فراهم می‌آورند"
+            return "پیشرفت‌های علمی پایه برای کاربردهای آینده فراهم می‌آورند"
     
-        return "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی (AI) تأثیر بگذارد"
+        return "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد"
 
     def _guess_category(self, title_en):
         """Guess AI category from title"""
