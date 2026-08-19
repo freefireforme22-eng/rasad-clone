@@ -217,28 +217,27 @@ class SubaruRadar:
         return new_items[:CONFIG['MAX_AI_NEWS_PER_CYCLE']]
 
     def enrich_with_ai(self, items):
-        """Use Pollinations AI to enrich news with Persian titles, summaries, categories"""
+        """Use Pollinations AI to enrich news with Persian titles, summaries, categories.
+        Falls back to local generation if API fails."""
         if not items: return items
 
         for item in items:
+            enriched = False
             try:
-                prompt = f"""
-این خبر هوش مصنوعی رو تحلیل کن و فقط JSON برگردان:
+                prompt = f"""این خبر هوش مصنوعی رو تحلیل کن و فقط JSON برگردان:
 عنوان: {item['title_en']}
 منبع: {item['source']}
 لینک: {item['url']}
 
 فیلدهای خروجی (همه به فارسی، کلمات انگلیسی به تلفظ فارسی):
-- title_fa: عنوان فارسی (مакس ۸۰ کاراکتر)
+- title_fa: عنوان فارسی (ماکس ۸۰ کاراکتر)
 - summary: ۲-۳ نکته کلیدی به فارسی (فقط کلمات فارسی، انگلیسی‌ها به تلفظ فارسی مثل: ماشین لرنینگ، ال‌ام‌ال، جی‌پی‌یو، اوپن‌ای‌آی)
 - impact: تحلیل اهمیت به فارسی (یک خط)
 - ai_category: یکی از [مدل، تحقیق، ابزار، کسب‌وکار، سیاست، سخت‌افزار، امنیت]
 - sentiment: -۱ تا ۱ (منفی تا مثبت)
 - urgency: ۱-۹ (خبر فوری=۹، مهم=۷، معمولی=۵)
 
-فقط JSON خالص، بدون متن اضافی، بدون مارک‌داون.
-"""
-                # Use Pollinations free API with longer timeout
+فقط JSON خالص، بدون متن اضافی، بدون مارک‌داون."""
                 pollinations_url = "https://text.pollinations.ai/openai"
                 payload = {
                     "messages": [{"role": "user", "content": prompt}],
@@ -246,7 +245,7 @@ class SubaruRadar:
                     "temperature": 0.3,
                     "max_tokens": 600,
                 }
-                resp = self.scraper.post(pollinations_url, json=payload, timeout=60)
+                resp = self.scraper.post(pollinations_url, json=payload, timeout=90)
                 if resp.status_code == 200:
                     result = resp.json()
                     content = result.get('choices', [{}])[0].get('message', {}).get('content', '{}')
@@ -260,21 +259,122 @@ class SubaruRadar:
                         item['ai_category'] = ai_data.get('ai_category', 'عمومی')
                         item['sentiment'] = ai_data.get('sentiment', 0.0)
                         item['urgency'] = ai_data.get('urgency', item['urgency'])
+                        enriched = True
             except Exception as e:
                 logger.warning(f"AI enrichment failed for {item['url']}: {e}")
-                item['title_fa'] = item['title_fa'] or item['title_en']
+
+            # Fallback: local Persian generation
+            if not enriched:
+                item['title_fa'] = self._generate_persian_title(item['title_en'])
+                item['summary'] = self._generate_persian_summary(item['title_en'], item['source'])
+                item['impact'] = self._generate_persian_impact(item['title_en'])
+                item['ai_category'] = self._guess_category(item['title_en'])
+                item['sentiment'] = 0.1
+                item['urgency'] = item.get('urgency', 6)
 
         return items
 
+    def _generate_persian_title(self, title_en):
+        """Generate Persian title from English using keyword mapping"""
+        # Simple keyword-based translation
+        replacements = {
+            'AI': 'هوش مصنوعی', 'Artificial Intelligence': 'هوش مصنوعی',
+            'Machine Learning': 'ماشین لرنینگ', 'Deep Learning': 'دیپ لرنینگ',
+            'LLM': 'ال‌ام‌ال', 'Large Language Model': 'مدل زبانی بزرگ',
+            'GPT': 'جی‌پی‌یو', 'Generative AI': 'هوش مصنوعی مولد',
+            'OpenAI': 'اوپن‌ای‌آی', 'Anthropic': 'آنتروپیک',
+            'Google': 'گوگل', 'DeepMind': 'دیپ‌مایند',
+            'Meta': 'مِتا', 'Microsoft': 'مایکروسافت',
+            'NVIDIA': 'انویدیا', 'GPU': 'جی‌پی‌یو',
+            'Model': 'مدل', 'Release': 'انتشار', 'Launch': 'راه‌اندازی',
+            'Research': 'تحقیق', 'Paper': 'مقاله', 'Study': 'مطالعه',
+            'Benchmark': 'بنچ‌مارک', 'Training': 'آموزش',
+            'Agent': 'عامل', 'Tool': 'ابزار', 'API': 'ای‌پی‌آی',
+            'Open Source': 'بازمتن', 'Coding': 'کدنویسی',
+            'Safety': 'امنیت', 'Regulation': 'تنظیمات',
+            'Chip': 'تراشه', 'Hardware': 'سخت‌افزار',
+            'Funding': 'سرمایه‌گذاری', 'Investment': 'سرمایه‌گذاری',
+            'Startup': 'استارتاپ', 'Company': 'شرکت',
+        }
+        fa_title = title_en
+        for en, fa in replacements.items():
+            fa_title = fa_title.replace(en, fa)
+        # Truncate
+        if len(fa_title) > 80:
+            fa_title = fa_title[:77] + '...'
+        return fa_title
+
+    def _generate_persian_summary(self, title_en, source):
+        """Generate Persian summary points"""
+        summaries = []
+        title_lower = title_en.lower()
+    
+        if any(kw in title_lower for kw in ['release', 'launch', 'announce', 'unveil']):
+            summaries.append("نسخه جدید منتشر و در دسترس عموم قرار گرفته")
+        if any(kw in title_lower for kw in ['model', 'llm', 'gpt', 'claude', 'gemini', 'llama']):
+            summaries.append("مدل هوش مصنوعی با قابلیت‌های پیشرفته معرفی شده")
+        if any(kw in title_lower for kw in ['open source', 'open-source']):
+            summaries.append("این پروژه به صورت بازمتن منتشر شده و قابل استفاده رایگان است")
+        if any(kw in title_lower for kw in ['funding', 'investment', 'million', 'billion', 'raises']):
+            summaries.append("سرمایه‌گذاری جدید برای توسعه تکنولوژی‌های هوش مصنوعی انجام شده")
+        if any(kw in title_lower for kw in ['research', 'paper', 'study', 'arxiv', 'benchmark']):
+            summaries.append("نتایج پژوهشی جدید در مورد عملکرد و قابلیت‌های مدل‌ها منتشر شده")
+        if any(kw in title_lower for kw in ['agent', 'tool', 'api', 'coding']):
+            summaries.append("ابزار یا عامل هوش مصنوعی جدید برای توسعه‌دهندگان عرضه شده")
+        if any(kw in title_lower for kw in ['safety', 'security', 'privacy', 'regulation']):
+            summaries.append("مسائل امنیتی و اخلاقی در توسعه هوش مصنوعی مورد بررسی قرار گرفته")
+        if any(kw in title_lower for kw in ['chip', 'gpu', 'hardware', 'nvidia']):
+            summaries.append("پیشرفت در سخت‌افزار و تراشه‌های مخصوص هوش مصنوعی گزارش شده")
+    
+        if not summaries:
+            summaries = [
+                "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+                "تأثیر این توسعه بر صنعت و کاربران مورد تحلیل قرار گرفته"
+            ]
+    
+        return summaries[:3]
+
+    def _generate_persian_impact(self, title_en):
+        """Generate Persian impact analysis"""
+        title_lower = title_en.lower()
+    
+        if any(kw in title_lower for kw in ['openai', 'anthropic', 'google', 'deepmind', 'meta', 'microsoft']):
+            return "شرکت‌های بزرگ تکنولوژی پیشروی در توسعه هوش مصنوعی را ادامه می‌دهند"
+        if any(kw in title_lower for kw in ['open source', 'open-source']):
+            return "بازمتن بودن این پروژه نوآوری و دسترسی گسترده را تسریع می‌کند"
+        if any(kw in title_lower for kw in ['funding', 'investment', 'million', 'billion']):
+            return "جذب سرمایه نشان‌دهنده اعتماد بازار به آینده هوش مصنوعی است"
+        if any(kw in title_lower for kw in ['research', 'paper', 'arxiv', 'study']):
+            return "پیشرفت‌های علمی پایه برای کاربردهای آینده فراهم می‌آورند"
+    
+        return "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد"
+
+    def _guess_category(self, title_en):
+        """Guess AI category from title"""
+        title_lower = title_en.lower()
+        if any(kw in title_lower for kw in ['model', 'llm', 'gpt', 'claude', 'gemini', 'llama', 'release', 'launch']):
+            return 'مدل'
+        if any(kw in title_lower for kw in ['research', 'paper', 'arxiv', 'study', 'benchmark']):
+            return 'تحقیق'
+        if any(kw in title_lower for kw in ['tool', 'api', 'agent', 'coding', 'open source', 'open-source']):
+            return 'ابزار'
+        if any(kw in title_lower for kw in ['funding', 'investment', 'startup', 'company', 'million', 'billion']):
+            return 'کسب‌وکار'
+        if any(kw in title_lower for kw in ['safety', 'security', 'regulation', 'policy', 'ethics', 'privacy']):
+            return 'امنیت'
+        if any(kw in title_lower for kw in ['chip', 'gpu', 'hardware', 'nvidia', 'amd', 'intel']):
+            return 'سخت‌افزار'
+        return 'عمومی'
+
     def fetch_and_process_ai_news(self):
         logger.info("🔍 Fetching AI news via RSS + DDGS...")
-        
+    
         # 1. Fetch from RSS feeds (primary source)
         rss_items = self.fetch_ai_news_rss()
-        
+    
         # 2. Fetch from DDGS (fallback)
         ddgs_items = self.fetch_ai_news_ddgs()
-        
+    
         # Combine and deduplicate
         all_raw_items = rss_items + ddgs_items
         seen = set()
@@ -284,7 +384,7 @@ class SubaruRadar:
             if clean_url not in seen:
                 seen.add(clean_url)
                 unique_items.append(item)
-        
+    
         if not unique_items:
             logger.info("No new AI news found")
             return []
@@ -311,11 +411,11 @@ class SubaruRadar:
                 resp = self.scraper.get(feed_url, timeout=15)
                 if resp.status_code != 200:
                     continue
-                
+            
                 root = ET.fromstring(resp.content)
                 # Handle different RSS/Atom formats
                 items = root.findall('.//item') or root.findall('.//{http://www.w3.org/2005/Atom}entry')
-                
+            
                 for item in items[:10]:  # Max 10 per feed
                     if item.tag.endswith('item'):  # RSS
                         title = item.findtext('title', '')
@@ -331,7 +431,7 @@ class SubaruRadar:
 
                     if not title or not link:
                         continue
-                    
+                
                     # Check if AI related
                     if not self.is_ai_related(title + ' ' + description):
                         continue
@@ -341,7 +441,7 @@ class SubaruRadar:
                         continue
 
                     score = self.get_source_priority(link)
-                    
+                
                     news_item = {
                         'id': hashlib.md5(clean_url.encode()).hexdigest()[:10],
                         'title_en': title,
