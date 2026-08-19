@@ -159,6 +159,37 @@ class SubaruRadar:
         text_lower = text.lower()
         return any(kw in text_lower for kw in CONFIG['AI_KEYWORDS'])
 
+    def _is_category_page(self, url, title):
+        """Filter out category/index/aggregator pages"""
+        url_lower = url.lower()
+        title_lower = title.lower()
+        
+        # Patterns that indicate category/list pages
+        category_patterns = [
+            '/categories/', '/category/', '/tag/', '/tags/',
+            '/topic/', '/topics/', '/section/', '/channels/',
+            '/latest', '/news/', '/archive/', '/feed/',
+            'latest-headlines', 'latest-news', 'all-news',
+            'artificial-intelligence/', 'machine-learning/',
+            'ai-news', '/ai/', '/news', 'newsnow', 'google.com/news',
+        ]
+        
+        # Generic titles that indicate aggregator pages
+        generic_titles = [
+            'latest headlines', 'latest news', 'latest developments',
+            'news & insights', 'news and analysis', 'news |',
+            'categories', 'all news', 'topic:', 'section:',
+        ]
+        
+        for pattern in category_patterns:
+            if pattern in url_lower:
+                return True
+        for generic in generic_titles:
+            if generic in title_lower:
+                return True
+        
+        return False
+
     def get_source_priority(self, url):
         try:
             host = urlparse(url or '').netloc.lower().replace('www.', '')
@@ -183,6 +214,7 @@ class SubaruRadar:
 
                     if not url or not title: continue
                     if not self.is_ai_related(title + ' ' + body): continue
+                    if self._is_category_page(url, title): continue
 
                     clean_url = self._clean_url(url)
                     if clean_url in self.seen_urls: continue
@@ -295,6 +327,14 @@ class SubaruRadar:
             'Chip': 'تراشه', 'Hardware': 'سخت‌افزار',
             'Funding': 'سرمایه‌گذاری', 'Investment': 'سرمایه‌گذاری',
             'Startup': 'استارتاپ', 'Company': 'شرکت',
+            'News': 'اخبار', 'Latest': 'جدیدترین', 'Insights': 'بینش‌ها',
+            'Analysis': 'تحلیل', 'Powering': 'قدرت‌بخشی به', 'Driven': 'مبتنی بر',
+            'Business': 'کسب‌وکار', 'Growth': 'رشد', 'Headlines': 'سرتیترها',
+            'Developments': 'توسعه‌ها', 'Updates': 'به‌روزرسانی‌ها',
+            'Artificial': 'مصنوعی', 'Intelligence': 'هوش',
+            'Technology': 'تکنولوژی', 'Tech': 'تک',
+            'Annual': 'سالانه', 'Report': 'گزارش', 'Review': 'بررسی',
+            'Guide': 'راهنما', 'Tutorial': 'آموزش', 'Explained': 'توضیح داده شده',
         }
         fa_title = title_en
         for en, fa in replacements.items():
@@ -434,6 +474,8 @@ class SubaruRadar:
                 
                     # Check if AI related
                     if not self.is_ai_related(title + ' ' + description):
+                        continue
+                    if self._is_category_page(link, title):
                         continue
 
                     clean_url = self._clean_url(link)
