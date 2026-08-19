@@ -298,70 +298,22 @@ class SubaruRadar:
         return new_items[:CONFIG['MAX_AI_NEWS_PER_CYCLE']]
 
     def enrich_with_ai(self, items):
-        """Use Pollinations AI to enrich news with Persian titles, summaries, categories.
-        Falls back to local generation if API fails."""
+        """Enrich news with Persian titles, summaries, categories using content-aware local generation.
+        (Pollinations disabled - was returning generic responses)"""
         if not items: return items
 
         for item in items:
-            enriched = False
             # Fetch article content for better summarization
             article_content = self.fetch_article_content(item['url'])
-            # Store for fallback use
             item['article_content'] = article_content
-            
-            # Use RSS description or DDGS body as additional context
-            extra_context = item.get('description', '') or item.get('body', '') or ''
-            combined_content = (extra_context + ' ' + article_content)[:6000]
-            
-            try:
-                prompt = f"""این خبر هوش مصنوعی رو تحلیل کن و فقط JSON برگردان:
-عنوان: {item['title_en']}
-منبع: {item['source']}
-لینک: {item['url']}
-متن مقاله: {combined_content if combined_content else 'در دسترس نیست'}
 
-فیلدهای خروجی (همه به فارسی، بدون هیچ کلمه انگلیسی):
-- title_fa: عنوان فارسی (ماکس ۸۰ کاراکتر)
-- summary: ۲-۳ نکته کلیدی به فارسی (خلاصه واقعی از متن مقاله، نه جنریک)
-- impact: تحلیل اهمیت به فارسی (یک خط)
-- ai_category: یکی از [مدل، تحقیق، ابزار، کسب‌وکار، سیاست، سخت‌افزار، امنیت]
-- sentiment: -۱ تا ۱ (منفی تا مثبت)
-- urgency: ۱-۹ (خبر فوری=۹، مهم=۷، معمولی=۵)
-
-فقط JSON خالص، بدون متن اضافی، بدون مارک‌داون."""
-                pollinations_url = "https://text.pollinations.ai/openai"
-                payload = {
-                    "messages": [{"role": "user", "content": prompt}],
-                    "model": "gpt-4o-mini",
-                    "temperature": 0.3,
-                    "max_tokens": 600,
-                }
-                resp = self.scraper.post(pollinations_url, json=payload, timeout=90)
-                if resp.status_code == 200:
-                    result = resp.json()
-                    content = result.get('choices', [{}])[0].get('message', {}).get('content', '{}')
-                    import re
-                    json_match = re.search(r'\{.*\}', content, re.DOTALL)
-                    if json_match:
-                        ai_data = json.loads(json_match.group())
-                        item['title_fa'] = ai_data.get('title_fa', item['title_en'])
-                        item['summary'] = ai_data.get('summary', [])
-                        item['impact'] = ai_data.get('impact', '')
-                        item['ai_category'] = ai_data.get('ai_category', 'عمومی')
-                        item['sentiment'] = ai_data.get('sentiment', 0.0)
-                        item['urgency'] = ai_data.get('urgency', item['urgency'])
-                        enriched = True
-            except Exception as e:
-                logger.warning(f"AI enrichment failed for {item['url']}: {e}")
-
-            # Fallback: local Persian generation using actual content
-            if not enriched:
-                item['title_fa'] = self._generate_persian_title(item['title_en'])
-                item['summary'] = self._generate_persian_summary(item['title_en'], item['source'], item.get('article_content', ''), item.get('description', ''))
-                item['impact'] = self._generate_persian_impact(item['title_en'])
-                item['ai_category'] = self._guess_category(item['title_en'])
-                item['sentiment'] = 0.1
-                item['urgency'] = item.get('urgency', 6)
+            # Use content-aware local Persian generation (PRIMARY METHOD)
+            item['title_fa'] = self._generate_persian_title(item['title_en'])
+            item['summary'] = self._generate_persian_summary(item['title_en'], item['source'], item.get('article_content', ''), item.get('description', ''))
+            item['impact'] = self._generate_persian_impact(item['title_en'])
+            item['ai_category'] = self._guess_category(item['title_en'])
+            item['sentiment'] = 0.1
+            item['urgency'] = item.get('urgency', 6)
 
         return items
 
