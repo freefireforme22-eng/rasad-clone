@@ -1,5 +1,55 @@
 [
   {
+    "id": "0ccf95db45",
+    "title_en": "Artificial intelligence | AP News",
+    "title_fa": "Artificial intelligence | AP اخبار",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "apnews.com",
+    "url": "https://apnews.com/hub/artificial-intelligence",
+    "clean_url": "https://apnews.com/hub/artificial-intelligence",
+    "image": "",
+    "timestamp": 1787195538.669158,
+    "ai_category": "سخت‌افزار",
+    "article_content": "",
+    "images": [
+      "https://dims.apnews.com/dims4/default/295c329/2147483647/strip/true/crop/675x450+12+0/resize/980x653!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2F90%2F29%2F4e3c1cc7446089a9101a7bdff4c8%2Fdefaultshareimage-copy.png",
+      "https://dims.apnews.com/dims4/default/b7e3ba0/2147483647/strip/true/crop/5528x3686+0+0/resize/727x485!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2F3b%2F20%2Fd1295eaec574c794c75462f2f71e%2F1abc9013b203420db69e659b54093dea",
+      "https://dims.apnews.com/dims4/default/328cbe6/2147483647/strip/true/crop/8487x5658+0+0/resize/599x399!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2F68%2F8d%2Fb885ea9b2fb02ba7a707bb4b928d%2Fbda2de7dbca4489cad0d830bf04f9b57"
+    ]
+  },
+  {
+    "id": "2bd2447b28",
+    "title_en": "Large language model - Wikipedia",
+    "title_fa": "Large language model - Wikipedia",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "en.wikipedia.org",
+    "url": "https://en.wikipedia.org/wiki/Large_language_model",
+    "clean_url": "https://en.wikipedia.org/wiki/Large_language_model",
+    "image": "",
+    "timestamp": 1787195540.219367,
+    "ai_category": "مدل",
+    "article_content": "",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/The_number_of_publications_about_Large_Language_Models_by_year.png/250px-The_number_of_publications_about_Large_Language_Models_by_year.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Trends_in_AI_training_FLOP_over_time_%282010-2025%29.svg/250px-Trends_in_AI_training_FLOP_over_time_%282010-2025%29.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/The-Transformer-model-architecture.png/330px-The-Transformer-model-architecture.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+    ]
+  },
+  {
     "id": "86251336a7",
     "title_en": "The Urgency of Open Source AI - cleverhack dot com",
     "title_fa": "The Urgency of بازمتن هوش مصنوعی - cleverhack dot com",
