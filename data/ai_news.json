@@ -1,5 +1,29 @@
 [
   {
+    "id": "ec0867ad9d",
+    "title_en": "LLM Leaderboard & AI Model Benchmarks — August 2026 | 397 ...",
+    "title_fa": "ال‌ام‌ال Leaderboard & هوش مصنوعی مدل Benchmarks — August 2026 | 397 ...",
+    "summary": [
+      "ال‌ام‌ال leaderboard , August 2026 Search models and benchmarks Data refreshed August 20, 2026 Supported 104 models Ranking method BenchAlign v5",
+      "2 3 source-linked updates Browse public updates Start the free Radar Brief Latest Ornith هوش مصنوعی · Aug 18, 2026 Source confirmed Dots Studio · Aug 14, 2026 Source confirmed Z"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "benchlm.ai",
+    "url": "https://benchlm.ai/",
+    "clean_url": "https://benchlm.ai",
+    "image": "",
+    "timestamp": 1787213275.6626635,
+    "ai_category": "مدل",
+    "article_content": "LLM leaderboard , August 2026 Search models and benchmarks Data refreshed August 20, 2026 Supported 104 models Ranking method BenchAlign v5.2 3 source-linked updates Browse public updates Start the free Radar Brief Latest Ornith AI · Aug 18, 2026 Source confirmed Dots Studio · Aug 14, 2026 Source confirmed Z.AI · Aug 14, 2026 Source confirmed Decision-ready picks Qualification method Decision Model Current measure Provenance Best open weight Qwen3.8 Max Alibaba 79.94 Best near-frontier value Kimi K3 Moonshot AI $15 Fastest measured Gemini 3.7 Flash Google 374 Largest useful context Grok 4.20 xAI 2M Qualification method Reading the table Embed the live leaderboard Dataset journal What changed in August 2026 Data verified August 20, 2026 Build a head-to-head comparison versus Compare these models Popular now Claude Fable 5 vs Claude Opus 4.7 (Adaptive) Claude Fable 5 vs Claude Opus 4.6 Claude Opus 4.7 (Adaptive) vs Claude Opus 4.6 Claude Fable 5 vs Qwen3.8 Max Claude Opus 4.7 (Adaptive) vs Qwen3.8 Max The evidence map Explore benchmarks by category Agentic 82 Coding 64 Multimodal 65 Reasoning 28 Knowledge 46 Instruction following 4 Multilingual 13 Math 32 More ranking paths Best for Coding Best Multimodal Best for Math Best for Reasoning Best Agentic Models Best Overall Best Open Source Best Chinese Models Best European Models Large Context Window Reasoning Models Provider Rankings Choose by workload Cybersecurity Long Context Tool Use Web Research Computer Use Document AI Image Understanding Frontend / App Dev Factuality Six-month release record Months 6 Releases 168 Lead changes 5 Explore the release timeline Best ranked model released in Aug 2026 Qwen3.8 Max Alibaba Score 79.94 Rank Provider Top-three avg. Models 01 Anthropic 83.1 20 02 OpenAI 76.3 38 03 Alibaba 72.5 21 Popular comparisons Claude Opus 5 vs GPT-5.6 Sol GPT-5.6 Sol vs Claude Sonnet 5 Kimi K3 vs GPT-5.6 Sol GPT-5.6 Sol vs Claude Opus 4.8 GPT-5.6 Terra vs Gemini 3.5 Flash GPT-5.6 Luna vs Gemini 3.5 Flash Gemini 3.7 Flash vs Gemini 3.6 Flash Gemini 3.6 Flash vs Gemini 3.5 Flash Gemini 3.5 Flash-Lite vs Gemini 3.1 Flash-Lite Tools and resources AI Prompt Writer Turn the work you need into a testable prompt Prompt Optimizer Get closer to usable output with a clearer prompt LLM Pricing Comparison Compare API costs across models Alternative Finder Find the best ChatGPT or Claude replacement Which LLM Should I Use? Get a personalized recommendation Cost Calculator Estimate your monthly API spend Methodology & Explainers How BenchLM scores and curates benchmarks Scoring methodology Scoring methodology Inspect method Category weights 100 % Scored categories 8 Ranking benchmarks 27 Display-only 307 Category and weight Benchmarks that affect the score Coverage Agentic 22 % 3 weighted · 79 context-only Coding 20 % 5 weighted · 59 context-only Reasoning 17 % 3 weighted · 25 context-only Multimodal 12 % 3 weighted · 62 context-only Knowledge 12 % 5 weighted · 41 context-only Multilingual 7 % 1 weighted · 12 context-only Instruction Following 5 % 2 weighted · 2 context-only Math 5 % 5 weighted · 27 context-only",
+    "images": [
+      "https://benchlm.ai/api/og",
+      "https://benchlm.ai/images/providers/anthropic.svg"
+    ]
+  },
+  {
     "id": "0c2edf061e",
     "title_en": "Large Language Models in Mental Health: A Systematic Review of Applications, Innovations, and Ethical Challenges",
     "title_fa": "Large زبان مدل‌ها in Mental Health: A Systematic بررسی of Applications, Innovations, and Ethical Challenges",
