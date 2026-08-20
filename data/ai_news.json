@@ -1,5 +1,305 @@
 [
   {
+    "id": "0c2edf061e",
+    "title_en": "Large Language Models in Mental Health: A Systematic Review of Applications, Innovations, and Ethical Challenges",
+    "title_fa": "Large زبان مدل‌ها in Mental Health: A Systematic بررسی of Applications, Innovations, and Ethical Challenges",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.18080",
+    "clean_url": "https://arxiv.org/abs/2608.18080",
+    "image": "",
+    "timestamp": 1787202390.5903375,
+    "ai_category": "مدل",
+    "article_content": "",
+    "images": [
+      "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/bibsonomy.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/reddit.png"
+    ]
+  },
+  {
+    "id": "46b9ecf1b4",
+    "title_en": "Self-Evolving Agents as Dynamic Graph Transformation: A Survey and New Perspective",
+    "title_fa": "Self-Evolving عامل‌ها as Dynamic Graph Transformation: A Survey and New Perspective",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.18104",
+    "clean_url": "https://arxiv.org/abs/2608.18104",
+    "image": "",
+    "timestamp": 1787202390.5904973,
+    "ai_category": "ابزار",
+    "article_content": "",
+    "images": [
+      "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      "https://arxiv.org/icons/licenses/by-nc-nd-4.0.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/bibsonomy.png"
+    ]
+  },
+  {
+    "id": "2b84f3c09e",
+    "title_en": "Emergence of Agentic AI: A Review on Evolution, Background, Working Principles, Applications, Adoption Factors, and Future Research Directions",
+    "title_fa": "Emergence of Agentic هوش مصنوعی: A بررسی on Evolution, Background, Working Principles, Applications, Adoption Factors...",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "پیشرفت‌های علمی پایه برای کاربردهای آینده فراهم می‌آورند",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.18110",
+    "clean_url": "https://arxiv.org/abs/2608.18110",
+    "image": "",
+    "timestamp": 1787202390.5905137,
+    "ai_category": "تحقیق",
+    "article_content": "",
+    "images": [
+      "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      "https://arxiv.org/icons/licenses/by-4.0.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/bibsonomy.png"
+    ]
+  },
+  {
+    "id": "189b8d8ac2",
+    "title_en": "Entropy-Constrained Adaptive Stochastic Quantization",
+    "title_fa": "Entropy-Constrained Adaptive Stochastic Quantization",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.18147",
+    "clean_url": "https://arxiv.org/abs/2608.18147",
+    "image": "",
+    "timestamp": 1787202390.6831832,
+    "ai_category": "عمومی",
+    "article_content": "",
+    "images": [
+      "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      "https://arxiv.org/icons/licenses/by-4.0.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/bibsonomy.png"
+    ]
+  },
+  {
+    "id": "d864eb0215",
+    "title_en": "H$^2$EDL: Hyper Evidential Deep Learning for Hierarchical Classification",
+    "title_fa": "H$^2$EDL: Hyper Evidential دیپ لرنینگ for Hierarchical طبقه‌بندی",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.18185",
+    "clean_url": "https://arxiv.org/abs/2608.18185",
+    "image": "",
+    "timestamp": 1787202390.6832554,
+    "ai_category": "عمومی",
+    "article_content": "",
+    "images": [
+      "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      "https://arxiv.org/icons/licenses/by-4.0.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/bibsonomy.png"
+    ]
+  },
+  {
+    "id": "35b10766b0",
+    "title_en": "What Can Artificial Intelligence Learn from Medicine? Generative Analogies and Reliable Machine Learning Systems",
+    "title_fa": "What Can هوش مصنوعی Learn from Medicine? Generative Analogies and Reliable ماشین لرنینگ Systems",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.18186",
+    "clean_url": "https://arxiv.org/abs/2608.18186",
+    "image": "",
+    "timestamp": 1787202390.683271,
+    "ai_category": "سخت‌افزار",
+    "article_content": "",
+    "images": [
+      "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      "https://arxiv.org/icons/licenses/by-4.0.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/bibsonomy.png"
+    ]
+  },
+  {
+    "id": "e86030a4c2",
+    "title_en": "A systematic review of machine learning techniques to address diagnosis and treatment of autism: challenges and opportunities",
+    "title_fa": "A systematic review of machine learning techniques to address diagnosis and treatment of autism: challenges and oppor...",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.18188",
+    "clean_url": "https://arxiv.org/abs/2608.18188",
+    "image": "",
+    "timestamp": 1787202390.683285,
+    "ai_category": "عمومی",
+    "article_content": "",
+    "images": [
+      "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      "https://arxiv.org/icons/licenses/by-nc-nd-4.0.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/bibsonomy.png"
+    ]
+  },
+  {
+    "id": "eb3057e686",
+    "title_en": "Safe Domain Adaptation for Physics: Overcoming Nuisances, Label Shifts, and Simulation Priors",
+    "title_fa": "Safe Domain آدابتیشن for Physics: Overcoming Nuisances, Label Shifts, and Simulation Priors",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.18190",
+    "clean_url": "https://arxiv.org/abs/2608.18190",
+    "image": "",
+    "timestamp": 1787202390.6833026,
+    "ai_category": "عمومی",
+    "article_content": "",
+    "images": [
+      "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      "https://arxiv.org/icons/licenses/by-sa-4.0.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/bibsonomy.png"
+    ]
+  },
+  {
+    "id": "1c0dd294b5",
+    "title_en": "ChiroEcho: extending automated bat vocalisation classification beyond the learned taxonomy",
+    "title_fa": "ChiroEcho: extending automated bat vocalisation classification beyond the learned taxonomy",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.18191",
+    "clean_url": "https://arxiv.org/abs/2608.18191",
+    "image": "",
+    "timestamp": 1787202390.6833172,
+    "ai_category": "عمومی",
+    "article_content": "",
+    "images": [
+      "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      "https://arxiv.org/icons/licenses/by-4.0.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/bibsonomy.png"
+    ]
+  },
+  {
+    "id": "749d93fe07",
+    "title_en": "Persona-Guided LLM Agents for Task-Oriented Dialogue",
+    "title_fa": "Persona-Guided ال‌ام‌ال عامل‌ها for Task-Oriented Dialogue",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.18085",
+    "clean_url": "https://arxiv.org/abs/2608.18085",
+    "image": "",
+    "timestamp": 1787202390.7827418,
+    "ai_category": "مدل",
+    "article_content": "",
+    "images": [
+      "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      "https://arxiv.org/icons/licenses/by-4.0.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/bibsonomy.png"
+    ]
+  },
+  {
+    "id": "f2c7fdca02",
+    "title_en": "Abliteration Mitigation via Refusal Aliases",
+    "title_fa": "Abliteration Mitigation via Refusal Aliases",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.18093",
+    "clean_url": "https://arxiv.org/abs/2608.18093",
+    "image": "",
+    "timestamp": 1787202390.7828646,
+    "ai_category": "عمومی",
+    "article_content": "",
+    "images": [
+      "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      "https://arxiv.org/icons/licenses/by-4.0.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/bibsonomy.png"
+    ]
+  },
+  {
+    "id": "4606ed1f33",
+    "title_en": "Big shake-up in Google’s AI team as DeepMind chief executive steps down | AI (artificial intelligence) | The Guardian",
+    "title_fa": "Big shake-up in گوگل’s هوش مصنوعی team as دیپ‌مایند chief executive steps down | هوش مصنوعی (artificial intelligence)...",
+    "summary": [
+      "Photograph: Ludovic Marin/Reuters Sir Demis Hassabis will become chair of DeepMind in a leadership overhaul",
+      "Photograph: Ludovic Marin/Reuters Big shake-up in گوگل’s هوش مصنوعی team as DeepMind chief executive steps down Two senior engineers are leaving company to launch startup amid fears گوگل is falling behind..."
+    ],
+    "impact": "شرکت‌های بزرگ تکنولوژی پیشروی در توسعه هوش مصنوعی را ادامه می‌دهند",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "theguardian.com",
+    "url": "https://www.theguardian.com/technology/2026/aug/05/big-shake-up-in-googles-ai-team-as-deepmind-chief-executive-steps-down",
+    "clean_url": "https://www.theguardian.com/technology/2026/aug/05/big-shake-up-in-googles-ai-team-as-deepmind-chief-executive-steps-down",
+    "image": "",
+    "timestamp": 1787202394.8249912,
+    "ai_category": "سخت‌افزار",
+    "article_content": "Sir Demis Hassabis will become chair of DeepMind in a leadership overhaul. Photograph: Ludovic Marin/Reuters Sir Demis Hassabis will become chair of DeepMind in a leadership overhaul. Photograph: Ludovic Marin/Reuters Big shake-up in Google’s AI team as DeepMind chief executive steps down Two senior engineers are leaving company to launch startup amid fears Google is falling behind in AI race Sir Demis Hassabis is stepping down as chief executive of Google DeepMind , in a leadership overhaul of the UK-based AI research lab. Hassabis, a Nobel prize recipient , is leaving his main managerial role to become chair of DeepMind – as well as taking on the new position of chief scientist at Alphabet, which is Google’s parent company. DeepMind will now be led by Koray Kavukcuoglu, its chief technology officer, under the title of senior vice-president. London-born Hassabis, 50, has been a totemic figure in AI’s breakthrough era, co-founding DeepMind in 2010 and selling it for £400m to Google four years later . His efforts led to him winning the 2024 Nobel prize in chemistry for breakthroughs in predicting and designing the structure of proteins, via DeepMind’s AlphaFold model. Shares in Alphabet , a $4.4tn (£3.3tn) company and a leading player in the AI race, closed down 4% on Wednesday. Hassabis said on Wednesday he had been working towards artificial general intelligence (AGI) – a theoretical state where a system can match a human at any cognitive task – and felt it was “close at hand”. Adding it was critical to ensure the achievement of AGI “goes well for humanity”, he said: “I’ve decided that now is the right time for me to hand over my day-to-day operational responsibilities at GDM, so that I have the time and space to focus on the big picture and help influence what is to come to the best of my ability.” As befits a Nobel winner, Hassabis has played the more thoughtful, statesmanlike role in the AI industry in recent years. Last month he called on the US to establish a global AI watchdog to monitor the world’s most powerful models. “What we collectively do now will determine how the next phase of civilisation unfolds,” he wrote on Substack. “By safely stewarding AGI into the world, we can enter a new golden age of scientific discovery and progress, and usher in a bright future of incredible human flourishing.” Hassabis will also remain as chief executive of Isomorphic Labs, a drug discovery company that spun out of DeepMind. skip past  He and Sanjay Ghemawat, another leading engineer, are leaving the company to launch a startup called Discovery Loop, which will focus on researching breakthroughs in machine learning, science and engineering. Some investors are concerned that Google is falling behind its rivals Anthropic and OpenAI , each of which hired a leading Google AI employee this summer. Both have made advances in creating coding agents. Explore more on these topics AI (artificial intelligence) Google Computing Alphabet DeepMind OpenAI Share Reuse this content",
+    "images": [
+      "https://i.guim.co.uk/img/media/856d1a261bc1c6edb95ee25eb2b395872df06843/622_0_6217_4973/master/6217.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=9d87f2071f9f0ad87447688818d71598",
+      "https://i.guim.co.uk/img/media/856d1a261bc1c6edb95ee25eb2b395872df06843/264_0_6217_4973/master/6217.jpg?width=465&dpr=1&s=none&crop=none",
+      "https://media.guim.co.uk/4933072e410c5b18df40be084aec6ac932ac8c99/0_0_12501_12500/500.jpg"
+    ]
+  },
+  {
     "id": "0ccf95db45",
     "title_en": "Artificial intelligence | AP News",
     "title_fa": "Artificial intelligence | AP اخبار",
