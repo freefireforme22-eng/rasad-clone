@@ -1,5 +1,27 @@
 [
   {
+    "id": "f310d41ce6",
+    "title_en": "AMD vs. NVIDIA: Comprehensive AI Chip Market Analysis Report",
+    "title_fa": "AMD vs. انویدیا: Comprehensive هوش مصنوعی تراشه Market تحلیل گزارش",
+    "summary": [
+      "مقایسه تراشه‌های هوش مصنوعی انویدیا، ای‌م‌دی و سفارشی برای آینده سخت‌افزار"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "linkedin.com",
+    "url": "https://www.linkedin.com/pulse/amd-vs-nvidia-comprehensive-ai-chip-market-analysis-report-aujla-behpc",
+    "clean_url": "https://www.linkedin.com/pulse/amd-vs-nvidia-comprehensive-ai-chip-market-analysis-report-aujla-behpc",
+    "image": "",
+    "timestamp": 1787356282.195004,
+    "ai_category": "سخت‌افزار",
+    "article_content": "",
+    "images": [
+      "https://media.licdn.com/dms/image/v2/D5612AQHalreHaxMCrg/article-cover_image-shrink_720_1280/B56Zp32dmlJ4AI-/0/1762947359004?e=2147483647&v=beta&t=r6_nNadbenuwcN8aWdBUKeKUFyR7U1d7MPtkymvpuk4"
+    ]
+  },
+  {
     "id": "50f9b540fa",
     "title_en": "AI & Machine Learning News Hub - Latest Research & Breakthroughs",
     "title_fa": "هوش مصنوعی & ماشین لرنینگ اخبار Hub - جدیدترین تحقیق & Breakthroughs",
