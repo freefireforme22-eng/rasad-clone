@@ -1,5 +1,30 @@
 [
   {
+    "id": "dfb2f475f8",
+    "title_en": "Time-Series Retrieval for Grounding Multimodal Language Models in Remaining Useful Life",
+    "title_fa": "Time-Series Retrieval for Grounding چند حالته زبان مدل‌ها in Remaining Useful Life",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.19218",
+    "clean_url": "https://arxiv.org/abs/2608.19218",
+    "image": "",
+    "timestamp": 1787299000.5213962,
+    "ai_category": "مدل",
+    "article_content": "",
+    "images": [
+      "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/bibsonomy.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/reddit.png"
+    ]
+  },
+  {
     "id": "ccef76bb54",
     "title_en": "Air Traffic Control Using Large Language Models: Prompt Engineering, Architecture, and Evaluation",
     "title_fa": "Air Traffic Control Using Large زبان مدل‌ها: پرامپت Engineering, Architecture, and Evaluation",
