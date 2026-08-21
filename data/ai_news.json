@@ -1,5 +1,380 @@
 [
   {
+    "id": "ccef76bb54",
+    "title_en": "Air Traffic Control Using Large Language Models: Prompt Engineering, Architecture, and Evaluation",
+    "title_fa": "Air Traffic Control Using Large زبان مدل‌ها: پرامپت Engineering, Architecture, and Evaluation",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.19299",
+    "clean_url": "https://arxiv.org/abs/2608.19299",
+    "image": "",
+    "timestamp": 1787289467.0750961,
+    "ai_category": "مدل",
+    "article_content": "",
+    "images": [
+      "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/bibsonomy.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/reddit.png"
+    ]
+  },
+  {
+    "id": "ee499e0e3d",
+    "title_en": "Towards On-Board Implementation of ML-Based Helicopter Weight Estimator",
+    "title_fa": "Towards On-Board Implementation of ML-Based Helicopter Weight Estimator",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.19210",
+    "clean_url": "https://arxiv.org/abs/2608.19210",
+    "image": "",
+    "timestamp": 1787289467.1022313,
+    "ai_category": "عمومی",
+    "article_content": "",
+    "images": [
+      "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/bibsonomy.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/reddit.png"
+    ]
+  },
+  {
+    "id": "8013b626cb",
+    "title_en": "Triangular Fuzzy Rescaling Distance",
+    "title_fa": "Triangular Fuzzy Rescaling Distance",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.19234",
+    "clean_url": "https://arxiv.org/abs/2608.19234",
+    "image": "",
+    "timestamp": 1787289467.1022544,
+    "ai_category": "عمومی",
+    "article_content": "",
+    "images": [
+      "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      "https://arxiv.org/icons/licenses/by-4.0.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/bibsonomy.png"
+    ]
+  },
+  {
+    "id": "0bc02df4e0",
+    "title_en": "Holtercare-Bench: A Multimodal Benchmark for Evaluating Long-Term Dynamic ECG Analysis",
+    "title_fa": "Holtercare-Bench: A چند حالته بنچ‌مارک for Evaluating Long-Term Dynamic ECG تحلیل",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.19297",
+    "clean_url": "https://arxiv.org/abs/2608.19297",
+    "image": "",
+    "timestamp": 1787289467.102273,
+    "ai_category": "تحقیق",
+    "article_content": "",
+    "images": [
+      "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      "https://arxiv.org/icons/licenses/by-4.0.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/bibsonomy.png"
+    ]
+  },
+  {
+    "id": "16b0adaeef",
+    "title_en": "Quantum Kernel Estimation for the Discovery of Early Lung Cancer Detection",
+    "title_fa": "Quantum Kernel Estimation for the Discovery of Early Lung Cancer Detection",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.19304",
+    "clean_url": "https://arxiv.org/abs/2608.19304",
+    "image": "",
+    "timestamp": 1787289467.102289,
+    "ai_category": "عمومی",
+    "article_content": "",
+    "images": [
+      "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/bibsonomy.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/reddit.png"
+    ]
+  },
+  {
+    "id": "8808a0afc4",
+    "title_en": "Improved Confidence Estimates for Black-Box Large Language Models",
+    "title_fa": "Improved Confidence Estimates for Black-Box Large زبان مدل‌ها",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.19323",
+    "clean_url": "https://arxiv.org/abs/2608.19323",
+    "image": "",
+    "timestamp": 1787289467.1023035,
+    "ai_category": "مدل",
+    "article_content": "",
+    "images": [
+      "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      "https://arxiv.org/icons/licenses/by-4.0.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/bibsonomy.png"
+    ]
+  },
+  {
+    "id": "3ac85e5588",
+    "title_en": "Uncovering the Limits of Proof Sharing for Neural Networks",
+    "title_fa": "Uncovering the Limits of Proof Sharing for Neural Networks",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.19351",
+    "clean_url": "https://arxiv.org/abs/2608.19351",
+    "image": "",
+    "timestamp": 1787289467.1023517,
+    "ai_category": "عمومی",
+    "article_content": "",
+    "images": [
+      "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/bibsonomy.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/reddit.png"
+    ]
+  },
+  {
+    "id": "40c8e9f6e3",
+    "title_en": "Longitudinal Bayesian Learning of Continuous Disease Position across the Alzheimer's Disease Continuum",
+    "title_fa": "طی‌دراز Bayesian Learning of Continuous Disease Position across the Alzheimer's Disease Continuum",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.19436",
+    "clean_url": "https://arxiv.org/abs/2608.19436",
+    "image": "",
+    "timestamp": 1787289467.1023648,
+    "ai_category": "عمومی",
+    "article_content": "",
+    "images": [
+      "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      "https://arxiv.org/icons/licenses/by-nc-nd-4.0.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/bibsonomy.png"
+    ]
+  },
+  {
+    "id": "2f0b32e043",
+    "title_en": "LLM as Detector: An In-context Learning Approach for Tabular Anomaly Detection",
+    "title_fa": "ال‌ام‌ال as Detector: An In-context Learning Approach for Tabular Anomaly Detection",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.19463",
+    "clean_url": "https://arxiv.org/abs/2608.19463",
+    "image": "",
+    "timestamp": 1787289467.102412,
+    "ai_category": "مدل",
+    "article_content": "",
+    "images": [
+      "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      "https://arxiv.org/icons/licenses/by-4.0.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/bibsonomy.png"
+    ]
+  },
+  {
+    "id": "7c12bfb728",
+    "title_en": "Transformer Models for Text Summarization: A Comparative Study of BART, BERT, and RoBERTa",
+    "title_fa": "ترنسفورمر مدل‌ها for Text Summarization: A Comparative مطالعه of BART, BERT, and RoBERTa",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "پیشرفت‌های علمی پایه برای کاربردهای آینده فراهم می‌آورند",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.19200",
+    "clean_url": "https://arxiv.org/abs/2608.19200",
+    "image": "",
+    "timestamp": 1787289467.1237178,
+    "ai_category": "مدل",
+    "article_content": "",
+    "images": [
+      "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      "https://arxiv.org/icons/licenses/by-4.0.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/bibsonomy.png"
+    ]
+  },
+  {
+    "id": "e4b533e9f4",
+    "title_en": "Automatic bioinformatic software named entity recognition from literature",
+    "title_fa": "Automatic bioinformatic software named entity recognition from literature",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.19201",
+    "clean_url": "https://arxiv.org/abs/2608.19201",
+    "image": "",
+    "timestamp": 1787289467.123741,
+    "ai_category": "عمومی",
+    "article_content": "",
+    "images": [
+      "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/bibsonomy.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/reddit.png"
+    ]
+  },
+  {
+    "id": "266c0152ee",
+    "title_en": "Asymmetric Attention Heads: Structured Head-Wise Context Allocation for Transformer Attention",
+    "title_fa": "Asymmetric توجه Heads: ساختاریافته Head-Wise بافت Allocation for ترنسفورمر توجه",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.19203",
+    "clean_url": "https://arxiv.org/abs/2608.19203",
+    "image": "",
+    "timestamp": 1787289467.1237607,
+    "ai_category": "عمومی",
+    "article_content": "",
+    "images": [
+      "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/bibsonomy.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/reddit.png"
+    ]
+  },
+  {
+    "id": "5be78e0c04",
+    "title_en": "Hallucination as a Feature, not a Defect: Evaluating a multi-agent architecture to transform speculative language-model outputs into testable scientific hypotheses",
+    "title_fa": "Hallucination as a Feature, not a Defect: Evaluating a multi-agent architecture to transform speculative language-mod...",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.19206",
+    "clean_url": "https://arxiv.org/abs/2608.19206",
+    "image": "",
+    "timestamp": 1787289467.1237786,
+    "ai_category": "مدل",
+    "article_content": "",
+    "images": [
+      "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      "https://arxiv.org/icons/licenses/by-4.0.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/bibsonomy.png"
+    ]
+  },
+  {
+    "id": "4f5c808826",
+    "title_en": "Compliance, Capability, and Conflict: Benchmarking Multimodal LLMs under System Messages",
+    "title_fa": "Compliance, Capability, and Conflict: Benchmarking چند حالته LLMs under System Messages",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.19207",
+    "clean_url": "https://arxiv.org/abs/2608.19207",
+    "image": "",
+    "timestamp": 1787289467.1237922,
+    "ai_category": "مدل",
+    "article_content": "",
+    "images": [
+      "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/bibsonomy.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/reddit.png"
+    ]
+  },
+  {
+    "id": "763f384b5e",
+    "title_en": "When Irrelevant Text Matters: Affine Margin Shifts in Multimodal Large Language Models",
+    "title_fa": "When Irrelevant Text Matters: Affine Margin Shifts in چند حالته Large زبان مدل‌ها",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.19208",
+    "clean_url": "https://arxiv.org/abs/2608.19208",
+    "image": "",
+    "timestamp": 1787289467.1238074,
+    "ai_category": "مدل",
+    "article_content": "",
+    "images": [
+      "https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png",
+      "https://arxiv.org/icons/licenses/by-4.0.png",
+      "https://arxiv.org/static/browse/0.3.4/images/icons/social/bibsonomy.png"
+    ]
+  },
+  {
     "id": "ec0867ad9d",
     "title_en": "LLM Leaderboard & AI Model Benchmarks — August 2026 | 397 ...",
     "title_fa": "ال‌ام‌ال Leaderboard & هوش مصنوعی مدل Benchmarks — August 2026 | 397 ...",
