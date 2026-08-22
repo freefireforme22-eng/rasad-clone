@@ -1,5 +1,72 @@
 [
   {
+    "id": "f341baf639",
+    "title_en": "Artificial intelligence (AI) | Definition, Examples, Types ...",
+    "title_fa": "Artificial intelligence (هوش مصنوعی) | Definition, Examples, Types ...",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "britannica.com",
+    "url": "https://www.britannica.com/technology/artificial-intelligence",
+    "clean_url": "https://www.britannica.com/technology/artificial-intelligence",
+    "image": "",
+    "timestamp": 1787417882.182062,
+    "ai_category": "سخت‌افزار",
+    "article_content": "",
+    "images": []
+  },
+  {
+    "id": "fef75d878a",
+    "title_en": "Artificial Intelligence (AI): What It Is, How It Works, Types,...",
+    "title_fa": "هوش مصنوعی (هوش مصنوعی): What It Is, How It Works, Types,...",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "investopedia.com",
+    "url": "https://www.investopedia.com/terms/a/artificial-intelligence-ai.asp",
+    "clean_url": "https://www.investopedia.com/terms/a/artificial-intelligence-ai.asp",
+    "image": "",
+    "timestamp": 1787417882.1819992,
+    "ai_category": "سخت‌افزار",
+    "article_content": "",
+    "images": []
+  },
+  {
+    "id": "99b7a67ff5",
+    "title_en": "Artificial intelligence - Wikipedia",
+    "title_fa": "Artificial intelligence - Wikipedia",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "en.m.wikipedia.org",
+    "url": "https://en.m.wikipedia.org/wiki/Artificial_intelligence",
+    "clean_url": "https://en.m.wikipedia.org/wiki/Artificial_intelligence",
+    "image": "",
+    "timestamp": 1787417882.1819723,
+    "ai_category": "سخت‌افزار",
+    "article_content": "",
+    "images": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/General_Formal_Ontology.svg/330px-General_Formal_Ontology.svg.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Supervised_and_unsupervised_learning.png/500px-Supervised_and_unsupervised_learning.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Kismet-IMG_6007-gradient.jpg/250px-Kismet-IMG_6007-gradient.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail"
+    ]
+  },
+  {
     "id": "29d65b4fe1",
     "title_en": "Latest AI News & Real-Time Updates | Daily Artificial Intelligence ...",
     "title_fa": "جدیدترین هوش مصنوعی اخبار & Real-Time به‌روزرسانی‌ها | Daily هوش مصنوعی ...",
