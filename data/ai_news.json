@@ -1,5 +1,26 @@
 [
   {
+    "id": "af8484b83a",
+    "title_en": "Essential news on AI regulation, governance and innovation",
+    "title_fa": "Essential news on هوش مصنوعی regulation, governance and innovation",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 3,
+    "sentiment": 0.1,
+    "source": "insideaipolicy.com",
+    "url": "https://insideaipolicy.com/content/essential-news-ai-regulation-governance-and-innovation",
+    "clean_url": "https://insideaipolicy.com/content/essential-news-ai-regulation-governance-and-innovation",
+    "image": "",
+    "timestamp": 1787439364.2621682,
+    "ai_category": "امنیت",
+    "article_content": "",
+    "images": []
+  },
+  {
     "id": "f341baf639",
     "title_en": "Artificial intelligence (AI) | Definition, Examples, Types ...",
     "title_fa": "Artificial intelligence (هوش مصنوعی) | Definition, Examples, Types ...",
