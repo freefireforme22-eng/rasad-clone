@@ -938,7 +938,7 @@ class SubaruRadar:
         urgency_avg = sum(int(it.get('urgency', 5)) for it in items) / max(1, len(items))
         urgency_bar = "🔥" * min(5, max(1, int(round(urgency_avg / 2))))
         md_parts.append(f"\n⚡ **شاخص اهمیت:** {urgency_bar} \({int(urgency_avg)}/10\)")
-        md_parts.append(f"\n🔄 هر ۳ ساعت | 🤖 رصد خودکار")
+        md_parts.append(f"\n🔄 بروزرسانی خودکار هر ۳ ساعت")
         md_parts.append(f"\n#هوش_مصنوعی #اخبار")
 
         result = "\n".join(md_parts)
