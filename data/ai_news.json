@@ -1,5 +1,30 @@
 [
   {
+    "id": "8bdd412668",
+    "title_en": "Google DeepMind",
+    "title_fa": "گوگل دیپ‌مایند",
+    "summary": [
+      "What if you were to peer inside the ‘mind’ of هوش مصنوعی? You wouldn't find fully formed thoughts, just vast arrays of numbers",
+      "Unlike traditional language models, autonomous agents can execute multi-step plans and perform complex tasks on your behalf"
+    ],
+    "impact": "شرکت‌های بزرگ تکنولوژی پیشروی در توسعه هوش مصنوعی را ادامه می‌دهند",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "deepmind.google",
+    "url": "https://deepmind.google/",
+    "clean_url": "https://deepmind.google",
+    "image": "",
+    "timestamp": 1787491342.2173376,
+    "ai_category": "عمومی",
+    "article_content": "What if you were to peer inside the ‘mind’ of AI? You wouldn't find fully formed thoughts, just vast arrays of numbers. Unlike traditional language models, autonomous agents can execute multi-step plans and perform complex tasks on your behalf. But what happens when millions of these agents are not just working for us, but transacting, negotiating, and delegating to one another? Exactly one decade later, we look back at the match that sparked the modern AI revolution. Demis shares his vision for the path to AGI - from solving \"root node\" problems in fusion energy and material science to the rise of world models and simulations. Shane walks host Hannah Fry through his AGI framework, breaking down the levels from minimal AGI to full AGI, and his timelines for each.",
+    "images": [
+      "https://lh3.googleusercontent.com/BJIjbCcZWJxE1GFvgIXWdWFXW0ECXBzsBe-JHx95GSuDVFKdli-cocBQRXll_xaipD6bNQ0B_Wz7JI2Ken5TFjrfUuSlv0hgq2qjgirOMK2eirjLXA8=w1200-h630-n-nu-rw",
+      "https://lh3.googleusercontent.com/wWEwX2i0HtKcCbqllmsPq68sJY8vl0qTP1O8gXfEl81ulUVafxvPrgtY_p60TZGOMTgiz_5u_VQvGFYQckQVol37BnvcPoyXENT657y-PyMsRE5oEw=w1440",
+      "https://lh3.googleusercontent.com/Z99aMe7hQGCtGzi9YK3RbJnKC78DwOuiUk9NCsehJRoxj-AL6JCKzK1bBFNXilwBZw97HKyHcMs396sEo_-XuW7QPGblxJGeI0Hik_iwFCRfMUMVjQ=w1440"
+    ]
+  },
+  {
     "id": "af8484b83a",
     "title_en": "Essential news on AI regulation, governance and innovation",
     "title_fa": "Essential news on هوش مصنوعی regulation, governance and innovation",
