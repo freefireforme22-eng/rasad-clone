@@ -844,97 +844,139 @@ class SubaruRadar:
 
         return new_items
 
-    # ─── TELEGRAM FORMATTER (Rasad-style) ───
-    def _escape_markdown(self, text):
-        """Escape Markdown special characters"""
+    # ─── TELEGRAM FORMATTER (Rasad Rich v2 — Bot API 10.2 sendRichMessage) ───
+    def _esc_md(self, text):
+        """Escape Markdown special characters for Rich Markdown."""
         if not text: return ""
-        # Escape: _ * [ ] ( ) ~ ` > # + - = | { } . !
-        escape_chars = r'_*[]()~`>#+-=|{}.!'
-        return ''.join(f'\\{c}' if c in escape_chars else c for c in text)
+        escape_chars = set('_*[]()~`>#+-=|{}.!')
+        return ''.join(f'\\{c}' if c in escape_chars else c for c in str(text))
 
-    def format_ai_news_for_telegram(self, items):
-        """Format AI news in Rasad-style for Telegram (full Persian) - max 15 items"""
-        if not items: return ""
+    def format_ai_news_rich_markdown(self, items):
+        """Format AI news as Rich Markdown (headings, lists, toggle, table) - max 12 items"""
+        if not items:
+            return None
 
-        # Limit to 15 items max
-        items = items[:15]
+        items = items[:12]
+        now = datetime.now(timezone(timedelta(hours=3, minutes=30)))
+        stamp = now.strftime('%H:%M — %Y/%m/%d')
 
-        lines = ["🤖 **اخبار هوش مصنوعی - سوبارو نیوز**", ""]
+        cat_emoji = {
+            'مدل': '🧠', 'تحقیق': '🔬', 'ابزار': '🛠',
+            'کسب‌وکار': '💼', 'سیاست': '⚖️', 'سخت‌افزار': '💾',
+            'امنیت': '🛡️', 'عمومی': '📰'
+        }
 
-        for item in items:
-            cat_emoji = {
-                'مدل': '🧠', 'تحقیق': '🔬', 'ابزار': '🛠',
-                'کسب‌وکار': '💼', 'سیاست': '⚖️', 'سخت‌افزار': '💾',
-                'امنیت': '🛡️', 'عمومی': '📰'
-            }.get(item.get('ai_category', 'عمومی'), '📰')
+        md_parts = []
+        md_parts.append(f"# 🤖 اخبار هوش مصنوعی — سوبارو نیوز\n")
+        md_parts.append(f"⏱ **بروزرسانی: {stamp}** (تهران)\n")
+        md_parts.append("---\n")
+        md_parts.append("## 📌 سرخط مهم‌ترین اخبار\n")
 
-            title = self._escape_markdown(item.get('title_fa') or item.get('title_en', 'بدون عنوان'))
-            source = self._escape_markdown(item.get('source', 'منبع ناشناس'))
+        # Headlines section (bulleted list)
+        for item in items[:8]:
+            emoji = cat_emoji.get(item.get('ai_category', 'عمومی'), '📰')
+            title_fa = item.get('title_fa') or item.get('title_en') or 'بدون عنوان'
+            source = item.get('source', 'منبع ناشناس')
             url = item.get('url', '')
+            link_part = f" — [{self._esc_md(source)}]({url})" if url else f" ({self._esc_md(source)})"
+            md_parts.append(f"- {emoji} {self._esc_md(title_fa)}{link_part}")
+
+        md_parts.append("\n---\n")
+
+        # Details in collapsible toggle blocks
+        md_parts.append("## 📋 تحلیل و جزئیات\n")
+        for idx, item in enumerate(items):
+            emoji = cat_emoji.get(item.get('ai_category', 'عمومی'), '📰')
+            title_fa = item.get('title_fa') or item.get('title_en') or 'بدون عنوان'
+            source = item.get('source', 'منبع ناشناس')
+            url = item.get('url', '')
+            summary = item.get('summary', [])
+            impact = item.get('impact', '')
             ai_cat = item.get('ai_category', 'عمومی')
 
-            # Summary
-            summary = item.get('summary', [])
-            if summary:
-                for s in summary:
-                    s_clean = self._escape_markdown(s)
-                    lines.append(f"▸ {s_clean}")
-
-            # Impact
-            impact = item.get('impact', '')
+            inner_lines = []
+            for s in summary[:3]:
+                inner_lines.append(f"- {self._esc_md(s)}")
             if impact:
-                lines.append(f"💡 {self._escape_markdown(impact)}")
-
-            # Source and link
-            lines.append(f"📰 منبع: {source}")
-            lines.append(f"🔗 {url}")
-
-            # Hashtags (Persian)
-            tags = ['#هوش_مصنوعی', f'#{ai_cat}']
+                inner_lines.append(f"\n💡 **تحلیل:** {self._esc_md(impact)}")
+            
+            # Source tags
+            tags = [f"`#{ai_cat}`"]
             title_text = (item.get('title_fa', '') + ' ' + item.get('title_en', '')).lower()
-            if 'openai' in title_text or 'اوپن‌ای‌آی' in title_text:
-                tags.append('#اوپن_ای_آی')
-            if 'google' in title_text or 'گوگل' in title_text:
-                tags.append('#گوگل')
-            if 'nvidia' in title_text or 'انویدیا' in title_text:
-                tags.append('#انویدیا')
-            if 'مایکروسافت' in title_text or 'microsoft' in title_text:
-                tags.append('#مایکروسافت')
+            tag_map = [('openai', 'اوپن‌ای‌آی', '#اوپن_ای_آی'), ('google', 'گوگل', '#گوگل'),
+                       ('nvidia', 'انویدیا', '#انویدیا'), ('microsoft', 'مایکروسافت', '#مایکروسافت'),
+                       ('anthropic', 'آنتروپیک', '#آنتروپیک')]
+            for en, fa, tg in tag_map:
+                if en in title_text or fa in title_text:
+                    tags.append(tg)
+            inner_lines.append("\n" + "  ".join(tags))
 
-            lines.append(f"{' '.join(tags)}")
-            lines.append("━━━━━━━━━━━━━━━━")
+            if url:
+                inner_lines.append(f"\n🔗 [مشاهده منبع کامل]({url})")
 
-        lines.append("")
-        lines.append(f"⏰ آپدیت: {datetime.now(timezone(timedelta(hours=3, minutes=30))).strftime('%H:%M')} | 🔄 هر ۳ ساعت")
-        lines.append("#سوبارو_نیوز #هوش_مصنوعی #AI")
+            summary_txt = "\n".join(inner_lines)
+            md_parts.append(
+                f"<details>\n<summary>{emoji} {self._esc_md(title_fa)} — {self._esc_md(source)}</summary>\n\n"
+                f"{summary_txt}\n\n</details>\n"
+            )
 
-        result = "\n".join(lines)
-        
-        # Telegram message limit is 4096 chars - truncate if needed
-        if len(result) > 4000:
-            # Keep header and first items that fit
-            truncated_lines = ["🤖 **اخبار هوش مصنوعی - سوبارو نیوز**", ""]
-            for line in lines[2:]:  # Skip header
-                test_result = "\n".join(truncated_lines + [line])
-                if len(test_result) > 3900:
-                    break
-                truncated_lines.append(line)
-            truncated_lines.append("")
-            truncated_lines.append("... (محدودیت طول پیام تلگرام)")
-            truncated_lines.append(f"⏰ آپدیت: {datetime.now(timezone(timedelta(hours=3, minutes=30))).strftime('%H:%M')} | 🔄 هر ۳ ساعت")
-            truncated_lines.append("#سوبارو_نیوز #هوش_مصنوعی #AI")
-            result = "\n".join(truncated_lines)
-        
+        # Stats table
+        n_total = len(items)
+        cats = {}
+        for it in items:
+            c = it.get('ai_category', 'عمومی')
+            cats[c] = cats.get(c, 0) + 1
+        if len(cats) >= 2:
+            md_parts.append("\n## 📊 آمار این بروزرسانی\n")
+            md_parts.append("| دسته | تعداد |")
+            md_parts.append("|---|---|")
+            for c, cnt in sorted(cats.items(), key=lambda x: -x[1]):
+                e = cat_emoji.get(c, '📰')
+                md_parts.append(f"| {e} {c} | {cnt} |")
+            md_parts.append("")
+
+        urgency_avg = sum(int(it.get('urgency', 5)) for it in items) / max(1, len(items))
+        urgency_bar = "🔥" * min(5, max(1, int(round(urgency_avg / 2))))
+        md_parts.append(f"\n⚡ **شاخص اهمیت:** {urgency_bar} \({int(urgency_avg)}/10\)")
+        md_parts.append(f"\n🔄 هر ۳ ساعت | 🤖 رصد خودکار سوبارو نیوز")
+        md_parts.append(f"\n#سوبارو_نیوز #هوش_مصنوعی")
+
+        result = "\n".join(md_parts)
+
+        # Rich message limit is 32768 chars; keep a sane cap
+        if len(result) > 30000:
+            result = result[:29800] + "\n\n... (ادامه در بروزرسانی بعدی)"
         return result
 
     def send_to_telegram(self, text):
-        """Send formatted message to Telegram channel"""
+        """Send formatted message to Telegram channel via sendRichMessage (Bot API 10.2).
+        Falls back to legacy Markdown sendMessage if rich fails."""
         token = CONFIG['TELEGRAM']['BOT_TOKEN']
         chat_id = CONFIG['TELEGRAM']['CHANNEL_ID']
         if not token or not chat_id:
             logger.warning("Telegram credentials not configured")
             return False
 
+        # Primary: Rich message (headings, toggle, tables, checklists...)
+        url = f"https://api.telegram.org/bot{token}/sendRichMessage"
+        payload = {
+            'chat_id': chat_id,
+            'rich_message': {'markdown': text},
+        }
+        try:
+            resp = self.scraper.post(url, json=payload, timeout=25)
+            if resp.status_code == 200:
+                data = resp.json()
+                if data.get("ok"):
+                    logger.info("✅ Rich message sent successfully")
+                    return True
+                logger.warning(f"Rich API not ok: {data.get('description')}")
+            else:
+                logger.warning(f"Rich API HTTP {resp.status_code}: {resp.text[:200]}")
+        except Exception as e:
+            logger.warning(f"Rich send failed: {e}")
+
+        # Fallback: legacy markdown
         url = f"https://api.telegram.org/bot{token}/sendMessage"
         payload = {
             'chat_id': chat_id,
@@ -945,7 +987,7 @@ class SubaruRadar:
         try:
             resp = self.scraper.post(url, json=payload, timeout=15)
             if resp.status_code == 200:
-                logger.info("✅ Telegram message sent successfully")
+                logger.info("✅ Telegram message sent (legacy fallback)")
                 return True
             else:
                 logger.error(f"Telegram API error: {resp.status_code} - {resp.text}")
@@ -1016,10 +1058,10 @@ class SubaruRadar:
                     logger.error(f"Telegram media group send failed: {e}")
                     success = False
 
-        # Send items without images as regular message
+        # Send remaining items as ONE rich digest message
         if items_without_images:
-            telegram_text = self.format_ai_news_for_telegram(items_without_images)
-            if not self.send_to_telegram(telegram_text):
+            telegram_text = self.format_ai_news_rich_markdown(items_without_images)
+            if telegram_text and not self.send_to_telegram(telegram_text):
                 success = False
 
         return success
