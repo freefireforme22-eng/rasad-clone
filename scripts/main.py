@@ -282,16 +282,35 @@ class SubaruRadar:
             logger.warning(f"Failed to fetch article content from {url}: {e}")
             return "", []
 
+    def _is_junk_image(self, img_url):
+        """Filter logos, icons, avatars, tracking pixels and data URIs."""
+        if not img_url:
+            return True
+        u = img_url.lower()
+        if u.startswith('data:') or u.endswith('.svg'):
+            return True
+        junk_words = ('logo', 'icon', 'avatar', 'sprite', 'favicon', 'pixel',
+                      'banner-ad', 'placeholder', 'default-image', '1x1',
+                      'arxiv-logo', 'badge')
+        if any(w in u for w in junk_words):
+            return True
+        return False
+
     def _extract_article_images(self, soup, base_url):
         """Extract relevant images from article page"""
         images = []
         from urllib.parse import urljoin
-        
+
+        def _add(u):
+            u2 = urljoin(base_url, u)
+            if u2 not in images and not self._is_junk_image(u2):
+                images.append(u2)
+
         # Priority 1: Open Graph / Twitter Card images
         og_image = soup.find('meta', property='og:image') or soup.find('meta', attrs={'name': 'twitter:image'})
         if og_image and og_image.get('content'):
             img_url = urljoin(base_url, og_image['content'])
-            images.append(img_url)
+            _add(img_url)
         
         # Priority 2: First large image in article content
         article_imgs = soup.select('article img, .post-content img, .entry-content img, .article-content img, .content-body img, main img, .main-content img')
@@ -308,7 +327,7 @@ class SubaruRadar:
                         pass
                 img_url = urljoin(base_url, src)
                 if img_url not in images:
-                    images.append(img_url)
+                    _add(img_url)
         
         # Priority 3: Any large img in main content area
         if len(images) < 3:
@@ -326,7 +345,7 @@ class SubaruRadar:
                             pass
                     img_url = urljoin(base_url, src)
                     if img_url not in images:
-                        images.append(img_url)
+                        _add(img_url)
         
         # Limit to max 3 images per article
         return images[:3]
@@ -851,6 +870,70 @@ class SubaruRadar:
         escape_chars = set('_*[]()~`>#+-=|{}.!')
         return ''.join(f'\\{c}' if c in escape_chars else c for c in str(text))
 
+    def _translate_fa(self, text):
+        """Translate an English sentence to Persian via free APIs (MyMemory, then Google gtx).
+        Returns original text on any failure. Static cache to avoid repeat calls."""
+        import json as _json
+        import urllib.parse as _up
+        import urllib.request as _ur
+        import hashlib as _hashlib
+        import os as _os
+
+        if not text or not any(ord(c) < 0x0600 for c in text):
+            return text  # empty or already Persian
+
+        # Persistent disk cache (survives between runs in Actions workspace)
+        cache_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data', 'translation_cache.json')
+        cache = {}
+        try:
+            if os.path.exists(cache_file):
+                with open(cache_file, encoding='utf-8') as f:
+                    cache = _json.load(f)
+        except Exception:
+            cache = {}
+
+        key = _hashlib.md5(text.encode()).hexdigest()
+        if key in cache:
+            return cache[key]
+
+        result = None
+        # 1) MyMemory (free, no key)
+        try:
+            params = _up.urlencode({"q": text[:480], "langpair": "en|fa"})
+            req = _ur.Request(f"https://api.mymemory.translated.net/get?{params}",
+                              headers={"User-Agent": "Mozilla/5.0"})
+            with _ur.urlopen(req, timeout=12) as r:
+                d = _json.load(r)
+            t = d.get("responseData", {}).get("translatedText", "")
+            if t and "MYMEMORY WARNING" not in t.upper() and any('\u0600' <= ch <= '\u06FF' for ch in t):
+                result = t
+        except Exception:
+            pass
+
+        # 2) Google gtx endpoint (free, unofficial; often rate-limited)
+        if not result:
+            try:
+                params = _up.urlencode({"client": "gtx", "sl": "en", "tl": "fa", "dt": "t", "q": text[:1800]})
+                req = _ur.Request(f"https://translate.googleapis.com/translate_a/single?{params}",
+                                  headers={"User-Agent": "Mozilla/5.0"})
+                with _ur.urlopen(req, timeout=12) as r:
+                    d = _json.load(r)
+                result = "".join(seg[0] for seg in d[0] if seg and seg[0])
+            except Exception:
+                pass
+
+        if not result:
+            return self._fa_terms(text)  # graceful fallback to term mapping
+
+        result = self._fa_terms(result)  # fix leftover brand terms (OpenAI etc.)
+        cache[key] = result
+        try:
+            with open(cache_file, 'w', encoding='utf-8') as f:
+                _json.dump(cache, f, ensure_ascii=False)
+        except Exception:
+            pass
+        return result
+
     def _fa_terms(self, text):
         """Translate common AI/tech English terms inside a text to Persian."""
         pairs = [
@@ -895,7 +978,7 @@ class SubaruRadar:
                 picked.append(s)
                 chars += len(s)
             for p in picked:
-                p_fa = self._fa_terms(p[:220])
+                p_fa = self._translate_fa(p[:220])
                 lines.append(f"- {self._esc_md(p_fa)}")
 
         # Fallback/merge with pipeline summary bullets that are not generic
@@ -922,7 +1005,15 @@ class SubaruRadar:
         if not items:
             return None
 
-        items = items[:12]
+        # Most important first: urgency desc, then source priority desc
+        def _imp(it):
+            try:
+                u = int(it.get('urgency', 5))
+            except (TypeError, ValueError):
+                u = 5
+            return (-u, -self.get_source_priority(it.get('url', '')))
+        items = sorted(items, key=_imp)[:12]
+
         now = datetime.now(timezone(timedelta(hours=3, minutes=30)))
         stamp = now.strftime('%H:%M — %Y/%m/%d')
 
