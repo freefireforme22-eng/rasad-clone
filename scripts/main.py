@@ -851,6 +851,49 @@ class SubaruRadar:
         escape_chars = set('_*[]()~`>#+-=|{}.!')
         return ''.join(f'\\{c}' if c in escape_chars else c for c in str(text))
 
+    def _build_digest_summary(self, item):
+        """Build a 5-6 line Persian digest from article_content / summary.
+        Falls back to generic lines only when nothing real exists."""
+        import re as _re
+        lines = []
+
+        content = (item.get('article_content') or '').strip()
+        # Clean HTML remnants & collapse whitespace
+        content = _re.sub(r'<[^>]+>', ' ', content)
+        content = _re.sub(r'\s+', ' ', content).strip()
+
+        if len(content) > 200:
+            # Split into sentences (English + Persian punctuation)
+            sents = [s.strip() for s in _re.split(r'(?<=[.!?؟])\s+|(?<=\.\s)\s*', content) if len(s.strip()) > 25]
+            picked, chars = [], 0
+            for s in sents[:10]:
+                if chars + len(s) > 700 or len(picked) >= 4:
+                    break
+                picked.append(s)
+                chars += len(s)
+            for p in picked:
+                lines.append(f"- {self._esc_md(p[:220])}")
+
+        # Fallback/merge with pipeline summary bullets that are not generic
+        generic_markers = ('پیشرفت جدید در حوزه', 'جزئیات در متن کامل', 'گزارش شده')
+        for s in item.get('summary', []):
+            if any(g in s for g in generic_markers):
+                continue
+            if len(s) > 30 and all(s[:40] not in l for l in lines):
+                lines.append(f"- {self._esc_md(s[:200])}")
+            if len(lines) >= 5:
+                break
+
+        impact = (item.get('impact') or '').strip()
+        if impact and 'می‌تواند بر روندهای آینده' not in impact:
+            lines.append(f"\n💡 **چرا مهم است:** {self._esc_md(impact[:180])}")
+
+        if not lines:
+            src_name = item.get('source', '')
+            lines.append(f"- خلاصه‌ای از این خبر در منبع اصلی ({self._esc_md(src_name)}) منتشر شده است؛ برای جزئیات کامل، لینک زیر را باز کنید.")
+
+        return "\n".join(lines[:6])
+
     def format_ai_news_rich_markdown(self, items):
         """Format AI news as Rich Markdown (headings, lists, toggle, table) - max 12 items"""
         if not items:
@@ -894,12 +937,9 @@ class SubaruRadar:
             impact = item.get('impact', '')
             ai_cat = item.get('ai_category', 'عمومی')
 
-            inner_lines = []
-            for s in summary[:3]:
-                inner_lines.append(f"- {self._esc_md(s)}")
-            if impact:
-                inner_lines.append(f"\n💡 **تحلیل:** {self._esc_md(impact)}")
-            
+            # 5-6 line digest built from real article content
+            inner_lines = [self._build_digest_summary(item)]
+
             # Source tags
             tags = [f"`#{ai_cat}`"]
             title_text = (item.get('title_fa', '') + ' ' + item.get('title_en', '')).lower()
@@ -915,8 +955,18 @@ class SubaruRadar:
                 inner_lines.append(f"\n🔗 [مشاهده منبع کامل]({url})")
 
             summary_txt = "\n".join(inner_lines)
+
+            # Image inside the toggle (Rasad-style)
+            images = item.get('images') or ([item['image']] if item.get('image') else [])
+            img_html = ""
+            for im in images[:1]:
+                if isinstance(im, str) and im.startswith('http'):
+                    img_html = f'<figure><img src="{im}"/><figcaption>{self._esc_md(title_fa[:60])}</figcaption></figure>\n\n'
+                    break
+
             md_parts.append(
                 f"<details>\n<summary>{emoji} {self._esc_md(title_fa)} — {self._esc_md(source)}</summary>\n\n"
+                f"{img_html}"
                 f"{summary_txt}\n\n</details>\n"
             )
 
