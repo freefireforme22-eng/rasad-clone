@@ -851,8 +851,31 @@ class SubaruRadar:
         escape_chars = set('_*[]()~`>#+-=|{}.!')
         return ''.join(f'\\{c}' if c in escape_chars else c for c in str(text))
 
+    def _fa_terms(self, text):
+        """Translate common AI/tech English terms inside a text to Persian."""
+        pairs = [
+            ('OpenAI', 'اوپن‌ای‌آی'), ('Anthropic', 'آنتروپیک'),
+            ('Google DeepMind', 'دیپ‌مایند گوگل'), ('DeepMind', 'دیپ‌مایند'),
+            ('Google', 'گوگل'), ('Microsoft', 'مایکروسافت'), ('Meta', 'مِتا'),
+            ('NVIDIA', 'انویدیا'), ('Claude', 'کلود'), ('Gemini', 'جمینی'),
+            ('GPT-5.5', 'جی‌پی‌تی ۵.۵'), ('GPT', 'جی‌پی‌تی'), ('ChatGPT', 'چت‌جی‌پی‌تی'),
+            ('LLM', 'ال‌ال‌ام'), ('LLMs', 'ال‌ال‌ام‌ها'), ('RAG', 'رَگ'),
+            ('API', 'ای‌پی‌آی'), ('GPU', 'جی‌پی‌یو'), ('AI agents', 'عامل‌های هوش مصنوعی'),
+            ('AI agent', 'عامل هوش مصنوعی'), ('Artificial Intelligence', 'هوش مصنوعی'),
+            ('AI', 'هوش مصنوعی'), ('machine learning', 'یادگیری ماشین'),
+            ('benchmark', 'بنچ‌مارک'), ('open source', 'متن‌باز'),
+            ('open-source', 'متن‌باز'), ('model', 'مدل'), ('token', 'توکن'),
+            ('agent', 'عامل'), ('researchers', 'پژوهشگران'),
+            ('released', 'منتشر شد'), ('launched', 'عرضه شد'),
+            ('announced', 'اعلام شد'), ('according to', 'بر اساس گزارش'),
+        ]
+        out = str(text)
+        for en, fa in pairs:
+            out = out.replace(en, fa).replace(en.lower(), fa)
+        return out
+
     def _build_digest_summary(self, item):
-        """Build a 5-6 line Persian digest from article_content / summary.
+        """Build a 5-6 line PERSIAN digest from article_content / summary.
         Falls back to generic lines only when nothing real exists."""
         import re as _re
         lines = []
@@ -872,7 +895,8 @@ class SubaruRadar:
                 picked.append(s)
                 chars += len(s)
             for p in picked:
-                lines.append(f"- {self._esc_md(p[:220])}")
+                p_fa = self._fa_terms(p[:220])
+                lines.append(f"- {self._esc_md(p_fa)}")
 
         # Fallback/merge with pipeline summary bullets that are not generic
         generic_markers = ('پیشرفت جدید در حوزه', 'جزئیات در متن کامل', 'گزارش شده')
@@ -889,8 +913,7 @@ class SubaruRadar:
             lines.append(f"\n💡 **چرا مهم است:** {self._esc_md(impact[:180])}")
 
         if not lines:
-            src_name = item.get('source', '')
-            lines.append(f"- خلاصه‌ای از این خبر در منبع اصلی ({self._esc_md(src_name)}) منتشر شده است؛ برای جزئیات کامل، لینک زیر را باز کنید.")
+            lines.append("- خلاصه کامل این خبر در منبع اصلی منتشر شده است؛ برای جزئیات، لینک زیر را باز کنید.")
 
         return "\n".join(lines[:6])
 
@@ -915,14 +938,16 @@ class SubaruRadar:
         md_parts.append("---\n")
         md_parts.append("## 📌 سرخط مهم‌ترین اخبار\n")
 
-        # Headlines section (bulleted list)
+        # Headlines section — the whole Persian title IS the link
         for item in items[:8]:
             emoji = cat_emoji.get(item.get('ai_category', 'عمومی'), '📰')
             title_fa = item.get('title_fa') or item.get('title_en') or 'بدون عنوان'
             source = item.get('source', 'منبع ناشناس')
             url = item.get('url', '')
-            link_part = f" — [{self._esc_md(source)}]({url})" if url else f" ({self._esc_md(source)})"
-            md_parts.append(f"- {emoji} {self._esc_md(title_fa)}{link_part}")
+            if url:
+                md_parts.append(f"- {emoji} [{self._esc_md(title_fa)}]({url})")
+            else:
+                md_parts.append(f"- {emoji} {self._esc_md(title_fa)}")
 
         md_parts.append("\n---\n")
 
@@ -964,8 +989,10 @@ class SubaruRadar:
                     img_html = f'<figure><img src="{im}"/><figcaption>{self._esc_md(title_fa[:60])}</figcaption></figure>\n\n'
                     break
 
+            head_link = f"[{self._esc_md(title_fa)}]({url})" if url else self._esc_md(title_fa)
+            src_link = f"[{self._esc_md(source)}]({url})" if url else self._esc_md(source)
             md_parts.append(
-                f"<details>\n<summary>{emoji} {self._esc_md(title_fa)} — {self._esc_md(source)}</summary>\n\n"
+                f"<details>\n<summary>{emoji} {head_link} — {src_link}</summary>\n\n"
                 f"{img_html}"
                 f"{summary_txt}\n\n</details>\n"
             )
