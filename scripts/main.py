@@ -61,6 +61,7 @@ CONFIG = {
         'NEWS': '../data/news.json',
         'MARKET': '../data/market.json',
         'AI_NEWS': '../data/ai_news.json',
+        'WEEKLY_SENT': '../data/f_weekly_sent.json',
     },
     'TELEGRAM': {
         'BOT_TOKEN': os.environ.get('TG_BOT_TOKEN'),
@@ -1320,6 +1321,29 @@ class SubaruRadar:
             self.send_media_group_to_telegram(new_ai_items)
         else:
             logger.info("No new AI news to send")
+
+        # 4. Weekly digest — Sunday 18:00-21:59 Tehran, once per week
+        try:
+            FX = globals().get('_features')
+            if FX:
+                now = datetime.now(timezone(timedelta(hours=3, minutes=30)))
+                marker_file = CONFIG['FILES'].get('WEEKLY_SENT', '../data/f_weekly_sent.json')
+                last_sent = ''
+                try:
+                    with open(marker_file, encoding='utf-8') as f:
+                        last_sent = json.load(f).get('week', '')
+                except Exception:
+                    pass
+                iso_week = now.strftime('%G-W%V')
+                if now.weekday() == 6 and 18 <= now.hour < 22 and last_sent != iso_week:
+                    weekly_md = FX.weekly_digest_md()
+                    if weekly_md:
+                        self.send_to_telegram(weekly_md)
+                        logger.info("✅ Weekly digest sent")
+                    with open(marker_file, 'w', encoding='utf-8') as f:
+                        json.dump({'week': iso_week, 'sent_at': now.isoformat()}, f, ensure_ascii=False)
+        except Exception as e:
+            logger.warning(f"weekly digest skipped: {e}")
 
         logger.info("✅ Cycle complete")
 
