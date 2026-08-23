@@ -10,6 +10,14 @@ import cloudscraper
 from bs4 import BeautifulSoup
 from ddgs import DDGS
 
+# ─── Subaru Feature Pack v1 ───
+try:
+    from subaru_features import SubaruFeatures
+    _features = SubaruFeatures()
+except Exception as _e:
+    logging.warning(f"feature pack disabled: {_e}")
+    _features = None
+
 # ─── CONFIG ───
 CONFIG = {
     'AI_SEARCH_QUERIES': [
@@ -982,12 +990,18 @@ class SubaruRadar:
                 lines.append(f"- {self._esc_md(p_fa)}")
 
         # Fallback/merge with pipeline summary bullets that are not generic
+        def _has_persian(t):
+            return any('\u0600' <= ch <= '\u06FF' for ch in (t or ''))
+
         generic_markers = ('پیشرفت جدید در حوزه', 'جزئیات در متن کامل', 'گزارش شده')
         for s in item.get('summary', []):
             if any(g in s for g in generic_markers):
                 continue
+            # skip English leftovers if we already have Persian lines
+            if lines and _has_persian(" ".join(lines)) and not _has_persian(s):
+                continue
             if len(s) > 30 and all(s[:40] not in l for l in lines):
-                lines.append(f"- {self._esc_md(s[:200])}")
+                lines.append(f"- {self._esc_md(self._translate_fa(s[:200]) if not _has_persian(s) else s)}")
             if len(lines) >= 5:
                 break
 
@@ -1004,6 +1018,13 @@ class SubaruRadar:
         """Format AI news as Rich Markdown (headings, lists, toggle, table) - max 12 items"""
         if not items:
             return None
+
+        FX = globals().get('_features')
+        if FX:
+            items = FX.dedupe_near(items)
+            items = FX.filter_muted(items)
+            if not items:
+                return None
 
         # Most important first: urgency desc, then source priority desc
         def _imp(it):
@@ -1026,6 +1047,13 @@ class SubaruRadar:
         md_parts = []
         md_parts.append(f"# 🤖 اخبار هوش مصنوعی\n")
         md_parts.append(f"⏱ **بروزرسانی: {stamp}** (تهران)\n")
+
+        # F11: market widget
+        if FX:
+            mw = FX.market_widget()
+            if mw:
+                md_parts.append(f"📈 {mw}\n")
+
         md_parts.append("---\n")
         md_parts.append("## 📌 سرخط مهم‌ترین اخبار\n")
 
@@ -1035,10 +1063,16 @@ class SubaruRadar:
             title_fa = item.get('title_fa') or item.get('title_en') or 'بدون عنوان'
             source = item.get('source', 'منبع ناشناس')
             url = item.get('url', '')
+            meta = ""
+            if FX:
+                heat = FX.heat_bar(item)
+                mins = FX.reading_minutes(item)
+                _s, _e = FX.analyze_sentiment(' '.join(item.get('summary', [])) or item.get('title_en',''))
+                meta = f" · {heat} · {_e} · ⏱{mins}دقیقه"
             if url:
-                md_parts.append(f"- {emoji} [{self._esc_md(title_fa)}]({url})")
+                md_parts.append(f"- {emoji} [{self._esc_md(title_fa)}]({url}){meta}")
             else:
-                md_parts.append(f"- {emoji} {self._esc_md(title_fa)}")
+                md_parts.append(f"- {emoji} {self._esc_md(title_fa)}{meta}")
 
         md_parts.append("\n---\n")
 
@@ -1055,6 +1089,18 @@ class SubaruRadar:
 
             # 5-6 line digest built from real article content
             inner_lines = [self._build_digest_summary(item)]
+
+            if FX:
+                # F3: TL;DR one-liner
+                tldr = FX.tldr(item)
+                if tldr:
+                    inner_lines.insert(0, f"⚡ **خلاصه در یک خط:** {self._esc_md(self._translate_fa(tldr[:140]))}\n")
+                # F1: sentiment badge on title line handled below; add reading time here
+                mins = FX.reading_minutes(item)
+                inner_lines.append(f"⏱ زمان مطالعه: حدود {mins} دقیقه")
+                gloss = FX.explain_term((item.get('title_en') or '') + ' ' + ' '.join(item.get('summary', []))[:300])
+                if gloss:
+                    inner_lines.append(gloss)
 
             # Source tags
             tags = [f"`#{ai_cat}`"]
@@ -1080,6 +1126,16 @@ class SubaruRadar:
                     img_html = f'<figure><img src="{im}"/><figcaption>{self._esc_md(title_fa[:60])}</figcaption></figure>\n\n'
                     break
 
+            if FX:
+                rels = FX.related_links(item, items, k=2)
+                if rels:
+                    rel_titles = []
+                    for r_item in rels:
+                        rt = r_item.get('title_fa') or r_item.get('title_en') or ''
+                        ru = r_item.get('url', '')
+                        rel_titles.append(f"[{self._esc_md(rt[:50])}]({ru})" if ru else self._esc_md(rt[:50]))
+                    inner_lines.append(f"\n🔗 **اخبار مرتبط:** {' · '.join(rel_titles)}")
+
             head_link = f"[{self._esc_md(title_fa)}]({url})" if url else self._esc_md(title_fa)
             src_link = f"[{self._esc_md(source)}]({url})" if url else self._esc_md(source)
             md_parts.append(
@@ -1088,26 +1144,39 @@ class SubaruRadar:
                 f"{summary_txt}\n\n</details>\n"
             )
 
-        # Stats table
-        n_total = len(items)
-        cats = {}
-        for it in items:
-            c = it.get('ai_category', 'عمومی')
-            cats[c] = cats.get(c, 0) + 1
-        if len(cats) >= 2:
+        if FX:
+            FX.update_stats(items)
+            # F10: rich stats table
             md_parts.append("\n## 📊 آمار این بروزرسانی\n")
-            md_parts.append("| دسته | تعداد |")
-            md_parts.append("|---|---|")
-            for c, cnt in sorted(cats.items(), key=lambda x: -x[1]):
-                e = cat_emoji.get(c, '📰')
-                md_parts.append(f"| {e} {c} | {cnt} |")
-            md_parts.append("")
+            md_parts.append(FX.stats_block_md(items))
 
-        urgency_avg = sum(int(it.get('urgency', 5)) for it in items) / max(1, len(items))
-        urgency_bar = "🔥" * min(5, max(1, int(round(urgency_avg / 2))))
-        md_parts.append(f"\n⚡ **شاخص اهمیت:** {urgency_bar} \({int(urgency_avg)}/10\)")
+            # F5: trending topics
+            trend = FX.trending_topics(items, top=6)
+            if trend:
+                md_parts.append("\n## 📈 داغ‌ترین موضوعات امروز\n")
+                md_parts.append(" · ".join(f"**{self._esc_md(t)}** ×{c}" for t, c in trend))
+        else:
+            urgency_avg = sum(int(it.get('urgency', 5)) for it in items) / max(1, len(items))
+            md_parts.append(f"\n⚡ شاخص اهمیت: {int(urgency_avg)}/10")
+
+        if FX:
+            q = FX.quote_of_day()
+            if q:
+                md_parts.append(f"\n{q}\n")
+            otd = FX.on_this_day()
+            if otd:
+                md_parts.append(f"{otd}\n")
+
         md_parts.append(f"\n🔄 بروزرسانی خودکار هر ۳ ساعت")
-        md_parts.append(f"\n#هوش_مصنوعی #اخبار")
+
+        # F4: smart hashtags from content
+        all_tags = set()
+        for it in items:
+            if FX:
+                for tg in FX.smart_hashtags(it):
+                    all_tags.add(tg)
+        all_tags.add('#هوش_مصنوعی')
+        md_parts.append("\n" + " ".join(sorted(all_tags)[:6]))
 
         result = "\n".join(md_parts)
 
