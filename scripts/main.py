@@ -867,7 +867,7 @@ class SubaruRadar:
         }
 
         md_parts = []
-        md_parts.append(f"# 🤖 اخبار هوش مصنوعی — سوبارو نیوز\n")
+        md_parts.append(f"# 🤖 اخبار هوش مصنوعی\n")
         md_parts.append(f"⏱ **بروزرسانی: {stamp}** (تهران)\n")
         md_parts.append("---\n")
         md_parts.append("## 📌 سرخط مهم‌ترین اخبار\n")
@@ -938,8 +938,8 @@ class SubaruRadar:
         urgency_avg = sum(int(it.get('urgency', 5)) for it in items) / max(1, len(items))
         urgency_bar = "🔥" * min(5, max(1, int(round(urgency_avg / 2))))
         md_parts.append(f"\n⚡ **شاخص اهمیت:** {urgency_bar} \({int(urgency_avg)}/10\)")
-        md_parts.append(f"\n🔄 هر ۳ ساعت | 🤖 رصد خودکار سوبارو نیوز")
-        md_parts.append(f"\n#سوبارو_نیوز #هوش_مصنوعی")
+        md_parts.append(f"\n🔄 هر ۳ ساعت | 🤖 رصد خودکار")
+        md_parts.append(f"\n#هوش_مصنوعی #اخبار")
 
         result = "\n".join(md_parts)
 
