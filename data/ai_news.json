@@ -1,5 +1,26 @@
 [
   {
+    "id": "b1846b0437",
+    "title_en": "ExpertIVS: Sociological Expert Driven Individual Value Simulation in Large Language Models",
+    "title_fa": "ExpertIVS: Sociological Expert Driven Individual Value Simulation in Large زبان مدل‌ها",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.20355",
+    "clean_url": "https://arxiv.org/abs/2608.20355",
+    "image": "",
+    "timestamp": 1787559951.6532845,
+    "ai_category": "مدل",
+    "article_content": "",
+    "images": []
+  },
+  {
     "id": "772cb01edc",
     "title_en": "SDAD: Spec-Driven Agentic Development for the AI-Native SDLC",
     "title_fa": "SDAD: Spec-Driven Agentic Development for the هوش مصنوعی-Native SDLC",
