@@ -1,5 +1,152 @@
 [
   {
+    "id": "975b40e027",
+    "title_en": "KVBoost: Chunk-Level Key-Value Cache Reuse with Deviation-Guided Recomputation for Efficient Large Language Model Inference",
+    "title_fa": "KVBoost: Chunk-Level Key-Value Cache Reuse with Deviation-Guided Recomputation for Efficient Large زبان مدل استنتاج",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.21362",
+    "clean_url": "https://arxiv.org/abs/2608.21362",
+    "image": "",
+    "timestamp": 1787634535.9742854,
+    "ai_category": "مدل",
+    "article_content": "",
+    "images": []
+  },
+  {
+    "id": "4f649a9c1e",
+    "title_en": "AI Learning and Conceptual Transfer in the Game of Hidden Rules",
+    "title_fa": "هوش مصنوعی Learning and Conceptual ترنسفر in the Game of Hidden Rules",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.21372",
+    "clean_url": "https://arxiv.org/abs/2608.21372",
+    "image": "",
+    "timestamp": 1787634535.9743679,
+    "ai_category": "عمومی",
+    "article_content": "",
+    "images": []
+  },
+  {
+    "id": "3852a34f3f",
+    "title_en": "RIACT: A Responsible AI System for Personalized Study Habit Tracking and Early Burnout Signal Detection in University Students",
+    "title_fa": "RIACT: A Responsible هوش مصنوعی System for Personalized مطالعه Habit Tracking and Early Burnout Signal Detection in U...",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "پیشرفت‌های علمی پایه برای کاربردهای آینده فراهم می‌آورند",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.21379",
+    "clean_url": "https://arxiv.org/abs/2608.21379",
+    "image": "",
+    "timestamp": 1787634535.9744606,
+    "ai_category": "تحقیق",
+    "article_content": "",
+    "images": []
+  },
+  {
+    "id": "5d0aa87479",
+    "title_en": "There Is No Neutral Harness: Modern LLM Leaderboards Are Manufactured by Config-Fragile Items",
+    "title_fa": "There Is No Neutral Harness: Modern ال‌ام‌ال Leaderboards Are Manufactured by Config-Fragile Items",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.21382",
+    "clean_url": "https://arxiv.org/abs/2608.21382",
+    "image": "",
+    "timestamp": 1787634535.974484,
+    "ai_category": "مدل",
+    "article_content": "",
+    "images": []
+  },
+  {
+    "id": "3933aab490",
+    "title_en": "Spyre-Accelerated Retrieval-Augmented Generation on IBM LinuxONE: A Cloud-Native Architecture for Secure, High-Throughput Enterprise AI Inference",
+    "title_fa": "Spyre-Accelerated Retrieval-Augmented Generation on IBM LinuxONE: A کلاد-Native Architecture for Secure, High-Through...",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.21393",
+    "clean_url": "https://arxiv.org/abs/2608.21393",
+    "image": "",
+    "timestamp": 1787634535.974505,
+    "ai_category": "عمومی",
+    "article_content": "",
+    "images": []
+  },
+  {
+    "id": "0e1f7367cb",
+    "title_en": "Agentic Scaffolding Amplifies Sycophantic Behavior in Large Language Models",
+    "title_fa": "Agentic Scaffolding Amplifies Sycophantic Behavior in Large زبان مدل‌ها",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.21377",
+    "clean_url": "https://arxiv.org/abs/2608.21377",
+    "image": "",
+    "timestamp": 1787634536.098321,
+    "ai_category": "مدل",
+    "article_content": "",
+    "images": []
+  },
+  {
+    "id": "484300ad5a",
+    "title_en": "CyrillicQA: The Influence of Phonetically Encoded Secret Language on LLM Performance",
+    "title_fa": "CyrillicQA: The Influence of Phonetically Encoded Secret زبان on ال‌ام‌ال Performance",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.21462",
+    "clean_url": "https://arxiv.org/abs/2608.21462",
+    "image": "",
+    "timestamp": 1787634536.0984783,
+    "ai_category": "مدل",
+    "article_content": "",
+    "images": []
+  },
+  {
     "id": "b1846b0437",
     "title_en": "ExpertIVS: Sociological Expert Driven Individual Value Simulation in Large Language Models",
     "title_fa": "ExpertIVS: Sociological Expert Driven Individual Value Simulation in Large زبان مدل‌ها",
