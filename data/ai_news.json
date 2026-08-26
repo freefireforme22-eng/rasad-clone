@@ -1,5 +1,152 @@
 [
   {
+    "id": "ab1d2ceedc",
+    "title_en": "LLM Agents Perform Controlled Experiments Using Simulation Models",
+    "title_fa": "ال‌ام‌ال عامل‌ها Perform Controlled Experiments Using Simulation مدل‌ها",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.23622",
+    "clean_url": "https://arxiv.org/abs/2608.23622",
+    "image": "",
+    "timestamp": 1787721484.1956813,
+    "ai_category": "مدل",
+    "article_content": "",
+    "images": []
+  },
+  {
+    "id": "824fbe8052",
+    "title_en": "A survey detection channel overrides the pixels in an astronomical foundation model, and biases tomographic mean redshifts",
+    "title_fa": "A survey detection channel overrides the pixels in an astronomical foundation model, and biases tomographic mean reds...",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.23626",
+    "clean_url": "https://arxiv.org/abs/2608.23626",
+    "image": "",
+    "timestamp": 1787721484.1957192,
+    "ai_category": "مدل",
+    "article_content": "",
+    "images": []
+  },
+  {
+    "id": "6fe85545b6",
+    "title_en": "Auditing the Synthetic Memoir: Measuring Scene-Level Confabulation in LLM-Generated Autobiography Against the Documented Record of the Life It Describes",
+    "title_fa": "Auditing the Synthetic Memoir: Measuring Scene-Level Confabulation in ال‌ام‌ال-Generated Autobiography Against the Do...",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.23640",
+    "clean_url": "https://arxiv.org/abs/2608.23640",
+    "image": "",
+    "timestamp": 1787721484.1957924,
+    "ai_category": "مدل",
+    "article_content": "",
+    "images": []
+  },
+  {
+    "id": "1d7067221e",
+    "title_en": "FLARE: A Systematic, Uncertainty-Aware Framework for Evidence-Based Adoption of Artificial Intelligence in Healthcare",
+    "title_fa": "FLARE: A Systematic, عدم اطمینان-Aware Framework for Evidence-Based Adoption of هوش مصنوعی in Healthcare",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.23643",
+    "clean_url": "https://arxiv.org/abs/2608.23643",
+    "image": "",
+    "timestamp": 1787721484.1958728,
+    "ai_category": "سخت‌افزار",
+    "article_content": "",
+    "images": []
+  },
+  {
+    "id": "8ed5474b97",
+    "title_en": "Equivariant Cellular Sheaves for Molecular Electronic Structure: Bridging Sheaf Cohomology and E(3)-Equivariant Hamiltonian Learning",
+    "title_fa": "Equivariant Cellular Sheaves for Molecular Electronic Structure: Bridging Sheaf Cohomology and E(3)-Equivariant Hamil...",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.23571",
+    "clean_url": "https://arxiv.org/abs/2608.23571",
+    "image": "",
+    "timestamp": 1787721484.317887,
+    "ai_category": "عمومی",
+    "article_content": "",
+    "images": []
+  },
+  {
+    "id": "f09138b379",
+    "title_en": "Data Predictability Shapes Weibull Weight-Scale Growth in Transformer Training",
+    "title_fa": "دیتا Predictability Shapes Weibull Weight-Scale رشد in ترنسفورمر آموزش",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.23573",
+    "clean_url": "https://arxiv.org/abs/2608.23573",
+    "image": "",
+    "timestamp": 1787721484.3179204,
+    "ai_category": "عمومی",
+    "article_content": "",
+    "images": []
+  },
+  {
+    "id": "5b31731262",
+    "title_en": "From Causal Plausibility to Causal Reliability: Evaluating LLMs as Calibrated Direct Causal-Edge Classifiers",
+    "title_fa": "From Causal Plausibility to Causal Reliability: Evaluating LLMs as Calibrated Direct Causal-Edge Classifiers",
+    "summary": [
+      "پیشرفت جدید در حوزه هوش مصنوعی گزارش شده",
+      "جزئیات در متن کامل مقاله موجود است"
+    ],
+    "impact": "این توسعه می‌تواند بر روندهای آینده هوش مصنوعی تأثیر بگذارد",
+    "tag": "AI",
+    "urgency": 9,
+    "sentiment": 0.1,
+    "source": "arxiv.org",
+    "url": "https://arxiv.org/abs/2608.23660",
+    "clean_url": "https://arxiv.org/abs/2608.23660",
+    "image": "",
+    "timestamp": 1787721484.3179471,
+    "ai_category": "مدل",
+    "article_content": "",
+    "images": []
+  },
+  {
     "id": "975b40e027",
     "title_en": "KVBoost: Chunk-Level Key-Value Cache Reuse with Deviation-Guided Recomputation for Efficient Large Language Model Inference",
     "title_fa": "KVBoost: Chunk-Level Key-Value Cache Reuse with Deviation-Guided Recomputation for Efficient Large زبان مدل استنتاج",
